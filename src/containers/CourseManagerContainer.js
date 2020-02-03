@@ -2,19 +2,21 @@ import React from "react";
 import CourseTableComponent from "../components/CourseTableComponent";
 import CourseGridComponent from "../components/CourseGridComponent";
 import CourseEditorComponent from "../components/CourseEditor/CourseEditorComponent";
+import {findAllCourses, deleteCourse, createCourse} from "../services/CourseService";
 
 class CourseManagerContainer extends React.Component {
     state = {
         layout: 'table',
         showEditor: false,
         newCourseTitle: 'whatever',
-        courses: [
-            {_id: '123', title: 'Course A'},
-            {_id: '234', title: 'Course B'},
-            {_id: '356', title: 'Course C'},
-            {_id: '456', title: 'Course D'},
-            {_id: '567', title: 'Course E'}
-        ]
+        courses: []
+    }
+
+    componentDidMount() {
+        findAllCourses()
+            .then(courses => this.setState({
+                courses: courses
+            }))
     }
 
     toggle = () => {
@@ -29,25 +31,30 @@ class CourseManagerContainer extends React.Component {
 
     deleteCourse = (course) => {
         console.log(course)
-        this.setState(prevState => {
-            return ({
-                courses: prevState
-                    .courses
-                    .filter(function(crs) {
-                    return crs._id !== course._id
+        deleteCourse(course._id).then(status => {
+            this.setState(prevState => {
+                return ({
+                    courses: prevState
+                        .courses
+                        .filter(function(crs) {
+                            return crs._id !== course._id
+                        })
                 })
             })
         })
     }
 
     addCourse = (course) => {
-        this.setState(prevState => {
+        createCourse({
+            title: this.state.newCourseTitle
+        }).then(actualCourse => this.setState(prevState => {
             return ({
-                courses: [...prevState.courses, {
-                _id: (new Date()).getTime(), title: 'New Course'
-                }]
+                courses: [
+                    ...prevState.courses,
+                    actualCourse
+                ]
             })
-        })
+        }))
     }
 
     showEditor = () => {

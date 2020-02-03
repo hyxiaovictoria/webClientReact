@@ -1,8 +1,9 @@
 import React from "react";
-import CourseTableComponent from "./CourseTableComponent";
-import CourseGridComponent from "./CourseGridComponent";
+import CourseTableComponent from "../components/CourseTableComponent";
+import CourseGridComponent from "../components/CourseGridComponent";
+import CourseEditorComponent from "../components/CourseEditorComponent";
 
-class CourseManagerComponent extends React.Component {
+class CourseManagerContainer extends React.Component {
     state = {
         layout: 'table',
         courses: [
@@ -51,6 +52,9 @@ class CourseManagerComponent extends React.Component {
         return(
             <div>
                 <h1>Course Manager</h1>
+
+                <CourseEditorComponent/>
+
                 <button onClick={this.toggle}>Toggle</button>
                 <button onClick={this.addCourse}>Add Course</button>
                 {
@@ -68,4 +72,4 @@ class CourseManagerComponent extends React.Component {
     }
 }
 
-export default CourseManagerComponent;
+export default CourseManagerContainer;

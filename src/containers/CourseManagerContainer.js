@@ -7,6 +7,7 @@ class CourseManagerContainer extends React.Component {
     state = {
         layout: 'table',
         showEditor: false,
+        newCourseTitle: 'whatever',
         courses: [
             {_id: '123', title: 'Course A'},
             {_id: '234', title: 'Course B'},
@@ -61,6 +62,10 @@ class CourseManagerContainer extends React.Component {
         })
     }
 
+    updateForm = (newState) => {
+        this.setState(newState)
+    }
+
     render() {
         return(
             <div>
@@ -75,6 +80,12 @@ class CourseManagerContainer extends React.Component {
                     !this.state.showEditor &&
                     <div>
                         <button onClick={this.toggle}>Toggle</button>
+                        <input
+                            onChange={(e) =>
+                                this.updateForm({
+                                newCourseTitle: e.target.value
+                            })}
+                            value={this.state.newCourseTitle}/>
                         <button onClick={this.addCourse}>Add Course</button>
                         {
                             this.state.layout === 'table' &&

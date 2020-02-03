@@ -9,10 +9,15 @@ export const createCourse = (course) =>
         }
     }).then(response => response.json())
 
-export const findAllCourses = () => fetch(API_URL)
-        .then(response => response.json())
+export const findAllCourses = async () => {
+    const response = await fetch(API_URL)
+        return await response.json()
+}
 
-export const deleteCourse = (courseId) =>
-    fetch(`${API_URL}/${courseId}`, {
+export const deleteCourse = async (courseId) => {
+    const response = await fetch(`${API_URL}/${courseId}`, {
         method: 'DELETE'
-    }).then(response => response.json())
+    })
+
+    return await response.json()
+}

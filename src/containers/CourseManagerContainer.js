@@ -12,11 +12,11 @@ class CourseManagerContainer extends React.Component {
         courses: []
     }
 
-    componentDidMount() {
-        findAllCourses()
-            .then(courses => this.setState({
+    componentDidMount = async () => {
+        const courses = await findAllCourses()
+        this.setState({
                 courses: courses
-            }))
+            })
     }
 
     toggle = () => {

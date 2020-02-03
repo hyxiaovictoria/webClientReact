@@ -37,12 +37,22 @@ class CourseManagerComponent extends React.Component {
         })
     }
 
+    addCourse = (course) => {
+        this.setState(prevState => {
+            return ({
+                courses: [...prevState.courses, {
+                _id: (new Date()).getTime(), title: 'New Course'
+                }]
+            })
+        })
+    }
 
     render() {
         return(
             <div>
                 <h1>Course Manager</h1>
                 <button onClick={this.toggle}>Toggle</button>
+                <button onClick={this.addCourse}>Add Course</button>
                 {
                     this.state.layout === 'table' &&
                     <CourseTableComponent

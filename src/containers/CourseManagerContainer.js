@@ -1,11 +1,12 @@
 import React from "react";
 import CourseTableComponent from "../components/CourseTableComponent";
 import CourseGridComponent from "../components/CourseGridComponent";
-import CourseEditorComponent from "../components/CourseEditorComponent";
+import CourseEditorComponent from "../components/CourseEditor/CourseEditorComponent";
 
 class CourseManagerContainer extends React.Component {
     state = {
         layout: 'table',
+        showEditor: false,
         courses: [
             {_id: '123', title: 'Course A'},
             {_id: '234', title: 'Course B'},
@@ -48,24 +49,45 @@ class CourseManagerContainer extends React.Component {
         })
     }
 
+    showEditor = () => {
+        this.setState({
+            showEditor: true
+        })
+    }
+
+    hideEditor = () => {
+        this.setState({
+            showEditor: false
+        })
+    }
+
     render() {
         return(
             <div>
                 <h1>Course Manager</h1>
 
-                <CourseEditorComponent/>
-
-                <button onClick={this.toggle}>Toggle</button>
-                <button onClick={this.addCourse}>Add Course</button>
                 {
-                    this.state.layout === 'table' &&
-                    <CourseTableComponent
-                        deleteCourse={this.deleteCourse}
-                        courses={this.state.courses}/>
+                    this.state.showEditor &&
+                    <CourseEditorComponent hideEditor={this.hideEditor}/>
                 }
+
                 {
-                    this.state.layout === 'grid' &&
-                    <CourseGridComponent courses={this.state.courses}/>
+                    !this.state.showEditor &&
+                    <div>
+                        <button onClick={this.toggle}>Toggle</button>
+                        <button onClick={this.addCourse}>Add Course</button>
+                        {
+                            this.state.layout === 'table' &&
+                            <CourseTableComponent
+                                showEditor={this.showEditor}
+                                deleteCourse={this.deleteCourse}
+                                courses={this.state.courses}/>
+                        }
+                        {
+                            this.state.layout === 'grid' &&
+                            <CourseGridComponent courses={this.state.courses}/>
+                        }
+                    </div>
                 }
             </div>
         )

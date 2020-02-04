@@ -20,7 +20,6 @@ class CourseTableRow extends React.Component {
                 }
                 {this.state.editing && <input onChange={
                     (e) => console.log('input changed: ' + e.target.value)}>
-
                 </input>}
             </td>
             <td>me

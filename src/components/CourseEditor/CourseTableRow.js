@@ -2,7 +2,8 @@ import React from "react";
 
 class CourseTableRow extends React.Component {
     state = {
-        editing: false
+        editing: false,
+        updatedCourseTitle: ''
     }
 
     render() {
@@ -10,11 +11,17 @@ class CourseTableRow extends React.Component {
             <tr className="wbdv-row">
             <td>
                 {!this.state.editing &&
-                    <a onClick={this.props.showEditor} href="#">
+                    <a onClick={() => {
+                        this.props.showEditor()
+                    }
+                    } href="#">
                         {this.props.course.title}
                     </a>
                 }
-                {this.state.editing && <input/>}
+                {this.state.editing && <input onChange={
+                    (e) => console.log('input changed: ' + e.target.value)}>
+
+                </input>}
             </td>
             <td>me
             </td>
@@ -22,7 +29,11 @@ class CourseTableRow extends React.Component {
             </td>
             <td> {
                 <>
-                <a onClick={() => {this.setState({editing:true})}}>
+                <a onClick={() => {
+                    this.setState({editing:true})
+                    this.setState({updatedCourseTitle: this.props.course.title})
+                    console.log('editing initialized to: ' + this.state.updatedCourseTitle)
+                }}>
                     <i className="fas fa-edit fa-2x"></i>
                 </a>
                 <a onClick={() => this.props.deleteCourse(this.props.course)}>

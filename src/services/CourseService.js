@@ -11,7 +11,26 @@ export const createCourse = (course) =>
 
 export const findAllCourses = async () => {
     const response = await fetch(API_URL)
-        return await response.json()
+
+    return await response.json()
+}
+
+export const findCourseById = async (courseId) => {
+    const response = await fetch(`${API_URL}/${courseId}`)
+
+    return await response.json()
+}
+
+export const updateCourse = async (courseId, course) => {
+    const response = await fetch(`${API_URL}/${courseId}`, {
+        method: 'PUT',
+        body: JSON.stringify(course),
+        headers: {
+            "content-type": 'application/json'
+        }
+    })
+
+    return await response.json()
 }
 
 export const deleteCourse = async (courseId) => {

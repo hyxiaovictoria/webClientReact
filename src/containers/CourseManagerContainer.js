@@ -100,7 +100,9 @@ class CourseManagerContainer extends React.Component {
                 <div>
                     <form className="form-horizontal">
                         <div className="form-group row" style={{backgroundColor:"royalblue"}}>
+                            <a onClick={this.toggle}>
                             <i className="fas fa-bars fa-2x fa-inverse col-sm-1"></i>
+                            </a>
                             <a onClick={this.toggle}>
                                 <label className="wbdv-label wbdv-course-manager">
                                     Course Manager</label>

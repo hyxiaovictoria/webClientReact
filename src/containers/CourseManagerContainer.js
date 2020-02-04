@@ -93,26 +93,30 @@ class CourseManagerContainer extends React.Component {
     render() {
         return(
             <div>
-            <div>
-            <form className="form-horizontal">
-                <div className="form-group row" style={{backgroundColor:"royalblue"}}>
-                    <i className="fas fa-bars fa-2x fa-inverse col-sm-1"></i>
-                    <a onClick={this.toggle}>
-                        <label className="wbdv-label wbdv-course-manager">
-                            Course Manager</label>
-                    </a>
-                    <input type="text" className="wbdv-field wbdv-new-course form-control col-sm-6" id="email3"
-                           placeholder="New Course Title"/>
-                    <span className="wbdv-button wbdv-add-course fa-stack fa-1x wd-bottom-right col-sm-1">
-              <i className="fas fa-circle fa-stack-2x"></i>
-              <i className="fas fa-plus fa-stack-1x fa-inverse"></i>
-            </span>
+                <div>
+                    <form className="form-horizontal">
+                        <div className="form-group row" style={{backgroundColor:"royalblue"}}>
+                            <i className="fas fa-bars fa-2x fa-inverse col-sm-1"></i>
+                            <a onClick={this.toggle}>
+                                <label className="wbdv-label wbdv-course-manager">
+                                    Course Manager</label>
+                            </a>
+                            <input type="text" className="wbdv-field wbdv-new-course form-control col-sm-6" id="email3"
+                                   placeholder="New Course Title"
+                                   onChange={(e) =>
+                                       this.updateForm({
+                                           newCourseTitle: e.target.value
+                                       })}
+                                   value={this.state.newCourseTitle}/>
+                            <a onClick={this.addCourse}>
+                        <span className="wbdv-button wbdv-add-course fa-stack fa-1x wd-bottom-right col-sm-1">
+                            <i className="fas fa-circle fa-stack-2x"></i>
+                            <i className="fas fa-plus fa-stack-1x fa-inverse"></i>
+                        </span>
+                            </a>
+                        </div>
+                    </form>
                 </div>
-            </form>
-            </div>
-
-            <div>
-                <h1>Course Manager</h1>
 
                 {
                     this.state.showEditor &&
@@ -122,14 +126,6 @@ class CourseManagerContainer extends React.Component {
                 {
                     !this.state.showEditor &&
                     <div>
-                        <button onClick={this.toggle}>Toggle</button>
-                        <input
-                            onChange={(e) =>
-                                this.updateForm({
-                                newCourseTitle: e.target.value
-                            })}
-                            value={this.state.newCourseTitle}/>
-                        <button onClick={this.addCourse}>Add Course</button>
                         {
                             this.state.layout === 'table' &&
                             <CourseTableComponent
@@ -144,7 +140,6 @@ class CourseManagerContainer extends React.Component {
                         }
                     </div>
                 }
-            </div>
             </div>
         )
     }

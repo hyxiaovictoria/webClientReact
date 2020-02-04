@@ -1,7 +1,7 @@
 import React from "react";
 import CourseRow from "./CourseEditor/CourseRow";
 
-const CourseTableComponent = ({courses, deleteCourse, showEditor}) =>
+const CourseTableComponent = ({courses, deleteCourse, saveCourse, showEditor}) =>
     <div>
         <h2> Course Table Component {courses.length}</h2>
         <ul>
@@ -11,7 +11,8 @@ const CourseTableComponent = ({courses, deleteCourse, showEditor}) =>
                         <CourseRow
                         course={course}
                         showEditor={showEditor}
-                        deleteCourse={deleteCourse}/>
+                        deleteCourse={deleteCourse}
+                        saveCourse={saveCourse}/>
                     )
                 })
             }

@@ -30,7 +30,7 @@ class CourseManagerContainer extends React.Component {
     }
 
     deleteCourse = (course) => {
-        console.log(course)
+        console.log('delete course:' + course)
         deleteCourse(course._id).then(status => {
             this.setState(prevState => {
                 return ({
@@ -42,6 +42,22 @@ class CourseManagerContainer extends React.Component {
                 })
             })
         })
+    }
+
+    saveCourse = (course, newTitle) => {
+        course.title = newTitle
+        console.log('save course' + course.title)
+        // deleteCourse(course._id).then(status => {
+        //     this.setState(prevState => {
+        //         return ({
+        //             courses: prevState
+        //                 .courses
+        //                 .filter(function(crs) {
+        //                     return crs._id !== course._id
+        //                 })
+        //         })
+        //     })
+        // })
     }
 
     addCourse = (course) => {
@@ -76,6 +92,23 @@ class CourseManagerContainer extends React.Component {
     render() {
         return(
             <div>
+            <div>
+            <form className="form-horizontal">
+                <div className="form-group row" style={{backgroundColor:"royalblue"}}>
+                    <i className="fas fa-bars fa-2x fa-inverse col-sm-1"></i>
+                    <label className="wbdv-label wbdv-course-manager">
+                        Course Manager</label>
+                    <input type="text" className="wbdv-field wbdv-new-course form-control col-sm-6" id="email3"
+                           placeholder="New Course Title"/>
+                    <span className="wbdv-button wbdv-add-course fa-stack fa-1x wd-bottom-right col-sm-1">
+              <i className="fas fa-circle fa-stack-2x"></i>
+              <i className="fas fa-plus fa-stack-1x fa-inverse"></i>
+            </span>
+                </div>
+            </form>
+            </div>
+
+            <div>
                 <h1>Course Manager</h1>
 
                 {
@@ -99,6 +132,7 @@ class CourseManagerContainer extends React.Component {
                             <CourseTableComponent
                                 showEditor={this.showEditor}
                                 deleteCourse={this.deleteCourse}
+                                saveCourse={this.saveCourse}
                                 courses={this.state.courses}/>
                         }
                         {
@@ -107,6 +141,7 @@ class CourseManagerContainer extends React.Component {
                         }
                     </div>
                 }
+            </div>
             </div>
         )
     }

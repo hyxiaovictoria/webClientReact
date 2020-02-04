@@ -3,6 +3,7 @@ import CourseTableComponent from "../components/CourseTableComponent";
 import CourseGridComponent from "../components/CourseGridComponent";
 import CourseEditorComponent from "../components/CourseEditor/CourseEditorComponent";
 import {findAllCourses, deleteCourse, createCourse} from "../services/CourseService";
+import './CourseManagerContainer.css'
 
 class CourseManagerContainer extends React.Component {
     state = {
@@ -45,7 +46,7 @@ class CourseManagerContainer extends React.Component {
     }
 
     saveCourse = (course, newTitle) => {
-        course.title = newTitle
+        //course.title = newTitle
         console.log('save course' + course.title)
         // deleteCourse(course._id).then(status => {
         //     this.setState(prevState => {

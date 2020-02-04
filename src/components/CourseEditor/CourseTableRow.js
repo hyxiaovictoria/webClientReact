@@ -1,13 +1,14 @@
 import React from "react";
 
-class CourseRow extends React.Component {
+class CourseTableRow extends React.Component {
     state = {
         editing: false
     }
 
     render() {
         return(
-            <li className={"list-group-item"}>
+            <tr className="wbdv-row">
+            <td>
                 {!this.state.editing &&
                     <a onClick={this.props.showEditor} href="#">
                         {this.props.course.title}
@@ -20,9 +21,16 @@ class CourseRow extends React.Component {
                     this.props.saveCourse(this.props.course, 'newnewTitle')
                     this.setState({editing:false})
                 }}>Save</button>
-            </li>
+            </td>
+            <td>me
+            </td>
+            <td>C
+            </td>
+            <td>D
+            </td>
+            </tr>
         )
     }
 }
 
-export default CourseRow
+export default CourseTableRow

@@ -22,12 +22,18 @@ class CourseTableRow extends React.Component {
             </td>
             <td> {
                 <>
-                <button onClick={() => {this.setState({editing:true})}}>Edit</button>
-                <button onClick={() => this.props.deleteCourse(this.props.course)}>Delete</button>
-                <button onClick={() => {
+                <a onClick={() => {this.setState({editing:true})}}>
+                    <i className="fas fa-edit fa-2x"></i>
+                </a>
+                <a onClick={() => this.props.deleteCourse(this.props.course)}>
+                    <i className="fas fa-trash fa-2x"></i>
+                </a>
+                <a onClick={() => {
                     this.props.saveCourse(this.props.course, 'newnewTitle')
                     this.setState({editing: false})
-                }}>Save</button>
+                }}>
+                    <i className="fas fa-check-circle fa-2x"></i>
+                </a>
                 </>
             }
             </td>
@@ -37,3 +43,13 @@ class CourseTableRow extends React.Component {
 }
 
 export default CourseTableRow
+
+// <span className="float-right">
+//     <a>
+//     <i classNmae="fa fa-pencil"></i>
+// </a>
+//
+// <a>
+// <i className="fa fa-trash"></i>
+// </a>
+// </span>

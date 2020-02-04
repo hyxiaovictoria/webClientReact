@@ -27,19 +27,6 @@ const CourseTableComponent = ({courses, deleteCourse, saveCourse, showEditor}) =
             </tr>
             </thead>
             <tbody>
-            <tr className="wbdv-row">
-                <td>
-                    <i className="wbdv-icon fa fa-file-text" aria-hidden="true"></i>
-                    <a className="wbdv-title" href="../course-editor/course-editor.template.client.html">
-                        CS5500 Software Engineering Graduate
-                    </a>
-                </td>
-                <td className="wbdv-owner">me</td>
-                <td className="wbdv-modified-date">6:45 PM</td>
-                <td>
-                    <i className="wbdv-button wbdv-delete fa fa-times" aria-hidden="true"></i>
-                </td>
-            </tr>
             {
                 courses.map(function (course, index) {
                     return (

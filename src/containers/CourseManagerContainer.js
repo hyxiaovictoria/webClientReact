@@ -97,8 +97,10 @@ class CourseManagerContainer extends React.Component {
             <form className="form-horizontal">
                 <div className="form-group row" style={{backgroundColor:"royalblue"}}>
                     <i className="fas fa-bars fa-2x fa-inverse col-sm-1"></i>
-                    <label className="wbdv-label wbdv-course-manager">
-                        Course Manager</label>
+                    <a onClick={this.toggle}>
+                        <label className="wbdv-label wbdv-course-manager">
+                            Course Manager</label>
+                    </a>
                     <input type="text" className="wbdv-field wbdv-new-course form-control col-sm-6" id="email3"
                            placeholder="New Course Title"/>
                     <span className="wbdv-button wbdv-add-course fa-stack fa-1x wd-bottom-right col-sm-1">

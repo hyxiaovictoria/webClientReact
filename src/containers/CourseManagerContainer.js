@@ -9,7 +9,7 @@ class CourseManagerContainer extends React.Component {
     state = {
         layout: 'table',
         showEditor: false,
-        newCourseTitle: 'whatever',
+        newCourseTitle: 'New Course',
         courses: []
     }
 

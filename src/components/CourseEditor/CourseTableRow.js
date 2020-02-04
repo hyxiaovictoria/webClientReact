@@ -15,18 +15,21 @@ class CourseTableRow extends React.Component {
                     </a>
                 }
                 {this.state.editing && <input/>}
-                <button onClick={() => this.props.deleteCourse(this.props.course)}>Delete</button>
-                <button onClick={() => {this.setState({editing:true})}}>Edit</button>
-                <button onClick={() => {
-                    this.props.saveCourse(this.props.course, 'newnewTitle')
-                    this.setState({editing:false})
-                }}>Save</button>
             </td>
             <td>me
             </td>
-            <td>C
+            <td>{this.props.course.time}
             </td>
-            <td>D
+            <td> {
+                <>
+                <button onClick={() => {this.setState({editing:true})}}>Edit</button>
+                <button onClick={() => this.props.deleteCourse(this.props.course)}>Delete</button>
+                <button onClick={() => {
+                    this.props.saveCourse(this.props.course, 'newnewTitle')
+                    this.setState({editing: false})
+                }}>Save</button>
+                </>
+            }
             </td>
             </tr>
         )

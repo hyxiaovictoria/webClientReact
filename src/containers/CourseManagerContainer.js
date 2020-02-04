@@ -62,8 +62,12 @@ class CourseManagerContainer extends React.Component {
     }
 
     addCourse = (course) => {
+        let curT = new Date()
+        let curTime = (curT.getMonth() + 1) + '/' + curT.getDate() + '/' + curT.getFullYear()
+                    + ' ' + curT.getHours() + ':' + curT.getMinutes() + ':' + curT.getSeconds()
         createCourse({
-            title: this.state.newCourseTitle
+            title: this.state.newCourseTitle,
+            time: curTime
         }).then(actualCourse => this.setState(prevState => {
             return ({
                 courses: [

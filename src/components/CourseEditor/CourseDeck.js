@@ -5,7 +5,6 @@ class CourseDeck extends React.Component {
     render() {
         return(
             <div className="container-fluid">
-                <h1>Whiteboard</h1>
                 <div className="card-deck"> {
                     this.props.courses.map((course, index) =>
                         <CourseCard course={course}

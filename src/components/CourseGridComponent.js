@@ -1,6 +1,7 @@
 import React from "react";
 import CourseTableRow from "./CourseEditor/CourseTableRow";
 import CourseCard from "./CourseEditor/CourseCard";
+import CourseDeck from "./CourseEditor/CourseDeck";
 
 const CourseGridComponent = ({courses, deleteCourse, saveCourse, showEditor}) =>
     <div className="row row-narrow"  style={{marginLeft:'150px',marginRight:'150px'}}>
@@ -30,21 +31,11 @@ const CourseGridComponent = ({courses, deleteCourse, saveCourse, showEditor}) =>
         </table>
 
         {
-            courses.map(function (course, index) {
-                return (
-                    <CourseCard course={course}
-                               showEditor={showEditor}
-                               deleteCourse={deleteCourse}
-                               saveCourse={saveCourse}/>
-            )
-            })
+            <CourseDeck courses={courses}
+                        showEditor={showEditor}
+                        deleteCourse={deleteCourse}
+                        saveCourse={saveCourse}/>
         }
     </div>
 
 export default CourseGridComponent
-
-// <CourseTableRow
-// course={course}
-// showEditor={showEditor}
-// deleteCourse={deleteCourse}
-// saveCourse={saveCourse}/>

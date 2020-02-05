@@ -11,6 +11,10 @@ h6{
 
 }
 
+.wbdv-module-item-title{
+    font-size: 18px
+}
+
 .wbdv-module-item{
     color: white;
     background-color : dimgray;

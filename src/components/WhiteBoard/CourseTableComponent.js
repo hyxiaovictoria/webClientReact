@@ -1,7 +1,7 @@
 import React from "react";
-import CourseRow from "./CourseEditor/CourseRow";
-import CourseTableRow from "./CourseEditor/CourseTableRow"
-import '../containers/CourseManagerContainer.css'
+import CourseRow from "../CourseEditor/CourseRow";
+import CourseTableRow from "../CourseEditor/CourseTableRow"
+import '../../containers/CourseManagerContainer.css'
 
 const CourseTableComponent = ({courses, deleteCourse, saveCourse, showEditor}) =>
     <div className="row row-narrow"  style={{marginLeft:'150px',marginRight:'150px'}}>

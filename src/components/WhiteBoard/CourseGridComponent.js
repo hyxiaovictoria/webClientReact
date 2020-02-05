@@ -1,7 +1,7 @@
 import React from "react";
-import CourseTableRow from "./CourseEditor/CourseTableRow";
-import CourseCard from "./CourseEditor/CourseCard";
-import CourseDeck from "./CourseEditor/CourseDeck";
+import CourseTableRow from "../CourseEditor/CourseTableRow";
+import CourseCard from "./CourseCard";
+import CourseDeck from "./CourseDeck";
 
 const CourseGridComponent = ({courses, deleteCourse, saveCourse, showEditor}) =>
     <div className="row row-narrow"  style={{marginLeft:'150px',marginRight:'150px'}}>

@@ -15,13 +15,19 @@ const ModuleListComponent = ({modules}) =>
             </a>
         </div>
     </div>
-        <ul>
+        <div>
+        <ul className="bg-dark list-group wbdv-module-list">
             {modules.map(module =>
-                <li key={module._id}>
-                    {module.title}
+                <li key={module._id}
+                    className="wbdv-module-item">
+                    <span>
+                        {module.title}
+                        <i className="fa fa-times wbdv-module-item-delete-btn"></i>
+                    </span>
                 </li>
             )}
         </ul>
+        </div>
     </div>
 
 export default ModuleListComponent

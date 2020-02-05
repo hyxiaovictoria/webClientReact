@@ -12,7 +12,12 @@ h6{
 }
 
 .wbdv-module-item{
+    color: white;
     background-color : dimgray;
+    padding: 15px;
+    margin: 5px;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 .fa-right{
@@ -24,8 +29,14 @@ h6{
 }
 
 .wbdv-module-list{
-    margin : 20px;
-    background-color : cyan;
+    margin : 0px;
+    background-color : -moz-mac-accentdarkshadow;
+    list-style-type: none;
+}
+
+.wbdv-module-item-delete-btn{
+    position: absolute;
+    right: 60px;
 }
 
 .with-margin{

@@ -1,6 +1,5 @@
 import React from "react"
 import "./CourseEditorComponent.css"
-import "../../../node_modules/bootstrap/dist/css/bootstrap.css"
 
 class WidgetComponent extends React.Component {
     render() {

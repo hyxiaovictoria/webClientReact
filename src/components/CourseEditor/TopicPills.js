@@ -9,11 +9,11 @@ class TopicPills extends React.Component {
                 <ul className="nav nav-pills wbdv-topic-pill-list">
                     {this.props.topics.map(topic =>
                         <li className="nav-item wbdv-topic-pill">
-                            <a className="nav-link" href="#">{topic.title}</a>
+                            <a className="nav-link wbdv-white" href="#">{topic.title}</a>
                         </li>
                     )}
-                    <li className="nav-item wbdv-topic-add-btn">
-                        <a className="nav-link" href="#">
+                    <li className="nav-item wbdv-topic-pill">
+                        <a className="nav-link wbdv-white" href="#">
                             <i className="fa fa-plus fa-1x"></i>
                         </a>
                     </li>

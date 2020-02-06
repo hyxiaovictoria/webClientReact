@@ -14,7 +14,7 @@ class LessonTabs extends React.Component {
                     <ul className="nav nav-tabs wbdv-page-tab col-sm-6">
                         {this.props.lessons.map(lesson =>
                             <li key={lesson._id} className="nav-item">
-                                <a className="nav-link" href="#">{lesson.title}</a>
+                                <a className="nav-link wbdv-white" href="#">{lesson.title}</a>
                             </li>
                         )}
                     </ul>

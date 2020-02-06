@@ -15,42 +15,24 @@ class CourseEditorComponent extends React.Component {
                 {_id: "345", title: "Module 5-Angular"},
                 {_id: "345", title: "Module 6-Node"},
                 {_id: "345", title: "Module 7-Mongo"}
+            ],
+        lessons :
+            [
+                {_id: "123", title: "Build"},
+                {_id: "234", title: "Pages"},
+                {_id: "345", title: "Theme"},
+                {_id: "345", title: "Store"},
+                {_id: "345", title: "Apps"},
+                {_id: "456", title: "Settings"},
+                {_id: "567", title: "OneMore"}
             ]
     }
 
     render() {
-        return (<div>
-            <nav className="navbar navbar-dark bg-dark">
-                <a className="wbdv-course-editor wbdv-close col-sm-1"
-                   href="../course-list/course-list.template.client.html">
-                    <i className="fa fa-times fa-2x fa-inverse"></i>
-                </a>
-                <h4 className="wbdv-course-title col-sm-3">CS5610-WebDev</h4>
-                <ul className="nav nav-tabs wbdv-page-tab col-sm-6">
-                    <li className="nav-item">
-                        <a className="nav-link" href="#">Build</a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link active" href="#">Pages</a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link" href="#">Theme</a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link" href="#">Store</a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link" href="#">Apps</a>
-                    </li>
-                    <li className="nav-item">
-                        <a className="nav-link" href="#">Settings</a>
-                    </li>
-                </ul>
-                <a className="wbdv-new-page-btn col-sm-1">
-                    <i className="fa fa-plus fa-2x fa-inverse"></i>
-                </a>
-            </nav>
+        return (
             <div>
+                <LessonTabs lessons={this.state.lessons}/>
+
                 <button onClick={this.props.hideEditor}> Close</button>
                 <h3> Course Editor</h3>
 
@@ -61,12 +43,10 @@ class CourseEditorComponent extends React.Component {
                         />
                     </div>
                     <div className="col-8">
-                        <LessonTabs/>
                         <TopicPills/>
                     </div>
                 </div>
-            </div>
-        </div>)
+            </div>)
     }
 }
 

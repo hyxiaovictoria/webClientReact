@@ -87,7 +87,8 @@ class CourseManagerContainer extends React.Component {
     hideEditor = () => {
         this.setState({
             showEditor: false
-        })
+        }
+        )
     }
 
     updateForm = (newState) => {

@@ -6,7 +6,8 @@ class LessonTabs extends React.Component {
         return (
             <div>
                 <nav className="navbar navbar-dark bg-dark">
-                    <a className="wbdv-course-editor wbdv-close col-sm-1"
+                    <a onClick={this.props.hideEditor}
+                       className="wbdv-course-editor wbdv-close col-sm-1"
                        href="../course-list/course-list.template.client.html">
                         <i className="fa fa-times fa-2x fa-inverse"></i>
                     </a>

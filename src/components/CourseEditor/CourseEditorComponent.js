@@ -23,15 +23,14 @@ class CourseEditorComponent extends React.Component {
                 {_id: "345", title: "Theme"},
                 {_id: "345", title: "Store"},
                 {_id: "345", title: "Apps"},
-                {_id: "456", title: "Settings"},
-                {_id: "567", title: "OneMore"}
+                {_id: "456", title: "Settings"}
             ]
     }
 
     render() {
         return (
             <div>
-                <LessonTabs lessons={this.state.lessons}/>
+                <LessonTabs lessons={this.state.lessons} hideEditor={this.props.hideEditor}/>
 
                 <button onClick={this.props.hideEditor}> Close</button>
                 <h3> Course Editor</h3>

@@ -3,6 +3,7 @@ import ModuleListComponent from "./ModuleListComponent";
 import LessonTabs from "./LessonTabs";
 import TopicPills from "./TopicPills";
 import "./CourseEditorComponent.css"
+import WidgetComponent from "./WidgetComponent";
 
 class CourseEditorComponent extends React.Component {
     state = {
@@ -48,6 +49,7 @@ class CourseEditorComponent extends React.Component {
                     </div>
                     <div className="col-8">
                         <TopicPills topics={this.state.topics}/>
+                        <WidgetComponent></WidgetComponent>
                     </div>
                 </div>
             </div>)

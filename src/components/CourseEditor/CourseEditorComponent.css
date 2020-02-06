@@ -146,3 +146,11 @@ input:checked + .slider:before {
 .bg-red{
     color:red
 }
+
+.wbdv-width-100{
+    width:100%
+}
+
+.wbdv-margin-top-50px{
+    margin-top:50px;
+}

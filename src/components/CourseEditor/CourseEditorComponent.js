@@ -24,6 +24,13 @@ class CourseEditorComponent extends React.Component {
                 {_id: "345", title: "Store"},
                 {_id: "345", title: "Apps"},
                 {_id: "456", title: "Settings"}
+            ],
+        topics :
+            [
+                {_id: "123", title: "Topic 1"},
+                {_id: "234", title: "Topic 2"},
+                {_id: "345", title: "Topic 3"},
+                {_id: "345", title: "Topic 4"}
             ]
     }
 
@@ -37,12 +44,10 @@ class CourseEditorComponent extends React.Component {
 
                 <div className="row">
                     <div className="col-4">
-                        <ModuleListComponent
-                            modules={this.state.modules}
-                        />
+                        <ModuleListComponent modules={this.state.modules}/>
                     </div>
                     <div className="col-8">
-                        <TopicPills/>
+                        <TopicPills topics={this.state.topics}/>
                     </div>
                 </div>
             </div>)

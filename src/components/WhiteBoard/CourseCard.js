@@ -4,7 +4,7 @@ export default class CourseCard extends React.Component
 {
     render() {
         return (
-            <div className="card" styles={{width: '18rem'}}>
+            <div className="card wbdv-card" style={{width: '18rem',minWidth:'250px',maxWidth:'250px'}}>
                 <img className="card-img-top"
                      src="https://picsum.photos/300/200"/>
                 <div className="card-body">

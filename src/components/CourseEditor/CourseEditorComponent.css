@@ -43,6 +43,11 @@ h6{
     color : white;
 }
 
+.fa-right-only{
+    position : absolute;
+    right : 10px;
+}
+
 .wbdv-module-list{
     margin : 0px;
     background-color : -moz-mac-accentdarkshadow;

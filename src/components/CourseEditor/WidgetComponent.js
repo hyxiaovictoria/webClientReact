@@ -7,14 +7,16 @@ class WidgetComponent extends React.Component {
         return(
             <div className="wbdv-margin-top-50px">
                 <div className="form-row fixed-right">
+                    <div className ="fa-right-only">
                     <button className="btn btn-primary wbdv-button wbdv-save btn-success">Save</button>
                     <label>Preview</label>
                     <label className="switch">
                         <input type="checkbox" id="customSwitch1"/>
                             <span className="slider round"></span>
                     </label>
+                    </div>
                 </div>
-                <div className = "form-row">
+                <div className = "form-row wbdv-margin-top-50px">
                     <div className = "col-8">
                         <h5> Heading widget </h5>
                     </div>

@@ -8,8 +8,8 @@ const CourseTableComponent = ({courses, deleteCourse, saveCourse, showEditor}) =
         <table className="table">
             <thead>
             <tr className="wbdv-header">
-                <th className="wbdv-title">
-                    Title
+                <th className="wbdv-title bg-warning">
+                    Title (click below link to Course Editor)
                 </th>
                 <th className="wbdv-owner">Owned by
                     <i className="wbdv-header wbdv-sort fas fa-caret-down"></i>

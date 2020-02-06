@@ -163,3 +163,7 @@ input:checked + .slider:before {
 .wbdv-card{
     width: 300px;
 }
+
+.btn-big-hint{
+    font-size: 30px
+}

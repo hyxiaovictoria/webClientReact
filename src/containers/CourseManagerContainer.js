@@ -114,7 +114,7 @@ class CourseManagerContainer extends React.Component {
                                     </a>
                                     <a onClick={this.toggle}>
                                         <label className="wbdv-label wbdv-course-manager">
-                                            Course Manager</label>
+                                            Course Manager (Click to toggle)</label>
                                     </a>
                                     <input type="text" className="wbdv-field wbdv-new-course form-control col-sm-6" id="email3"
                                            placeholder="New Course Title"

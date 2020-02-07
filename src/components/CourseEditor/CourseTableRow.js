@@ -18,8 +18,8 @@ class CourseTableRow extends React.Component {
                         {this.props.course.title}
                     </a>
                 }
-                {this.state.editing && <input onChange={
-                    (e) => console.log('input changed: ' + e.target.value)}>
+                {this.state.editing && <input
+                    id='courseEditInput'>
                 </input>}
             </td>
             <td>me
@@ -39,7 +39,10 @@ class CourseTableRow extends React.Component {
                     <i className="fas fa-trash fa-2x"></i>
                 </a>
                 <a onClick={() => {
-                    this.props.saveCourse(this.props.course, 'newnewTitle')
+                    this.state.updatedCourseTitle = document.getElementById('courseEditInput').value
+                    // this.props.course.title = this.state.updatedCourseTitle
+
+                    this.props.saveCourse(this.props.course, this.state.updatedCourseTitle)
                     this.setState({editing: false})
                 }}>
                     <i className="fas fa-check-circle fa-2x"></i>

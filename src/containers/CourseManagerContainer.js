@@ -2,7 +2,7 @@ import React from "react";
 import CourseTableComponent from "../components/WhiteBoard/CourseTableComponent";
 import CourseGridComponent from "../components/WhiteBoard/CourseGridComponent";
 import CourseEditorComponent from "../components/CourseEditor/CourseEditorComponent";
-import {findAllCourses, deleteCourse, createCourse} from "../services/CourseService";
+import {findAllCourses, deleteCourse, createCourse, updateCourse} from "../services/CourseService";
 import './CourseManagerContainer.css'
 import CourseTableRow from "../components/CourseEditor/CourseTableRow";
 import CourseManagerComponent from "../components/CourseEditor/CourseManagerComponent";
@@ -48,8 +48,10 @@ class CourseManagerContainer extends React.Component {
     }
 
     saveCourse = (course, newTitle) => {
-        //course.title = newTitle
-        console.log('save course' + course.title)
+        course.title = newTitle
+        console.log('save course ' + course.title)
+        updateCourse(course._id, course).then(status => {
+        })
         // deleteCourse(course._id).then(status => {
         //     this.setState(prevState => {
         //         return ({

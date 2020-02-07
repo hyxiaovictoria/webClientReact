@@ -1,6 +1,6 @@
 import React from "react";
 import CourseRow from "../CourseEditor/CourseRow";
-import CourseTableRow from "../CourseEditor/CourseTableRow"
+import CourseTableRow from "./CourseTableRow"
 import '../../containers/WhiteBoardContainer.css'
 
 const CourseTableComponent = ({courses, deleteCourse, saveCourse, showEditor}) =>

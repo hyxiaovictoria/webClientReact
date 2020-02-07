@@ -1,5 +1,5 @@
 import React from "react";
-import CourseTableRow from "../CourseEditor/CourseTableRow";
+import CourseTableRow from "./CourseTableRow";
 import CourseCard from "./CourseCard";
 import CourseDeck from "./CourseDeck";
 

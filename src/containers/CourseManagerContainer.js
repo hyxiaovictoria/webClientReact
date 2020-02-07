@@ -4,6 +4,8 @@ import CourseGridComponent from "../components/WhiteBoard/CourseGridComponent";
 import CourseEditorComponent from "../components/CourseEditor/CourseEditorComponent";
 import {findAllCourses, deleteCourse, createCourse} from "../services/CourseService";
 import './CourseManagerContainer.css'
+import CourseTableRow from "../components/CourseEditor/CourseTableRow";
+import CourseManagerComponent from "../components/CourseEditor/CourseManagerComponent";
 
 class CourseManagerContainer extends React.Component {
     state = {
@@ -105,46 +107,15 @@ class CourseManagerContainer extends React.Component {
 
                 {
                     !this.state.showEditor &&
-                    <div>
-                        <div>
-                            <form className="form-horizontal">
-                                <div className="form-group row" style={{backgroundColor:"royalblue"}}>
-                                    <a onClick={this.toggle}>
-                                        <i className="fas fa-bars fa-2x fa-inverse col-sm-1"></i>
-                                    </a>
-                                    <a onClick={this.toggle}>
-                                        <label className="wbdv-label wbdv-course-manager">
-                                            Course Manager (Click to toggle)</label>
-                                    </a>
-                                    <input type="text" className="wbdv-field wbdv-new-course form-control col-sm-6" id="email3"
-                                           placeholder="New Course Title"
-                                           onChange={(e) =>
-                                               this.updateForm({
-                                                   newCourseTitle: e.target.value
-                                               })}
-                                           value={this.state.newCourseTitle}/>
-                                    <a onClick={this.addCourse}>
-                                        <span className="wbdv-button wbdv-add-course fa-stack fa-1x wd-bottom-right col-sm-1">
-                                            <i className="fas fa-circle fa-stack-2x"></i>
-                                            <i className="fas fa-plus fa-stack-1x fa-inverse"></i>
-                                        </span>
-                                    </a>
-                                </div>
-                            </form>
-                        </div>
-                        {
-                            this.state.layout === 'table' &&
-                            <CourseTableComponent
-                                showEditor={this.showEditor}
-                                deleteCourse={this.deleteCourse}
-                                saveCourse={this.saveCourse}
-                                courses={this.state.courses}/>
-                        }
-                        {
-                            this.state.layout === 'grid' &&
-                            <CourseGridComponent courses={this.state.courses}/>
-                        }
-                    </div>
+                    <CourseManagerComponent
+                        toggle={this.toggle}
+                        state={this.state}
+                        hideEditor={this.hideEditor}
+                        updateForm={this.updateForm}
+                        addCourse={this.addCourse}
+                        saveCourse={this.saveCourse}
+                        deleteCourse={this.deleteCourse}
+                    />
                 }
             </div>
         )

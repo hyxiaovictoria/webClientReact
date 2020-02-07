@@ -1,11 +1,10 @@
 import React from "react";
-import ModuleListComponent from "./ModuleListComponent";
-import LessonTabs from "./LessonTabs";
-import TopicPills from "./TopicPills";
-import "./CourseEditorComponent.css"
-import WidgetComponent from "./WidgetComponent";
-import CourseTableComponent from "../WhiteBoard/CourseTableComponent";
-import CourseGridComponent from "../WhiteBoard/CourseGridComponent";
+import ModuleListComponent from "../CourseEditor/ModuleListComponent";
+import LessonTabs from "../CourseEditor/LessonTabs";
+import TopicPills from "../CourseEditor/TopicPills";
+import "../CourseEditor/CourseEditorComponent.css"
+import CourseTableComponent from "../CourseManager/CourseTableComponent";
+import CourseGridComponent from "../CourseManager/CourseGridComponent";
 
 class CourseManagerComponent extends React.Component {
     render() {

@@ -1,12 +1,12 @@
 import React from "react";
-import CourseTableComponent from "../components/WhiteBoard/CourseTableComponent";
-import CourseGridComponent from "../components/WhiteBoard/CourseGridComponent";
+import CourseTableComponent from "../components/CourseManager/CourseTableComponent";
+import CourseGridComponent from "../components/CourseManager/CourseGridComponent";
 import CourseEditorComponent from "../components/CourseEditor/CourseEditorComponent";
 import {findAllCourses, deleteCourse, createCourse, updateCourse} from "../services/CourseService";
-import './CourseManagerContainer.css'
-import CourseManagerComponent from "../components/CourseEditor/CourseManagerComponent";
+import './WhiteBoardContainer.css'
+import CourseManagerComponent from "../components/CourseManager/CourseManagerComponent";
 
-class CourseManagerContainer extends React.Component {
+class WhiteBoardContainer extends React.Component {
     state = {
         layout: 'table',
         showEditor: false,
@@ -123,4 +123,4 @@ class CourseManagerContainer extends React.Component {
     }
 }
 
-export default CourseManagerContainer;
+export default WhiteBoardContainer;

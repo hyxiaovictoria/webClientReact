@@ -1,11 +1,11 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-import CourseManagerContainer from "./containers/CourseManagerContainer";
+import WhiteBoardContainer from "./containers/WhiteBoardContainer";
 
 function App() {
   return (
-      <CourseManagerContainer/>
+      <WhiteBoardContainer/>
     // <div className="App">
     //   <header className="App-header">
     //     <img src={logo} className="App-logo" alt="logo" />

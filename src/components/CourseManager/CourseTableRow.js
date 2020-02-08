@@ -12,7 +12,7 @@ class CourseTableRow extends React.Component {
             <tr className="wbdv-row">
             <td>
                 {!this.state.editing &&
-                    <Link to="/course-editor/xyz">
+                    <Link to={`/course-editor/${this.props.course._id}`}>
                         {this.props.course.title}
                     </Link>
                 }

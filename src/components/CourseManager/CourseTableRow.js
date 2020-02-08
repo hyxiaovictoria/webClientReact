@@ -14,7 +14,7 @@ class CourseTableRow extends React.Component {
                     <a onClick={() => {
                         this.props.showEditor()
                     }
-                    } href="#">
+                    } href="/course-editor/x">
                         {this.props.course.title}
                     </a>
                 }

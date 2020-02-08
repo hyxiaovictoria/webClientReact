@@ -8,7 +8,7 @@ class LessonTabs extends React.Component {
                 <nav className="navbar navbar-dark bg-dark">
                     <a onClick={this.props.hideEditor}
                        className="wbdv-course-editor wbdv-close col-sm-1"
-                       href="../course-list/course-list.template.client.html">
+                       href="/">
                         <i className="fa fa-times fa-2x fa-inverse"></i>
                     </a>
                     <h4 className="wbdv-course-title col-sm-3">CS5610-WebDev</h4>

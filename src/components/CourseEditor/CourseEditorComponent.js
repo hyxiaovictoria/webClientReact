@@ -39,10 +39,6 @@ class CourseEditorComponent extends React.Component {
         return (
             <div>
                 <LessonTabs lessons={this.state.lessons} hideEditor={this.props.hideEditor}/>
-
-                <button className="btn btn-primary btn-big-hint"
-                    onClick={this.props.hideEditor}
-                > Click me to back to Course Manager</button>
                 <h3> Course Editor</h3>
 
                 <div className="row">

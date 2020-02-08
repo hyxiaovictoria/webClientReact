@@ -5,6 +5,7 @@ import CourseEditorComponent from "../components/CourseEditor/CourseEditorCompon
 import {findAllCourses, deleteCourse, createCourse, updateCourse} from "../services/CourseService";
 import './WhiteBoardContainer.css'
 import CourseManagerComponent from "../components/CourseManager/CourseManagerComponent";
+import {BrowserRouter as Router, Route, Link} from "react-router-dom"
 
 class WhiteBoardContainer extends React.Component {
     state = {
@@ -101,23 +102,30 @@ class WhiteBoardContainer extends React.Component {
     render() {
         return(
             <div>
-                {
-                    this.state.showEditor &&
-                    <CourseEditorComponent hideEditor={this.hideEditor}/>
-                }
-
-                {
-                    !this.state.showEditor &&
-                    <CourseManagerComponent
-                        toggle={this.toggle}
-                        state={this.state}
-                        hideEditor={this.hideEditor}
-                        updateForm={this.updateForm}
-                        addCourse={this.addCourse}
-                        saveCourse={this.saveCourse}
-                        deleteCourse={this.deleteCourse}
+                <Router>
+                    <Route
+                        path="/course-editor/:course"
+                        exact={true}
+                        render={()=>
+                            <CourseEditorComponent hideEditor={this.hideEditor}/>
+                        }
                     />
-                }
+                    <Route
+                        path="/course-manager"
+                        exact={true}
+                        render={()=>
+                            <CourseManagerComponent
+                                toggle={this.toggle}
+                                state={this.state}
+                                hideEditor={this.hideEditor}
+                                updateForm={this.updateForm}
+                                addCourse={this.addCourse}
+                                saveCourse={this.saveCourse}
+                                deleteCourse={this.deleteCourse}
+                            />
+                        }
+                    />
+                </Router>
             </div>
         )
     }

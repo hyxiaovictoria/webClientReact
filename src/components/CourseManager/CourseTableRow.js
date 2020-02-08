@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from "react-router-dom";
 
 class CourseTableRow extends React.Component {
     state = {
@@ -11,12 +12,9 @@ class CourseTableRow extends React.Component {
             <tr className="wbdv-row">
             <td>
                 {!this.state.editing &&
-                    <a onClick={() => {
-                        this.props.showEditor()
-                    }
-                    } href="/course-editor/x">
+                    <Link to="/course-editor/xyz">
                         {this.props.course.title}
-                    </a>
+                    </Link>
                 }
                 {this.state.editing && <input
                     id='courseEditInput'>

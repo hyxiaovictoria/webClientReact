@@ -25,27 +25,33 @@ class CourseTableRow extends React.Component {
             <td>{this.props.course.time}
             </td>
             <td> {
-                <>
-                <a onClick={() => {
-                    this.setState({editing:true})
-                    this.setState({updatedCourseTitle: this.props.course.title})
-                    console.log('editing initialized to: ' + this.state.updatedCourseTitle)
-                }}>
-                    <i className="fas fa-edit fa-2x"></i>
-                </a>
-                <a onClick={() => this.props.deleteCourse(this.props.course)}>
-                    <i className="fas fa-trash fa-2x"></i>
-                </a>
-                <a onClick={() => {
-                    this.state.updatedCourseTitle = document.getElementById('courseEditInput').value
-                    // this.props.course.title = this.state.updatedCourseTitle
+                <div>
+                    {!this.state.editing &&
+                        <a onClick={() => {
+                            this.setState({editing: true})
+                            this.setState({updatedCourseTitle: this.props.course.title})
+                            console.log('editing initialized to: ' + this.state.updatedCourseTitle)
+                        }}>
+                            <i className="fas fa-edit fa-2x"></i>
+                        </a>
+                    }
+                    {this.state.editing &&
+                        <div>
+                            <a onClick={() => this.props.deleteCourse(this.props.course)}>
+                                <i className="fas fa-trash fa-2x"></i>
+                            </a>
+                            <a onClick={() => {
+                                this.state.updatedCourseTitle = document.getElementById('courseEditInput').value
+                                // this.props.course.title = this.state.updatedCourseTitle
 
-                    this.props.saveCourse(this.props.course, this.state.updatedCourseTitle)
-                    this.setState({editing: false})
-                }}>
-                    <i className="fas fa-check-circle fa-2x"></i>
-                </a>
-                </>
+                                this.props.saveCourse(this.props.course, this.state.updatedCourseTitle)
+                                this.setState({editing: false})
+                            }}>
+                                <i className="fas fa-check-circle fa-2x"></i>
+                            </a>
+                        </div>
+                        }
+                </div>
             }
             </td>
             </tr>

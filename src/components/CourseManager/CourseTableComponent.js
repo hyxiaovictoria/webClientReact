@@ -1,9 +1,8 @@
 import React from "react";
-import CourseRow from "../CourseEditor/CourseRow";
 import CourseTableRow from "./CourseTableRow"
 import '../../containers/WhiteBoardContainer.css'
 
-const CourseTableComponent = ({courses, deleteCourse, saveCourse, showEditor}) =>
+const CourseTableComponent = ({courses, deleteCourse, saveCourse}) =>
     <div className="row row-narrow"  style={{marginLeft:'150px',marginRight:'150px'}}>
         <table className="table">
             <thead>
@@ -32,7 +31,6 @@ const CourseTableComponent = ({courses, deleteCourse, saveCourse, showEditor}) =
                     return (
                         <CourseTableRow
                             course={course}
-                            showEditor={showEditor}
                             deleteCourse={deleteCourse}
                             saveCourse={saveCourse}/>
                     )

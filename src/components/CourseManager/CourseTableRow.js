@@ -60,13 +60,3 @@ class CourseTableRow extends React.Component {
 }
 
 export default CourseTableRow
-
-// <span className="float-right">
-//     <a>
-//     <i classNmae="fa fa-pencil"></i>
-// </a>
-//
-// <a>
-// <i className="fa fa-trash"></i>
-// </a>
-// </span>

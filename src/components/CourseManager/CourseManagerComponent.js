@@ -40,7 +40,6 @@ class CourseManagerComponent extends React.Component {
                     {
                         this.props.state.layout === 'table' &&
                         <CourseTableComponent
-                            showEditor={this.props.showEditor}
                             deleteCourse={this.props.deleteCourse}
                             saveCourse={this.props.saveCourse}
                             courses={this.props.state.courses}/>

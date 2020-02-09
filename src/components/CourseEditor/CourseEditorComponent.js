@@ -12,26 +12,26 @@ class CourseEditorComponent extends React.Component {
                 {_id: "123", title: "Module 1-jQuery"},
                 {_id: "234", title: "Module 2-React"},
                 {_id: "345", title: "Module 3-Redux"},
-                {_id: "345", title: "Module 4-Native"},
-                {_id: "345", title: "Module 5-Angular"},
-                {_id: "345", title: "Module 6-Node"},
-                {_id: "345", title: "Module 7-Mongo"}
+                {_id: "456", title: "Module 4-Native"},
+                {_id: "678", title: "Module 5-Angular"},
+                {_id: "789", title: "Module 6-Node"},
+                {_id: "890", title: "Module 7-Mongo"}
             ],
         lessons :
             [
                 {_id: "123", title: "Build"},
                 {_id: "234", title: "Pages"},
                 {_id: "345", title: "Theme"},
-                {_id: "345", title: "Store"},
-                {_id: "345", title: "Apps"},
-                {_id: "456", title: "Settings"}
+                {_id: "456", title: "Store"},
+                {_id: "567", title: "Apps"},
+                {_id: "789", title: "Settings"}
             ],
         topics :
             [
                 {_id: "123", title: "Topic 1"},
                 {_id: "234", title: "Topic 2"},
                 {_id: "345", title: "Topic 3"},
-                {_id: "345", title: "Topic 4"}
+                {_id: "456", title: "Topic 4"}
             ]
     }
 

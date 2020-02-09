@@ -8,7 +8,8 @@ class TopicPills extends React.Component {
             <div className="form-row">
                 <ul className="nav nav-pills wbdv-topic-pill-list">
                     {this.props.topics.map(topic =>
-                        <li className="nav-item wbdv-topic-pill">
+                        <li key={topic._id}
+                            className="nav-item wbdv-topic-pill">
                             <a className="nav-link wbdv-white" href="#">{topic.title}</a>
                         </li>
                     )}

@@ -11,15 +11,17 @@ const ModuleListComponent = ({modules}) =>
                     <span className="wbdv-module-item-title">
                     {module.title}
                     </span>
-                    <i className="fa fa-times wbdv-module-item-delete-btn"></i>
+                    <i className="fa fa-edit wbdv-module-item-delete-btn"></i>
                 </span>
             </li>
         )}
         <li className="wbdv-module-item">
-                <span>
-                    Click to add a new module
+            <a>
+                <span className="wbdv-module-item-title">
+                Click to add new
                     <i className="fa fa-plus wbdv-module-item-delete-btn"></i>
                 </span>
+            </a>
         </li>
     </ul>
     </div>

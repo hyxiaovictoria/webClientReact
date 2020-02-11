@@ -48,6 +48,11 @@ h6{
     right : 10px;
 }
 
+.fa-right-only-50{
+    position : absolute;
+    right : 50px;
+}
+
 .wbdv-module-list{
     margin : 0px;
     background-color : -moz-mac-accentdarkshadow;

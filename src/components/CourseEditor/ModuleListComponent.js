@@ -24,12 +24,22 @@ const ModuleList = ({modules, dispatch}) =>
         {modules.map(module =>
             <li key={module._id}
                 className="wbdv-module-item">
-                <span>
                     <span className="wbdv-module-item-title">
                     {module.title}
                     </span>
-                    <i className="fa fa-edit wbdv-module-item-delete-btn"></i>
-                </span>
+                    <span className="fa-right-only-50">
+                    <a onClick={() => console.log('edit clicked')}>
+                        <i className="fa fa-edit"></i>
+                    </a>
+                    &nbsp;&nbsp;
+                    <a onClick={() => console.log('delete clicked')}>
+                        <i className="fas fa-trash"></i>
+                    </a>
+                    &nbsp;&nbsp;
+                    <a onClick={() => console.log('save clicked')}>
+                        <i className="fas fa-check-circle"></i>
+                    </a>
+                        </span>
             </li>
         )}
         <a onClick={e => (

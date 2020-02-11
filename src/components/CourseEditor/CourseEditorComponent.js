@@ -1,9 +1,10 @@
 import React from "react";
-import ModuleListComponent from "./ModuleListComponent";
+import ModuleListComponentTest from "./ModuleListComponent";
 import LessonTabs from "./LessonTabs";
 import TopicPills from "./TopicPills";
 import "./CourseEditorComponent.css"
 import WidgetComponent from "./WidgetComponent";
+import {Provider} from "react-redux";
 
 class CourseEditorComponent extends React.Component {
     state = {
@@ -43,7 +44,8 @@ class CourseEditorComponent extends React.Component {
 
                 <div className="row">
                     <div className="col-4">
-                        <ModuleListComponent modules={this.state.modules}/>
+                        {/*<ModuleListComponent modules={this.state.modules}/>*/}
+                        <ModuleListComponentTest/>
                     </div>
                     <div className="col-8">
                         <TopicPills topics={this.state.topics}/>

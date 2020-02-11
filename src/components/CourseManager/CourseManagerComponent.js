@@ -15,8 +15,6 @@ class CourseManagerComponent extends React.Component {
                         <div className="form-group row" style={{backgroundColor:"royalblue"}}>
                             <a onClick={this.props.toggle}>
                                 <i className="fas fa-bars fa-2x fa-inverse col-sm-1"></i>
-                            </a>
-                            <a onClick={this.props.toggle}>
                                 <label className="wbdv-label wbdv-course-manager">
                                     Course Manager (Click to toggle)</label>
                             </a>

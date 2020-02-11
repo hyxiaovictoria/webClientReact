@@ -32,7 +32,11 @@ const ModuleList = ({modules, dispatch}) =>
                         <i className="fa fa-edit"></i>
                     </a>
                     &nbsp;&nbsp;
-                    <a onClick={() => console.log('delete clicked')}>
+                    <a onClick={
+                        e => (
+                            dispatch({type: 'DELETE_MODULE', _id:module._id})
+                        )
+                    }>
                         <i className="fas fa-trash"></i>
                     </a>
                     &nbsp;&nbsp;
@@ -59,6 +63,12 @@ const ModuleList = ({modules, dispatch}) =>
 
 const moduleReducer = (state = initialState, action) => {
     switch (action.type) {
+        case 'DELETE_MODULE':
+            return {
+                modules: state.modules.filter(module => (
+                    module._id !== action._id
+                ))
+            }
         case 'CREATE_MODULE':
             alert("CREATE_MODULE")
             return {

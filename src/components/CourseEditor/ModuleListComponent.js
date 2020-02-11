@@ -18,7 +18,7 @@ let initialState = {
         ]
 }
 
-const ModuleList = ({modules}) =>
+const ModuleList = ({modules, dispatch}) =>
     <div>
     <ul className="bg-dark list-group wbdv-module-list">
         {modules.map(module =>
@@ -32,7 +32,9 @@ const ModuleList = ({modules}) =>
                 </span>
             </li>
         )}
-        <a onClick={() => console.log("Test two")}>
+        <a onClick={e => (
+            dispatch({type: 'CREATE_MODULE'})
+        )}>
             <label>
                 <li className="wbdv-module-item">
                     <span className="wbdv-module-item-title">
@@ -45,8 +47,22 @@ const ModuleList = ({modules}) =>
     </ul>
     </div>
 
-const moduleReducer = () => {
-    return initialState
+const moduleReducer = (state = initialState, action) => {
+    switch (action.type) {
+        case 'CREATE_MODULE':
+            alert("CREATE_MODULE")
+            return {
+                modules: [
+                    ...state.modules,
+                    {
+                        _id: '321',
+                        title: 'X-Ray'
+                    }
+                ]
+            }
+        default:
+            return state
+    }
 }
 
 const stateToPropertiesMapper = (state) => (

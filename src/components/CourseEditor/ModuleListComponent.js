@@ -18,7 +18,7 @@ let initialState = {
         ]
 }
 
-const ModuleListComponent = ({modules}) =>
+const ModuleList = ({modules}) =>
     <div>
     <ul className="bg-dark list-group wbdv-module-list">
         {modules.map(module =>
@@ -57,12 +57,12 @@ const stateToPropertiesMapper = (state) => (
 
 let store = createStore(moduleReducer)
 
-const ModuleListContainer = connect(stateToPropertiesMapper) (ModuleListComponent)
+const ModuleListComponent = connect(stateToPropertiesMapper) (ModuleList)
 
 
-const ModuleListComponentTest = () =>
+const ModuleListContainer = () =>
     <Provider store={store}>
-        <ModuleListContainer/>
+        <ModuleListComponent/>
     </Provider>
 
-export default ModuleListComponentTest
+export default ModuleListContainer

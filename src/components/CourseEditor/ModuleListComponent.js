@@ -2,6 +2,7 @@ import React from "react";
 import "./CourseEditorComponent.css"
 import {createStore} from "redux";
 import {Provider, connect} from "react-redux";
+import createModule from "../../services/ModuleService"
 
 let initialState = {
     modules :
@@ -12,9 +13,7 @@ let initialState = {
             {_id: "456", title: "Module 4-Native"},
             {_id: "678", title: "Module 5-Angular"},
             {_id: "789", title: "Module 6-Node"},
-            {_id: "890", title: "Module 7-Mongo"},
-            {_id: "901", title: "Module 8-XXXX"},
-            {_id: "012", title: "Module 9-YYYY"}
+            {_id: "890", title: "Module 7-Mongo"}
         ]
 }
 
@@ -28,7 +27,11 @@ const ModuleList = ({modules, dispatch}) =>
                     {module.title}
                     </span>
                     <span className="fa-right-only-50">
-                    <a onClick={() => console.log('edit clicked')}>
+                    <a onClick={
+                        e => (
+                            dispatch({type: 'EDIT_MODULE', _id:module._id})
+                        )
+                    }>
                         <i className="fa fa-edit"></i>
                     </a>
                     &nbsp;&nbsp;
@@ -40,7 +43,11 @@ const ModuleList = ({modules, dispatch}) =>
                         <i className="fas fa-trash"></i>
                     </a>
                     &nbsp;&nbsp;
-                    <a onClick={() => console.log('save clicked')}>
+                    <a onClick={
+                        e => (
+                            dispatch({type: 'UPDATE_MODULE', _id:module._id})
+                        )
+                    }>
                         <i className="fas fa-check-circle"></i>
                     </a>
                         </span>
@@ -63,6 +70,16 @@ const ModuleList = ({modules, dispatch}) =>
 
 const moduleReducer = (state = initialState, action) => {
     switch (action.type) {
+        case 'UPDATE_MODULE':
+        {
+            console.log('UPDATE_MODULE')
+            return state
+        }
+        case 'EDIT_MODULE':
+        {
+            console.log('EDIT_MODULE')
+            return state
+        }
         case 'DELETE_MODULE':
             return {
                 modules: state.modules.filter(module => (
@@ -70,13 +87,12 @@ const moduleReducer = (state = initialState, action) => {
                 ))
             }
         case 'CREATE_MODULE':
-            alert("CREATE_MODULE")
             return {
                 modules: [
                     ...state.modules,
                     {
                         _id: '321',
-                        title: 'X-Ray'
+                        title: 'New module'
                     }
                 ]
             }

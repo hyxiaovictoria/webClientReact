@@ -6,8 +6,12 @@ export const findModulesForCourse = async (courseId) => {
     return await response.json()
 }
 
+export const findAllModules = () =>
+    fetch(`${API_URL}/modules`)
+        .then(response => response.json())
+
 export const createModule = (courseId, module) =>
-    fetch(`${API_URL}/${courseId}`, {
+    fetch(`${API_URL}/${courseId}/modules`, {
         method: 'POST',
         body: JSON.stringify(module),
         headers: {

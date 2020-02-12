@@ -37,7 +37,10 @@ class LessonTabs extends React.Component {
                     <ul className="nav nav-tabs wbdv-page-tab col-sm-6">
                         {this.props.lessons.map(lesson =>
                             <li key={lesson._id} className="nav-item">
-                                <a className="nav-link wbdv-white" href="#">{lesson.title}</a>
+                                {this.state.editingLessonId !== lesson._id
+                                    &&
+                                    <span className="wbdv-white">{lesson.title}</span>
+                                }
 
                                 {this.state.editingLessonId === lesson._id
                                     &&
@@ -53,32 +56,40 @@ class LessonTabs extends React.Component {
                                         }}
                                         value={this.state.lesson.title}/>
                                 }
-                             <a onClick={
-                                 () => this.props.deleteLesson(lesson._id)}>
-                                 <i className="fas fa-trash"></i>
-                             </a>
-                                &nbsp;
-                             <a onClick={() => {
-                                 this.setState({
-                                     lesson: lesson,
-                                     editingLessonId: lesson._id
-                                 })
-                             }}>
-                                 <i className="fas fa-edit"></i>
-                             </a>
-                                &nbsp;
-                             <a onClick={() =>
-                             {
-                                 this.props.updateLesson(this.state.lesson)
-                                     .then(() =>
-                                         this.setState({
-                                             editingLessonId: ''
-                                         })
-                                     )
-                             }
-                             }>
-                                 <i className="fas fa-check-circle"></i>
-                             </a>
+
+                                {this.state.editingLessonId !== lesson._id
+                                    &&
+                                    <a onClick={() => {
+                                        this.setState({
+                                            lesson: lesson,
+                                            editingLessonId: lesson._id
+                                        })
+                                    }}>
+                                    <i className="fas fa-edit"></i>
+                                </a>
+                                }
+
+                                {this.state.editingLessonId === lesson._id
+                                    &&
+                                    <a onClick={
+                                        () => this.props.deleteLesson(lesson._id)}>
+                                        <i className="fas fa-trash"></i>
+                                    </a>
+                                }
+                                {this.state.editingLessonId === lesson._id
+                                &&
+                                    <a onClick={() => {
+                                        this.props.updateLesson(this.state.lesson)
+                                            .then(() =>
+                                                this.setState({
+                                                    editingLessonId: ''
+                                                })
+                                            )
+                                    }
+                                    }>
+                                        <i className="fas fa-check-circle"></i>
+                                    </a>
+                                }
                             </li>
                         )}
                     </ul>

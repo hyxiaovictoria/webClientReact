@@ -1,5 +1,6 @@
 import React from "react";
 import ModuleListItem from "./ModuleListItem";
+import "./CourseEditorComponent.css"
 
 //import "./CourseEditorComponent.css"
 //import {createStore} from "redux";
@@ -21,7 +22,7 @@ export default class ModuleListComponent extends React.Component {
 
     render() {
         return (
-            <ul className="list-group">
+            <ul className="bg-dark list-group wbdv-module-list">
                 {
                     this.props.modules && this.props.modules.map(module =>
                         <ModuleListItem

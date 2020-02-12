@@ -1,26 +1,30 @@
 import React from "react";
 import {connect} from 'react-redux'
 import {COURSES_MODULES_API_URL, MODULES_API_URL} from "../../constants";
+import "./CourseEditorComponent.css"
 
 const ModuleListItem = ({save, edit, editing, module, deleteModule, active, select}) =>
     <li
         onClick={select}
-        className={`list-group-item ${active ? 'active':''}`}>
+        className={`wbdv-module-item ${active ? 'active':''}`}>
+        <span className="wbdv-module-item-title">
         {module.title}
-        {editing &&
-        <span>
-            <button onClick={() =>
-                deleteModule(module._id)}
-                    className="float-right">
-                Delete
-            </button>
-            <button onClick={save}>
-                Save
-            </button>
-        </span>}
-        {!editing && <button onClick={edit}>
-            Edit
-        </button>}
+        </span>
+        {/*{editing &&*/}
+        <span className="fa-right-only-50">]
+            <a onClick={save}>
+                <i className="fa fa-edit"></i>
+            </a>
+            &nbsp;&nbsp;
+            <a onClick={() =>
+                deleteModule(module._id)}>
+                <i className="fas fa-trash"></i>
+            </a>
+            &nbsp;&nbsp;
+            <a onClick={save}>
+                <i className="fas fa-check-circle"></i>
+            </a>
+        </span>
     </li>
 
 const stateToPropertyMapper = (state) => ({})

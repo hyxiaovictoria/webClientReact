@@ -90,6 +90,7 @@ class LessonTabs extends React.Component {
                                         <i className="fas fa-check-circle"></i>
                                     </a>
                                 }
+                                &emsp;&emsp;
                             </li>
                         )}
                     </ul>

@@ -8,9 +8,10 @@ import {combineReducers, createStore} from "redux";
 import {Provider} from "react-redux";
 import ModuleListContainer from "../../containers/ModuleListContainer";
 import modules from '../../reducers/modules'
+import lessons from '../../reducers/lessons'
 
 const reducers = combineReducers({
-    modules
+    modules, lessons
     // modules, lessons, widgets
 })
 
@@ -31,10 +32,11 @@ const CourseEditorComponent = ({hideEditor, match, courseId, moduleId, history})
                         courseId={courseId}
                     />
                 </div>
-                {/*<div className="col-8">*/}
-                {/*    <TopicPills topics={this.state.topics}/>*/}
-                {/*    <WidgetComponent></WidgetComponent>*/}
-                {/*</div>*/}
+                <div className="col-8">
+                    <LessonTabs moduleId={moduleId}/>
+                    {/*<TopicPills topics={this.state.topics}/>*/}
+                    <WidgetComponent></WidgetComponent>
+                </div>
             </div>
         </div>
     </Provider>

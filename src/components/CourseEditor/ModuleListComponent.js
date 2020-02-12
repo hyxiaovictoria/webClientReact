@@ -2,20 +2,9 @@ import React from "react";
 import "./CourseEditorComponent.css"
 import {createStore} from "redux";
 import {Provider, connect} from "react-redux";
-import createModule from "../../services/ModuleService"
+//import createModule from "../../services/ModuleService"
+import moduleReducer from "../../reducers/modules";
 
-let initialState = {
-    modules :
-        [
-            {_id: "123", title: "Module 1-jQuery"},
-            {_id: "234", title: "Module 2-React"},
-            {_id: "345", title: "Module 3-Redux"},
-            {_id: "456", title: "Module 4-Native"},
-            {_id: "678", title: "Module 5-Angular"},
-            {_id: "789", title: "Module 6-Node"},
-            {_id: "890", title: "Module 7-Mongo"}
-        ]
-}
 
 const ModuleList = ({modules, dispatch}) =>
     <div>
@@ -54,7 +43,12 @@ const ModuleList = ({modules, dispatch}) =>
             </li>
         )}
         <a onClick={e => (
-            dispatch({type: 'CREATE_MODULE'})
+            dispatch({type: 'CREATE_MODULE',
+                    module: {
+                        _id: new Date().getTime(),
+                        title: 'Module ' + new Date().getTime()
+                    }
+            })
         )}>
             <label>
                 <li className="wbdv-module-item">
@@ -68,38 +62,7 @@ const ModuleList = ({modules, dispatch}) =>
     </ul>
     </div>
 
-const moduleReducer = (state = initialState, action) => {
-    switch (action.type) {
-        case 'UPDATE_MODULE':
-        {
-            console.log('UPDATE_MODULE')
-            return state
-        }
-        case 'EDIT_MODULE':
-        {
-            console.log('EDIT_MODULE')
-            return state
-        }
-        case 'DELETE_MODULE':
-            return {
-                modules: state.modules.filter(module => (
-                    module._id !== action._id
-                ))
-            }
-        case 'CREATE_MODULE':
-            return {
-                modules: [
-                    ...state.modules,
-                    {
-                        _id: '321',
-                        title: 'New module'
-                    }
-                ]
-            }
-        default:
-            return state
-    }
-}
+
 
 const stateToPropertiesMapper = (state) => (
     {

@@ -1,83 +1,80 @@
 import React from "react";
-import "./CourseEditorComponent.css"
-import {createStore} from "redux";
-import {Provider, connect} from "react-redux";
+import ModuleListItem from "./ModuleListItem";
+
+//import "./CourseEditorComponent.css"
+//import {createStore} from "redux";
+//import {Provider, connect} from "react-redux";
 //import createModule from "../../services/ModuleService"
-import moduleReducer from "../../reducers/modules";
+//import moduleReducer from "../../reducers/modules";
 
+export default class ModuleListComponent extends React.Component {
 
-const ModuleList = ({modules, dispatch}) =>
-    <div>
-    <ul className="bg-dark list-group wbdv-module-list">
-        {modules.map(module =>
-            <li key={module._id}
-                className="wbdv-module-item">
-                    <span className="wbdv-module-item-title">
-                    {module.title}
-                    </span>
-                    <span className="fa-right-only-50">
-                    <a onClick={
-                        e => (
-                            dispatch({type: 'EDIT_MODULE', _id:module._id})
-                        )
-                    }>
-                        <i className="fa fa-edit"></i>
-                    </a>
-                    &nbsp;&nbsp;
-                    <a onClick={
-                        e => (
-                            dispatch({type: 'DELETE_MODULE', _id:module._id})
-                        )
-                    }>
-                        <i className="fas fa-trash"></i>
-                    </a>
-                    &nbsp;&nbsp;
-                    <a onClick={
-                        e => (
-                            dispatch({type: 'UPDATE_MODULE', _id:module._id})
-                        )
-                    }>
-                        <i className="fas fa-check-circle"></i>
-                    </a>
-                        </span>
-            </li>
-        )}
-        <a onClick={e => (
-            dispatch({type: 'CREATE_MODULE',
-                    module: {
-                        _id: new Date().getTime(),
-                        title: 'Module ' + new Date().getTime()
-                    }
-            })
-        )}>
-            <label>
-                <li className="wbdv-module-item">
-                    <span className="wbdv-module-item-title">
-                        Click to add new
-                        <i className="fa fa-plus wbdv-module-item-delete-btn"></i>
-                    </span>
-                </li>
-            </label>
-        </a>
-    </ul>
-    </div>
-
-
-
-const stateToPropertiesMapper = (state) => (
-    {
-        modules: state.modules
+    componentDidMount() {
+        console.log('ModuleListComponent.componentDidMount ' + this.props.courseId)
+        this.props.findModulesForCourse(this.props.courseId)
     }
-)
 
-let store = createStore(moduleReducer)
+    state = {
+        activeModuleId: this.props.moduleId,
+        editingModuleId: ''
+    }
 
-const ModuleListComponent = connect(stateToPropertiesMapper) (ModuleList)
+    render() {
+        return (
+            <ul className="list-group">
+                {
+                    this.props.modules && this.props.modules.map(module =>
+                        <ModuleListItem
+                            key={module._id}
+                            edit={() => {
+                                const moduleId = module._id
+                                console.log('ModuleListComponent ' + this.props.courseId)
+                                this.props.history.push(`/course-editor/${this.props.courseId}/module/${moduleId}`)
+                                this.setState({
+                                    editingModuleId: module._id
+                                })
+                            }}
+                            select={() => {
+                                const moduleId = module._id
+                                this.props.history.push(`/course-editor/${this.props.courseId}/module/${moduleId}`)
+                                this.setState({
+                                    activeModuleId: module._id
+                                })
+                            }}
+                            save={() => this.setState({
+                                editingModuleId: ''
+                            })}
+                            editing={module._id === this.state.editingModuleId}
+                            active={module._id === this.state.activeModuleId}
+                            module={module}/>)
+                }
+                <li className="list-group-item">
+                    <button onClick={
+                        () => this.props.createModule(this.props.courseId, {title: 'New Module'})
+                    }>
+                        Add
+                    </button>
+                </li>
+            </ul>
+        );
+    }
+}
 
 
-const ModuleListContainer = () =>
-    <Provider store={store}>
-        <ModuleListComponent/>
-    </Provider>
-
-export default ModuleListContainer
+// const stateToPropertiesMapper = (state) => (
+//     {
+//         modules: state.modules
+//     }
+// )
+//
+// let store = createStore(moduleReducer)
+//
+// const ModuleListComponent = connect(stateToPropertiesMapper) (ModuleList)
+//
+//
+// const ModuleListContainer = () =>
+//     <Provider store={store}>
+//         <ModuleListComponent/>
+//     </Provider>
+//
+// export default ModuleListContainer

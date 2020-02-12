@@ -1,7 +1,7 @@
-import {API_URL} from "../constants";
+import {COURSES_API_URL} from "../constants";
 
 export const createCourse = (course) =>
-    fetch(API_URL, {
+    fetch(COURSES_API_URL, {
         method: 'POST',
         body: JSON.stringify(course),
         headers: {
@@ -10,19 +10,19 @@ export const createCourse = (course) =>
     }).then(response => response.json())
 
 export const findAllCourses = async () => {
-    const response = await fetch(API_URL)
+    const response = await fetch(COURSES_API_URL)
 
     return await response.json()
 }
 
 export const findCourseById = async (courseId) => {
-    const response = await fetch(`${API_URL}/${courseId}`)
+    const response = await fetch(`${COURSES_API_URL}/${courseId}`)
 
     return await response.json()
 }
 
 export const updateCourse = async (courseId, course) => {
-    const response = await fetch(`${API_URL}/${courseId}`, {
+    const response = await fetch(`${COURSES_API_URL}/${courseId}`, {
         method: 'PUT',
         body: JSON.stringify(course),
         headers: {
@@ -34,7 +34,7 @@ export const updateCourse = async (courseId, course) => {
 }
 
 export const deleteCourse = async (courseId) => {
-    const response = await fetch(`${API_URL}/${courseId}`, {
+    const response = await fetch(`${COURSES_API_URL}/${courseId}`, {
         method: 'DELETE'
     })
 

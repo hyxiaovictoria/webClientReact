@@ -1,6 +1,6 @@
 import React from "react";
 import {connect} from "react-redux";
-import moduleReducer from "../reducers/modules";
+import moduleReducer from "../reducers/moduleReducer";
 import * as service from "../services/ModuleService";
 import {createModule, findModulesForCourse} from "../actions/moduleActions";
 import ModuleListComponent from "../components/CourseEditor/ModuleListComponent";

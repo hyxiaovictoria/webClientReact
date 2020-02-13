@@ -7,8 +7,8 @@ import WidgetComponent from "./WidgetComponent";
 import {combineReducers, createStore} from "redux";
 import {Provider} from "react-redux";
 import ModuleListContainer from "../../containers/ModuleListContainer";
-import modules from '../../reducers/modules'
-import lessons from '../../reducers/lessons'
+import modules from '../../reducers/moduleReducer'
+import lessons from '../../reducers/lessonReducer'
 
 const reducers = combineReducers({
     modules, lessons

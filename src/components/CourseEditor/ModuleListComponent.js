@@ -34,9 +34,15 @@ class ModuleListComponent extends React.Component {
                         module =>
                             <li
                                 className={`wbdv-module-item ${active ? 'active':''}`}>
-                            <span className="wbdv-module-item-title">
-                            {module.title}
-                            </span>
+                                {this.state.editingModuleId !== module._id &&
+                                    <span className="wbdv-module-item-title">
+                                        {module.title}
+                                    </span>
+                                }
+                                {this.state.editingModuleId === module._id &&
+                                <input
+                                    value={this.state.module.title}/>
+                                }
                             {/*{editing &&*/}
                             <span className="fa-right-only-50">
                                 { this.state.editingModuleId !== module._id &&
@@ -58,7 +64,11 @@ class ModuleListComponent extends React.Component {
                                             <i className="fas fa-trash"></i>
                                         </a>
                                         &nbsp;&nbsp;
-                                        <a>
+                                        <a onClick={
+                                            () => this.setState({
+                                                editingModuleId:''
+                                            })
+                                        }>
                                         <i className="fas fa-check-circle"></i>
                                         </a>
                                     </div>

@@ -50,7 +50,7 @@ class TopicPills extends React.Component {
 }
 
 const stateToPropertyMapper = (state) => ({
-    lessons: state.lessons.lessons
+    topics: state.topics.topics
 })
 
 const dispatcherToPropertyMapper = (dispatcher) => ({
@@ -60,7 +60,7 @@ const dispatcherToPropertyMapper = (dispatcher) => ({
             .then(topics => dispatcher({
                 type: 'FIND_TOPICS_FOR_LESSON',
                 topics: topics
-            }))//,
+            })),
     // updateLesson: async (lesson) => {
     //     const actualLesson = await updateLesson(lesson)
     //     dispatcher({
@@ -69,16 +69,16 @@ const dispatcherToPropertyMapper = (dispatcher) => ({
     //         lessonId: actualLesson._id
     //     })
     // },
-    // addLesson: async (moduleId) => {
-    //     const newLesson = await createLesson(moduleId,
-    //         {title: 'New lesson',
-    //             _id: new Date().getTime()})
-    //     dispatcher({
-    //         type: 'CREATE_LESSON',
-    //         lesson: newLesson,
-    //         lessonId: newLesson._id
-    //     })
-    // },
+    addTopic: async (lessonId) => {
+        const newTopic = await createTopic(lessonId,
+            {title: 'New topic',
+                _id: new Date().getTime()})
+        dispatcher({
+            type: 'CREATE_TOPIC',
+            topic: newTopic,
+            topicId: newTopic._id
+        })
+    }//,
     // deleteLesson: (lessonId) =>
     //     fetch(`${LESSONS_API_URL}/${lessonId}`, {
     //         method: 'DELETE'

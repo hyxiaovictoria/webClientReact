@@ -11,13 +11,16 @@ import "./CourseEditorComponent.css"
 export default class ModuleListComponent extends React.Component {
 
     componentDidMount() {
-        console.log('ModuleListComponent.componentDidMount ' + this.props.courseId)
         this.props.findModulesForCourse(this.props.courseId)
     }
 
     state = {
         activeModuleId: this.props.moduleId,
-        editingModuleId: ''
+        editingModuleId: '',
+        module: {
+            title: '',
+            _id: ''
+        }
     }
 
     render() {

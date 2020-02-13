@@ -1,4 +1,4 @@
-import {CREATE_MODULE, FIND_MODULES_FOR_COURSE, DELETE_MODULE} from "../actions/moduleActions";
+//import {CREATE_MODULE, FIND_MODULES_FOR_COURSE, DELETE_MODULE} from "../actions/moduleActions";
 
 
 let initialState = {
@@ -14,35 +14,32 @@ let initialState = {
         ]
 }
 
-const moduleReducer = (state = initialState, action) => {
+// const moduleReducer = (state = initialState, action) => {
+    const moduleReducer = (state = {modules:[]}, action) => {
     switch (action.type) {
-        case CREATE_MODULE:
+        case 'CREATE_MODULE':
             return {
                 modules: [
                     ...state.modules,
                     action.module
                 ]
             }
-        case FIND_MODULES_FOR_COURSE:
+        case 'FIND_MODULES_FOR_COURSE':
             return {
                 modules: action.modules
             }
-        case DELETE_MODULE:
+        case 'UPDATE_MODULE':
+            return {
+                modules: state.modules.map(module =>
+                    module._id === action.moduleId ? action.module : module
+                )
+            }
+        case 'DELETE_MODULE':
             return {
                 modules: state.modules.filter(module => (
                     module._id !== action._id
                 ))
             }
-        case 'UPDATE_MODULE':
-        {
-            console.log('UPDATE_MODULE')
-            return state
-        }
-        case 'EDIT_MODULE':
-        {
-            console.log('EDIT_MODULE')
-            return state
-        }
         default:
             return state
     }

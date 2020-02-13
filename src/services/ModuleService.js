@@ -1,7 +1,7 @@
-import {COURSES_API_URL, MODULES_API_URL, COURSES_MODULES_API_URL} from "../constants";
+import {COURSES_API_URL, MODULES_API_URL, COURSES_MODULES_API_URL, LESSONS_API_URL} from "../constants";
 
 export const findModulesForCourse = (courseId) =>
-    fetch(`${COURSES_API_URL}/${courseId}/modules`)
+    fetch(COURSES_MODULES_API_URL(courseId))
         .then(response => response.json())
 
 export const createModule = (courseId, module) =>
@@ -12,6 +12,18 @@ export const createModule = (courseId, module) =>
             'content-type': 'application/json'
         }
     }).then(response => response.json())
+
+export const updateModule = async (module) => {
+    const response = await fetch(`${MODULES_API_URL}/${module._id}`, {
+        method: 'PUT',
+        body: JSON.stringify(module),
+        headers: {
+            "content-type": 'application/json'
+        }
+    })
+
+    return await response.json()
+}
 
 export const deleteModule = (moduleId) =>
     fetch(`${MODULES_API_URL}/${moduleId}`, {
@@ -26,17 +38,7 @@ export const deleteModule = (moduleId) =>
 //     fetch(`${API_URL}/modules`)
 //         .then(response => response.json())
 //
-// export const updateModule = async (moduleId, module) => {
-//     const response = await fetch(`${API_URL}/modules/${moduleId}`, {
-//         method: 'PUT',
-//         body: JSON.stringify(module),
-//         headers: {
-//             "content-type": 'application/json'
-//         }
-//     })
-//
-//     return await response.json()
-// }
+
 //
 // export const deleteModule = async (moduleId) => {
 //     const response = await fetch(`${API_URL}/modules/${moduleId}`, {

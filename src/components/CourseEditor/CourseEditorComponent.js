@@ -33,7 +33,7 @@ const CourseEditorComponent = ({hideEditor, match, courseId, moduleId, history})
                     />
                 </div>
                 <div className="col-8">
-                    {/*<TopicPills topics={this.state.topics}/>*/}
+                    <TopicPills topics={[{_id:1,title:"Topic1"}]}/>
                     <WidgetComponent></WidgetComponent>
                 </div>
             </div>

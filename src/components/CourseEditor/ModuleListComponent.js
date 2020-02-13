@@ -45,20 +45,23 @@ class ModuleListComponent extends React.Component {
                                             this.setState({
                                                 editingModuleId: module._id
                                             })
-                                            console.log('Clicked:' + module._id)
                                         }
                                     }>
                                         <i className="fa fa-edit"></i>
                                     </a>
                                 }
-                                &nbsp;&nbsp;
-                                <a>
-                                    <i className="fas fa-trash"></i>
-                                </a>
-                                &nbsp;&nbsp;
-                                <a>
-                                    <i className="fas fa-check-circle"></i>
-                                </a>
+                                {
+                                    this.state.editingModuleId === module._id &&
+                                    <div>
+                                        <a>
+                                            <i className="fas fa-trash"></i>
+                                        </a>
+                                        &nbsp;&nbsp;
+                                        <a>
+                                        <i className="fas fa-check-circle"></i>
+                                        </a>
+                                    </div>
+                                    }
                             </span>
                             </li>
                         // <ModuleListItem

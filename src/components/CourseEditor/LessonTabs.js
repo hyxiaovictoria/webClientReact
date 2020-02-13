@@ -85,6 +85,7 @@ class LessonTabs extends React.Component {
                                                     editingLessonId: ''
                                                 })
                                             )
+                                        console.log('Updated lesson title: ' + this.state.lesson.title)
                                     }
                                     }>
                                         <i className="fas fa-check-circle"></i>

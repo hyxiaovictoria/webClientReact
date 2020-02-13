@@ -53,7 +53,8 @@ class ModuleListComponent extends React.Component {
                                 {
                                     this.state.editingModuleId === module._id &&
                                     <div>
-                                        <a>
+                                        <a onClick={
+                                            () => this.props.deleteModule(module._id)}>
                                             <i className="fas fa-trash"></i>
                                         </a>
                                         &nbsp;&nbsp;
@@ -120,13 +121,16 @@ class ModuleListComponent extends React.Component {
 //
 // export default ModuleListContainer
 
-const stateToPropertyMapper = (state) => ({})
-const dispatchToPropertyMapper = (dispatch) => ({
+const stateToPropertyMapper = (state) => ({
+    modules: state.modules.modules
+})
+
+const dispatchToPropertyMapper = (dispatcher) => ({
     deleteModule: (moduleId) => {
         fetch(`${MODULES_API_URL}/${moduleId}`, {
             method: 'DELETE'
         }).then(response => response.json())
-            .then(status => dispatch({
+            .then(status => dispatcher({
                 type: 'DELETE_MODULE',
                 moduleId: moduleId
             }))

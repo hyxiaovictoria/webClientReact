@@ -15,7 +15,7 @@
 // }
 
 // const moduleReducer = (state = initialState, action) => {
-    const moduleReducer = (state = {modules:[]}, action) => {
+const moduleReducer = (state = {modules:[]}, action) => {
     switch (action.type) {
         case 'CREATE_MODULE':
             return {
@@ -24,20 +24,23 @@
                     action.module
                 ]
             }
+            break;
         case 'FIND_MODULES_FOR_COURSE':
             return {
                 modules: action.modules
             }
+            break;
         case 'UPDATE_MODULE':
             return {
                 modules: state.modules.map(module =>
                     module._id === action.moduleId ? action.module : module
                 )
             }
+            break;
         case 'DELETE_MODULE':
             return {
                 modules: state.modules.filter(module => (
-                    module._id !== action._id
+                    module._id !== action.moduleId
                 ))
             }
         default:

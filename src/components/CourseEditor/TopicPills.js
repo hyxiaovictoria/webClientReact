@@ -39,7 +39,8 @@ class TopicPills extends React.Component {
                         </li>
                     )}
                     <li className="nav-item wbdv-topic-pill">
-                        <a className="nav-link wbdv-white" href="#">
+                        <a className="nav-link wbdv-white"
+                        onClick={() => this.props.addTopic(this.props.lessonId)}>
                             <i className="fa fa-plus fa-1x"></i>
                         </a>
                     </li>

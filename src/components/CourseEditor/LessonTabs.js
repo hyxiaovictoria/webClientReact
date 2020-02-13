@@ -1,7 +1,7 @@
 import React from "react";
 import {connect} from "react-redux";
 import {LESSONS_API_URL, MODULES_LESSONS_API_URL} from "../../constants";
-import {updateLesson} from "../../services/LessonService";
+import {findLessonsForModule, createLesson, updateLesson, deleteLesson} from "../../services/LessonService";
 
 class LessonTabs extends React.Component {
 
@@ -185,19 +185,16 @@ const dispatcherToPropertyMapper = (dispatcher) => ({
             lessonId: actualLesson._id
         })
     },
-    addLesson: (moduleId) =>
-        fetch(MODULES_LESSONS_API_URL(moduleId), {
-            method: 'POST',
-            body: JSON.stringify({title: 'New Lesson'}),
-            headers: {
-                'content-type': 'application/json'
-            }
-        }).then(response => response.json())
-            .then(actualLesson =>
-                dispatcher({
-                    type: 'CREATE_LESSON',
-                    lesson: actualLesson
-                })),
+    addLesson: async (moduleId) => {
+        const newLesson = await createLesson(moduleId,
+            {title: 'New lesson',
+                    _id: new Date().getTime()})
+        dispatcher({
+            type: 'CREATE_LESSON',
+            lesson: newLesson,
+            lessonId: newLesson._id
+        })
+    },
     deleteLesson: (lessonId) =>
         fetch(`${LESSONS_API_URL}/${lessonId}`, {
             method: 'DELETE'

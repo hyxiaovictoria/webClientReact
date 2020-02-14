@@ -19,9 +19,10 @@ class WidgetComponent extends React.Component {
                     <div className = "col-8">
                         <h1> Heading widget </h1>
                     </div>
-                    <div className="col-1">
-                        <i className="fas fa-arrow-circle-up"></i>
-                        <i className="fas fa-arrow-circle-down"></i>
+                    <div className="col-2">
+                        <i className="fas fa-arrow-circle-up fa-2x"></i>
+                        &nbsp;&nbsp;
+                        <i className="fas fa-arrow-circle-down fa-2x"></i>
                     </div>
                 </div>
 

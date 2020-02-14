@@ -17,7 +17,7 @@ class WidgetComponent extends React.Component {
                 </div>
                 <div className = "form-row wbdv-margin-top-50px">
                     <div className = "col-8">
-                        <h5> Heading widget </h5>
+                        <h1> Heading widget </h1>
                     </div>
                     <div className="col-1">
                         <i className="fas fa-arrow-circle-up"></i>

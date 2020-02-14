@@ -30,6 +30,7 @@ const CourseTableComponent = ({courses, deleteCourse, saveCourse}) =>
                 courses.map(function (course, index) {
                     return (
                         <CourseTableRow
+                            key={index}
                             course={course}
                             deleteCourse={deleteCourse}
                             saveCourse={saveCourse}/>

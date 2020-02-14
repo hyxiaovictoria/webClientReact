@@ -37,10 +37,10 @@ class WidgetComponent extends React.Component {
                            placeholder="Heading text"/>
                 </div>
                 <div className="form-row">
-                    <select id="inputState" className="form-control wbdv-width-100">
-                        <option selected>Heading 1</option>
-                        <option>Heading 2</option>
-                        <option>Heading 3</option>
+                    <select id="inputState" className="form-control wbdv-width-100" defaultValue="v2">
+                        <option value="v1">Heading 1</option>
+                        <option value="v2">Heading 2</option>
+                        <option value="v3">Heading 3</option>
                     </select>
                 </div>
                 <div className="form-row">

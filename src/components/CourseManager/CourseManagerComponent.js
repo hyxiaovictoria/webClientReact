@@ -1,7 +1,4 @@
 import React from "react";
-import ModuleListComponent from "../CourseEditor/ModuleListComponent";
-import LessonTabs from "../CourseEditor/LessonTabs";
-import TopicPills from "../CourseEditor/TopicPills";
 import "../CourseEditor/CourseEditorComponent.css"
 import CourseTableComponent from "../CourseManager/CourseTableComponent";
 import CourseGridComponent from "../CourseManager/CourseGridComponent";

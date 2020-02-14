@@ -2,6 +2,11 @@ import React from "react"
 import "./CourseEditorComponent.css"
 
 class WidgetComponent extends React.Component {
+    componentDidMount() {
+        const className = this.constructor.name
+        console.log(className + ' : componentDidMount')
+    }
+
     render() {
         return(
             <div className="wbdv-margin-top-50px">

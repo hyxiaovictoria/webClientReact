@@ -1,14 +1,7 @@
 import React from "react";
-//import ModuleListItem from "./ModuleListItem";
 import "./CourseEditorComponent.css"
 import {MODULES_API_URL} from "../../constants";
 import {connect} from "react-redux";
-
-//import "./CourseEditorComponent.css"
-//import {createStore} from "redux";
-//import {Provider, connect} from "react-redux";
-//import createModule from "../../services/ModuleService"
-//import moduleReducer from "../../reducers/modules";
 
 class ModuleListComponent extends React.Component {
 

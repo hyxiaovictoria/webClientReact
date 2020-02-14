@@ -25,7 +25,7 @@ class ModuleListComponent extends React.Component {
                 {
                     this.props.modules && this.props.modules.map(
                         module =>
-                            <li
+                            <li key={module._id}
                                 className={`wbdv-module-item ${active ? 'active':''}`}>
                                 {this.state.editingModuleId !== module._id &&
                                     <span className="wbdv-module-item-title">

@@ -105,25 +105,6 @@ class ModuleListComponent extends React.Component {
     }
 }
 
-
-// const stateToPropertiesMapper = (state) => (
-//     {
-//         modules: state.modules
-//     }
-// )
-//
-// let store = createStore(moduleReducer)
-//
-// const ModuleListComponent = connect(stateToPropertiesMapper) (ModuleList)
-//
-//
-// const ModuleListContainer = () =>
-//     <Provider store={store}>
-//         <ModuleListComponent/>
-//     </Provider>
-//
-// export default ModuleListContainer
-
 const stateToPropertyMapper = (state) => ({
     modules: state.modules.modules
 })

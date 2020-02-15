@@ -1,6 +1,4 @@
 import React from "react";
-import CourseTableRow from "./CourseTableRow";
-import CourseCard from "./CourseCard";
 import CourseDeck from "./CourseDeck";
 
 const CourseGridComponent = ({courses, deleteCourse, saveCourse, showEditor}) =>

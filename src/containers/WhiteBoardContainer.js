@@ -1,6 +1,4 @@
 import React from "react";
-import CourseTableComponent from "../components/CourseManager/CourseTableComponent";
-import CourseGridComponent from "../components/CourseManager/CourseGridComponent";
 import CourseEditorComponent from "../components/CourseEditor/CourseEditorComponent";
 import {findAllCourses, deleteCourse, createCourse, updateCourse} from "../services/CourseService";
 import './WhiteBoardContainer.css'

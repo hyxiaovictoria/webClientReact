@@ -81,6 +81,5 @@ const stateToPropertyMapper = (state) => ({
     widgets: state.widgets.widgets
 })
 
-export default connect (
-    stateToPropertyMapper
-)(WidgetComponent)
+export default connect (stateToPropertyMapper)
+(WidgetComponent)

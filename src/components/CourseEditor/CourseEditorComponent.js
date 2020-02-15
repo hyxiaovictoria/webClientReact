@@ -10,9 +10,10 @@ import ModuleListContainer from "../../containers/ModuleListContainer";
 import modules from '../../reducers/moduleReducer'
 import lessons from '../../reducers/lessonReducer'
 import topics from '../../reducers/topicReducer'
+import widgets from '../../reducers/widgetReducer'
 
 const reducers = combineReducers({
-    modules, lessons, topics
+    modules, lessons, topics, widgets
     // modules, lessons, widgets
 })
 

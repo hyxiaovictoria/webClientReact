@@ -35,7 +35,7 @@ const CourseEditorComponent = ({hideEditor, match, courseId, moduleId, history})
                 </div>
                 <div className="col-8">
                     <TopicPills topics={[{_id:1,title:"Topic1"}]}/>
-                    <WidgetComponent></WidgetComponent>
+                    <WidgetComponent widgets={[{_id:1, title:'Widget1'}]}></WidgetComponent>
                 </div>
             </div>
         </div>

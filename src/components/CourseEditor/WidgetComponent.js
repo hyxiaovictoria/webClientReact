@@ -1,15 +1,32 @@
 import React from "react"
 import "./CourseEditorComponent.css"
+import {connect} from "react-redux";
 
 class WidgetComponent extends React.Component {
     componentDidMount() {
-        const className = this.constructor.name
-        console.log(className + ' : componentDidMount')
+        console.log(this.constructor.name + ' : componentDidMount')
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        console.log(this.constructor.name + ' : componentDidUpdate')
+        // if(this.props.widgetId !== prevProps.widgetId) {
+        //     this.props.findTopicsForLesson(this.props.lessonId)
+        // }
     }
 
     render() {
         return(
             <div className="wbdv-margin-top-50px">
+                <div className="form-row">
+                    <ul className="nav nav-pills wbdv-topic-pill-list">
+                        {this.props.widgets.map(widget =>
+                            <li key={widget._id}
+                                className="nav-item wbdv-topic-pill">
+                                <a className="nav-link wbdv-white" href="#">{widget.title}</a>
+                            </li>
+                        )}
+                    </ul>
+                </div>
                 <div className="form-row fixed-right">
                     <div className ="fa-right-only">
                     <button className="btn btn-primary wbdv-button wbdv-save btn-success">Save</button>
@@ -55,8 +72,15 @@ class WidgetComponent extends React.Component {
                     <i className="fas fa-square fa-stack-2x bg-red"/>
                     <i className="fas fa-plus fa-stack-1x fa-inverse"/>
                 </div>
-            </div>)
+            </div>
+        )
     }
 }
 
-export default WidgetComponent
+const stateToPropertyMapper = (state) => ({
+    widgets: state.widgets.widgets
+})
+
+export default connect (
+    stateToPropertyMapper
+)(WidgetComponent)

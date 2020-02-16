@@ -13,6 +13,9 @@ class TopicPills extends React.Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
+        console.log('this.props.lessonId' + this.props.lessonId)
+        console.log('prevProps.lessonId' + prevProps.lessonId)
+
         if(this.props.lessonId !== prevProps.lessonId) {
             this.props.findTopicsForLesson(this.props.lessonId)
         }

@@ -21,6 +21,7 @@ class WidgetComponent extends React.Component {
         this.props.findWidgetsForTopic(this.props.widgetId)
             .then(response => response.json)
         console.log(this.constructor.name + ' : componentDidMount')
+
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
@@ -34,6 +35,10 @@ class WidgetComponent extends React.Component {
     render() {
         return(
             <div className="wbdv-margin-top-50px">
+                <button onClick={ () =>
+                    this.props.createWidget(this.props.widgetId)}>
+                    Add widget
+                </button>
                 <div className="form-row">
                     <ul className="nav nav-pills wbdv-topic-pill-list">
                         {this.props.widgets.map(widget =>
@@ -113,16 +118,16 @@ const dispatchToPropertyMapper = (dispatcher) => ({
                 type: 'DELETE_WIDGET',
                 widgetId: widgetId
             })),
-    createWidget: (topicId) =>
+    createWidget: (widgetId) =>
         createWidget({
             title: "New Widget",
-            type: "HEADING",
-            topicId: topicId,
+            type: "CREATE_WIDGET",
+            topicId: widgetId,
             id: (new Date()).getTime() + ""
-        })
-            .then(actualWidget => dispatcher({
+        }).then(actualWidget => dispatcher({
                 type: "ADD_WIDGET",
-                widget: actualWidget
+                widget: actualWidget,
+                widgetId: actualWidget.id
             })),
     findAllWidgets: () =>
         findAllWidgets()

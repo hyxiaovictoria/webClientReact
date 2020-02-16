@@ -7,10 +7,11 @@ const widgetReducer = (state = {widgets: []}, action) => {
                     action.widget
                 ]
             }
-        case 'FIND_WIDGETS_FOR_TOPIC':
+        case 'FIND_WIDGETS_FOR_TOPIC': {
             return {
                 widgets: action.widgets
             }
+        }
         case 'UPDATE_WIDGET':
             return {
                 widgets: state.widgets.map(widget =>

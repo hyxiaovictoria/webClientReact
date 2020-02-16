@@ -19,8 +19,6 @@ class WidgetList extends React.Component {
     }
     componentDidMount() {
         this.props.findWidgetsForTopic(this.props.topicId)
-            .then(response => console.log('WidgetList: ' + JSON.stringify(response)));
-        // this.props.findAllWidgets();
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
@@ -107,7 +105,7 @@ const dispatchToPropertyMapper = (dispatcher) => ({
     findWidgetsForTopic: (topicId) =>
         findWidgetsForTopic(topicId)
             .then(widgets => dispatcher({
-                type: "WIDGET_FOR_TOPIC",
+                type: "FIND_WIDGETS_FOR_TOPIC",
                 widgets: widgets
             })),
     updateWidget: (widgetId, newWidget) =>

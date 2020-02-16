@@ -39,6 +39,10 @@ class WidgetComponent extends React.Component {
                     this.props.createWidget(this.props.widgetId)}>
                     Add widget
                 </button>
+                <button onClick={ () =>
+                    this.props.findAllWidgets()}>
+                    Show all widgets
+                </button>
                 <div className="form-row">
                     <ul className="nav nav-pills wbdv-topic-pill-list">
                         {this.props.widgets.map(widget =>
@@ -126,8 +130,7 @@ const dispatchToPropertyMapper = (dispatcher) => ({
             id: (new Date()).getTime() + ""
         }).then(actualWidget => dispatcher({
                 type: "ADD_WIDGET",
-                widget: actualWidget,
-                widgetId: actualWidget.id
+                widget: actualWidget
             })),
     findAllWidgets: () =>
         findAllWidgets()

@@ -8,7 +8,10 @@ export const createWidget = widget =>
         headers: {
             'content-type': 'application/json'
         }
-    }).then(response => response.json())
+    }).then(response => console.log(response.json()))
+        // .then(() => findWidgetsForTopic())
+        // .then(response => response.json())
+        // .then(response => console.log('After creating a new widget: ' + response))
 
 export const findWidgetsForTopic = topicId =>
     fetch(TOPICS_WIDGETS_API_URL(topicId))
@@ -17,6 +20,8 @@ export const findWidgetsForTopic = topicId =>
 export const findAllWidgets = () =>
     fetch(WIDGETS_API_URL)
         .then(response => response.json())
+        // .then(response => JSON.stringify(response))
+        // .then((response) => console.log('findAllWidgets' + JSON.stringify(response)))
 
 // widgetId is not needed as input since widget contains that
 export const updateWidget = widget =>

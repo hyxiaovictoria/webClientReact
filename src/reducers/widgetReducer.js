@@ -23,6 +23,10 @@ const widgetReducer = (state = {widgets: []}, action) => {
                     widget._id !== action.widgetId
                 ))
             }
+        case "FIND_ALL_WIDGETS":
+            return {
+                widgets: action.widgets
+            }
         default:
             return state
     }

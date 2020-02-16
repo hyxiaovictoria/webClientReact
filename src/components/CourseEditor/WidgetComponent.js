@@ -1,7 +1,6 @@
 import React from "react"
 import "./CourseEditorComponent.css"
 import {connect} from "react-redux";
-import * as service from "../../services/WidgetService"
 
 class WidgetComponent extends React.Component {
     componentDidMount() {

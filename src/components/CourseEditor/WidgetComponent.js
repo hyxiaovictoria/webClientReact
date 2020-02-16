@@ -1,6 +1,13 @@
 import React from "react"
 import "./CourseEditorComponent.css"
 import {connect} from "react-redux";
+import {findAllWidgets,
+        createWidget,
+        deleteWidget,
+        updateWidget,
+        findWidgetsForTopic
+} from "../../services/WidgetService";
+
 
 class WidgetComponent extends React.Component {
     componentDidMount() {
@@ -8,8 +15,9 @@ class WidgetComponent extends React.Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        console.log(this.constructor.name + ' : componentDidUpdate')
-        // if(this.props.widgetId !== prevProps.widgetId) {
+        console.log("this.props.widgets.id" + this.props.widgets.id)
+        console.log("prevProps.widgets.id" + prevProps.widgets.id)
+        // if(this.props.widgets.id !== prevProps.widgets.id) {
         //     this.props.findTopicsForLesson(this.props.lessonId)
         // }
     }
@@ -77,9 +85,48 @@ class WidgetComponent extends React.Component {
     }
 }
 
+const dispatchToPropertyMapper = (dispatcher) => ({
+    findWidgetsForTopic: (topicId) =>
+        findWidgetsForTopic(topicId)
+            .then(widgets => dispatcher({
+                type: "WIDGET_FOR_TOPIC",
+                widgets: widgets
+            })),
+    updateWidget: (widgetId, newWidget) =>
+        updateWidget(widgetId, newWidget)
+            .then(status => dispatcher({
+                type: "UPDATE",
+                widget: newWidget
+            })),
+    deleteWidget: (widgetId) =>
+        deleteWidget(widgetId)
+            .then(status => dispatcher({
+                type: 'DELETE_WIDGET',
+                widgetId: widgetId
+            })),
+    createWidget: (topicId) =>
+        createWidget({
+            title: "New Widget",
+            type: "HEADING",
+            topicId: topicId,
+            id: (new Date()).getTime() + ""
+        })
+            .then(actualWidget => dispatcher({
+                type: "ADD_WIDGET",
+                widget: actualWidget
+            })),
+    findAllWidgets: () =>
+        findAllWidgets()
+            .then(actualWidgets => dispatcher({
+                type: "FIND_ALL_WIDGETS",
+                widgets: actualWidgets
+            }))
+})
+
 const stateToPropertyMapper = (state) => ({
     widgets: state.widgets.widgets
 })
 
-export default connect (stateToPropertyMapper)
-(WidgetComponent)
+export default connect (stateToPropertyMapper,
+    dispatcherToPropertyMapper
+)(WidgetComponent)

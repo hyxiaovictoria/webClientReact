@@ -1,5 +1,4 @@
-const widgetReducer = (state = initialState, action) => {
-//const widgetReducer = (state = {widgets:[]}, action) => {
+const widgetReducer = (state = {widgets: []}, action) => {
     switch (action.type) {
         case 'CREATE_WIDGET':
             return {

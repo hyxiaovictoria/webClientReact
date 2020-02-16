@@ -10,7 +10,16 @@ import {findAllWidgets,
 
 
 class WidgetComponent extends React.Component {
+    state = {
+        editingWidgetId: '',
+        widget: {
+            id: ''
+        }
+    }
+
     componentDidMount() {
+        this.props.findWidgetsForTopic(this.props.widgetId)
+            .then(response => response.json)
         console.log(this.constructor.name + ' : componentDidMount')
     }
 
@@ -128,5 +137,5 @@ const stateToPropertyMapper = (state) => ({
 })
 
 export default connect (stateToPropertyMapper,
-    dispatcherToPropertyMapper
+    dispatchToPropertyMapper
 )(WidgetComponent)

@@ -9,17 +9,6 @@ class WidgetComponent extends React.Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        // const allWidgets = service.findAllWidgets()
-        // let allWidgets
-        // fetch("http://localhost:8080/widgets")
-        //     .then(response => response.json())
-        //     .then(response => allWidgets = response)
-        //     .then()
-        service.findAllWidgets()
-            .then((response) => console.log('allWidgets: ' + JSON.stringify(response)))
-
-        service.findWidgetsForTopic("222")
-            .then(response => console.log('some widgets: ' + JSON.stringify(response)))
         console.log(this.constructor.name + ' : componentDidUpdate')
         // if(this.props.widgetId !== prevProps.widgetId) {
         //     this.props.findTopicsForLesson(this.props.lessonId)

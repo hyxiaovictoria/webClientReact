@@ -9,7 +9,7 @@ import {findAllWidgets,
 } from "../../services/WidgetService";
 
 
-class WidgetComponent extends React.Component {
+class WidgetListComponent extends React.Component {
     state = {
         editingWidgetId: '',
         widget: {
@@ -146,4 +146,4 @@ const stateToPropertyMapper = (state) => ({
 
 export default connect (stateToPropertyMapper,
     dispatchToPropertyMapper
-)(WidgetComponent)
+)(WidgetListComponent)

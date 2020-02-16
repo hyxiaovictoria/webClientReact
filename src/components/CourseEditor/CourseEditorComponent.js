@@ -3,7 +3,8 @@ import ModuleListComponentTest from "./ModuleListComponent";
 import LessonTabs from "./LessonTabs";
 import TopicPills from "./TopicPills";
 import "./CourseEditorComponent.css"
-import WidgetComponent from "./WidgetComponent";
+//import WidgetComponent from "./WidgetListComponent";
+import WidgetList from "./WidgetList";
 import {combineReducers, createStore} from "redux";
 import {Provider} from "react-redux";
 import ModuleListContainer from "../../containers/ModuleListContainer";
@@ -36,7 +37,7 @@ const CourseEditorComponent = ({hideEditor, match, courseId, moduleId, history})
                 </div>
                 <div className="col-8">
                     <TopicPills topics={[{_id:1,title:"Topic1"}]}/>
-                    <WidgetComponent widgets={[{_id:1, title:'Widget1'}]}></WidgetComponent>
+                    <WidgetList topicId={"111"}></WidgetList>
                 </div>
             </div>
         </div>

@@ -33,6 +33,7 @@ class HeadingWidget extends React.Component {
                 {
                     this.state.editing &&
                     <div>
+                        <div>
                         <input
                             onChange={(e) => {
                                 const newTitle = e.target.value;
@@ -41,7 +42,29 @@ class HeadingWidget extends React.Component {
                                     return prevState
                                 })
                             }}
-                            value={this.state.widget.text}/>
+                            // value={this.state.widget.text}/>
+                            value = "Heading text"/>
+                        </div>
+                        <div>
+                            <select
+                                onChange={(e) => {
+                                    const newSize = parseInt(e.target.value);
+                                    this.setState(prevState => {
+                                        prevState.widget.size = newSize;
+                                        return prevState
+                                    })
+                                }}
+                                value={this.state.widget.size}>
+                                <option value={1}>Heading 1</option>
+                                <option value={2}>Heading 2</option>
+                                <option value={3}>Heading 3</option>
+                                <option value={4}>Heading 4</option>
+                            </select>
+                        </div>
+                        <div>
+                            <input
+                                value = "Widget name"/>
+                        </div>
                         <span className="float-right">
                                 <select
                                     onChange={(e) => {

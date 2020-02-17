@@ -9,6 +9,7 @@ import {
     updateWidget,
     findWidgetsForTopic
 } from "../../services/WidgetService";
+import "../CourseEditor/CourseEditorComponent.css"
 
 class WidgetList extends React.Component {
     state = {
@@ -37,6 +38,17 @@ class WidgetList extends React.Component {
     render(){
         return(
             <div>
+                <div className="fa-right">
+                    <button className="btn btn-primary wbdv-button wbdv-save btn-success">Save</button>
+                    &nbsp;&nbsp;
+                    <label className="text-black-50">Preview</label>
+                    &nbsp;&nbsp;
+                    <label className="switch">
+                        <input type="checkbox" id="customSwitch1"/>
+                        <span className="slider round"></span>
+                    </label>
+                </div>
+                <div className="fa-top-margin-50px">
                 {
                     this.props.widgets && this.props.widgets.map(widget =>
                         <div key={widget.id}>
@@ -84,12 +96,16 @@ class WidgetList extends React.Component {
                         </div>
                     )
                 }
+                </div>
                 <div>
-                    <button
+                    <button className="fa-right-only-50 fa-top-margin-20px"
                         onClick={
                             () =>
                                 this.props.createWidget(this.props.topicId)}>
-                        Create Widget
+                            <span className="wbdv-button wbdv-add-course fa-stack fa-1x wd-bottom-right col-sm-1">
+                                <i className="fas fa-circle fa-stack-2x"></i>
+                                <i className="fas fa-plus fa-stack-1x fa-inverse"></i>
+                            </span>
                     </button>
                 </div>
             </div>

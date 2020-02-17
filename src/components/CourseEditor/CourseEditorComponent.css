@@ -53,6 +53,16 @@ h6{
     right : 50px;
 }
 
+.fa-top-margin-50px{
+    position : absolute;
+    margin-top: 50px;
+}
+
+.fa-top-margin-20px{
+    position : absolute;
+    margin-top: 20px;
+}
+
 .wbdv-module-list{
     margin : 0px;
     background-color : -moz-mac-accentdarkshadow;

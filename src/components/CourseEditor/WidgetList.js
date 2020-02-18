@@ -57,13 +57,12 @@ class WidgetList extends React.Component {
                             <span>
                                 {
                                     <span>
-                                        <button onClick={() => {
-                                            this.props.deleteWidget(widget.id)
-                                        }}>
-                                            Delete
+                                        <button>
+                                             <i className="fas fa-arrow-circle-up fa-2x"></i>
                                         </button>
-                                        <button>Up</button>
-                                        <button>Down</button>
+                                        <button>
+                                            <i className="fas fa-arrow-circle-down fa-2x"></i>
+                                        </button>
                                         <select onChange={(e) => {
                                             const newType = e.target.value
                                             this.setState(prevState => {
@@ -81,6 +80,12 @@ class WidgetList extends React.Component {
                                             <option value="YOUTUBE">YouTube</option>
                                             <option value="HTML">HTML</option>
                                         </select>
+                                            <button onClick={() => {
+                                                this.props.deleteWidget(widget.id)
+                                            }}>
+                                            <i className="fas fa-trash fa-2x"></i>
+                                        </button>
+
                                     </span>
                                 }
                             </span>

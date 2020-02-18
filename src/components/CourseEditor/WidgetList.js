@@ -57,6 +57,7 @@ class WidgetList extends React.Component {
                             <span>
                                 {
                                     <span>
+                                        <h2>Heading widget</h2>
                                         <button>
                                              <i className="fas fa-arrow-circle-up fa-2x"></i>
                                         </button>

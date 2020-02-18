@@ -55,17 +55,8 @@ class WidgetList extends React.Component {
                             {widget.type === "HEADING"   && <HeadingWidget   saveWidget={this.saveWidget} editing={this.state.widget.id === widget.id} {...this.props} widget={widget}/>}
                             {widget.type === "PARAGRAPH" && <ParagraphWidget updateWidget={this.updateWidget} editing={this.state.widget.id === widget.id} widget={widget}/>}
                             <span>
-                                {   this.state.editingWidgetId !== widget.id &&
-                                <button onClick={
-                                    () => this.setState({
-                                        editingWidgetId: widget.id,
-                                        widget: widget
-                                    })}>
-                                    Edit
-                                </button>
-                                }
-                                {   this.state.editingWidgetId === widget.id &&
-                                <span>
+                                {
+                                    <span>
                                         <button onClick={() => {
                                             this.props.deleteWidget(widget.id)
                                         }}>

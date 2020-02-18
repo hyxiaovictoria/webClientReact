@@ -55,40 +55,36 @@ class WidgetList extends React.Component {
                             {widget.type === "HEADING"   && <HeadingWidget   saveWidget={this.saveWidget} editing={this.state.widget.id === widget.id} {...this.props} widget={widget}/>}
                             {widget.type === "PARAGRAPH" && <ParagraphWidget updateWidget={this.updateWidget} editing={this.state.widget.id === widget.id} widget={widget}/>}
                             <span>
-                                {
-                                    <span>
-                                        <h2>Heading widget</h2>
-                                        <button>
-                                             <i className="fas fa-arrow-circle-up fa-2x"></i>
-                                        </button>
-                                        <button>
-                                            <i className="fas fa-arrow-circle-down fa-2x"></i>
-                                        </button>
-                                        <select onChange={(e) => {
-                                            const newType = e.target.value
-                                            this.setState(prevState => {
-                                                this.state.widget.type = newType;
-                                                return {
-                                                    widget: {
-                                                        ...widget, type: newType
-                                                    }
-                                                }})
-                                            this.props.updateWidget(this.state.widget.id, this.state.widget)
-                                        }}
-                                                value={this.state.widget.type}>
-                                            <option value="HEADING">Heading</option>
-                                            <option value="PARAGRAPH">Paragraph</option>
-                                            <option value="YOUTUBE">YouTube</option>
-                                            <option value="HTML">HTML</option>
-                                        </select>
-                                            <button onClick={() => {
-                                                this.props.deleteWidget(widget.id)
-                                            }}>
-                                            <i className="fas fa-trash fa-2x"></i>
-                                        </button>
+                                <h2>Heading widget</h2>
+                                <button>
+                                     <i className="fas fa-arrow-circle-up fa-2x"></i>
+                                </button>
+                                <button>
+                                    <i className="fas fa-arrow-circle-down fa-2x"></i>
+                                </button>
+                                <select onChange={(e) => {
+                                    const newType = e.target.value
+                                    this.setState(prevState => {
+                                        this.state.widget.type = newType;
+                                        return {
+                                            widget: {
+                                                ...widget, type: newType
+                                            }
+                                        }})
+                                    this.props.updateWidget(this.state.widget.id, this.state.widget)
+                                }}
+                                        value={this.state.widget.type}>
+                                    <option value="HEADING">Heading</option>
+                                    <option value="PARAGRAPH">Paragraph</option>
+                                    <option value="YOUTUBE">YouTube</option>
+                                    <option value="HTML">HTML</option>
+                                </select>
+                                    <button onClick={() => {
+                                        this.props.deleteWidget(widget.id)
+                                    }}>
+                                    <i className="fas fa-trash fa-2x"></i>
+                                </button>
 
-                                    </span>
-                                }
                             </span>
                         </div>
                     )

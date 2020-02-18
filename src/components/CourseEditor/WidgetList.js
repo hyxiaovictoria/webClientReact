@@ -52,10 +52,10 @@ class WidgetList extends React.Component {
                 {
                     this.props.widgets && this.props.widgets.map(widget =>
                         <div key={widget.id}>
-                            {widget.type === "HEADING"   && <HeadingWidget   saveWidget={this.saveWidget} editing={this.state.widget.id === widget.id} {...this.props} widget={widget}/>}
-                            {widget.type === "PARAGRAPH" && <ParagraphWidget updateWidget={this.updateWidget} editing={this.state.widget.id === widget.id} widget={widget}/>}
                             <span>
-                                <h2>Heading widget</h2>
+                                <h3>Heading widget</h3>
+                            </span>
+                            <span>
                                 <button>
                                      <i className="fas fa-arrow-circle-up fa-2x"></i>
                                 </button>
@@ -86,6 +86,8 @@ class WidgetList extends React.Component {
                                 </button>
 
                             </span>
+                            {widget.type === "HEADING"   && <HeadingWidget   saveWidget={this.saveWidget} editing={this.state.widget.id === widget.id} {...this.props} widget={widget}/>}
+                            {widget.type === "PARAGRAPH" && <ParagraphWidget updateWidget={this.updateWidget} editing={this.state.widget.id === widget.id} widget={widget}/>}
                         </div>
                     )
                 }

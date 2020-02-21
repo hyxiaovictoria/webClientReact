@@ -105,6 +105,33 @@ class WhiteBoardContainer extends React.Component {
                         }
                     />
                     <Route
+                        path="/course-editor/:courseId/module/:moduleId/lesson/:lessonId"
+                        exact={true}
+                        render={(props)=>
+                            <CourseEditorComponent
+                                {...props}
+                                courseId={props.match.params.courseId}
+                                moduleId={props.match.params.moduleId}
+                                lessonId={props.match.params.lessonId}
+                                hideEditor={this.hideEditor}
+                            />
+                        }
+                    />
+                    <Route
+                        path="/course-editor/:courseId/module/:moduleId/lesson/:lessonId/topic/topicId"
+                        exact={true}
+                        render={(props)=>
+                            <CourseEditorComponent
+                                {...props}
+                                courseId={props.match.params.courseId}
+                                moduleId={props.match.params.moduleId}
+                                lessonId={props.match.params.lessonId}
+                                topicId={props.match.params.topicId}
+                                hideEditor={this.hideEditor}
+                            />
+                        }
+                    />
+                    <Route
                         path="/"
                         exact={true}
                         render={()=>

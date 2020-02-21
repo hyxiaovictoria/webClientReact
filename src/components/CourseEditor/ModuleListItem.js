@@ -35,8 +35,7 @@ const ModuleListItem = ({save, edit, editing, module, deleteModule, saveModule, 
             }
             &nbsp;&nbsp;
             {editing &&
-            <a onClick={() =>
-            updateModule(module._id, module)}>
+            <a onClick={save}>
                 <i className="fas fa-check-circle fa-right-only-50"></i>
             </a>
             }

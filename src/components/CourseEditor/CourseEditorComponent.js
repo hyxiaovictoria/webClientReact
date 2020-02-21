@@ -24,7 +24,7 @@ const CourseEditorComponent = ({hideEditor, match, courseId, moduleId, history})
     <Provider store={store}>
         <div>
             {/*<LessonTabs lessons={this.state.lessons} hideEditor={this.props.hideEditor}/>*/}
-            <LessonTabs moduleId={moduleId}/>
+            <LessonTabs courseId={courseId} moduleId={moduleId}/>
 
             <div className="row">
                 <div className="col-4">

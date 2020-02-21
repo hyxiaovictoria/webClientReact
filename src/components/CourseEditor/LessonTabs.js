@@ -33,7 +33,7 @@ class LessonTabs extends React.Component {
                        href="/">
                         <i className="fa fa-times fa-2x fa-inverse"></i>
                     </a>
-                    <h4 className="wbdv-course-title col-sm-3">CS5610-WebDev</h4>
+                    <h4 className="wbdv-course-title col-sm-3">{this.props.courseId}</h4>
                     <ul className="nav nav-tabs wbdv-page-tab col-sm-6">
                         {this.props.lessons.map(lesson =>
                             <li key={lesson._id} className="nav-item">

@@ -10,20 +10,24 @@ const ModuleListItem = ({save, edit, editing, module, deleteModule, active, sele
         <span className="wbdv-module-item-title">
         {module.title}
         </span>
-        {/*{editing &&*/}
-        <span className="fa-right-only-50">]
-            <a onClick={save}>
+
+        <span className="fa-right-only-50">
+            {!editing && <a onClick={edit}>
                 <i className="fa fa-edit"></i>
             </a>
+            }
             &nbsp;&nbsp;
-            <a onClick={() =>
+            {editing &&<a onClick={() =>
                 deleteModule(module._id)}>
                 <i className="fas fa-trash"></i>
             </a>
+            }
             &nbsp;&nbsp;
+            {editing &&
             <a onClick={save}>
                 <i className="fas fa-check-circle"></i>
             </a>
+            }
         </span>
     </li>
 

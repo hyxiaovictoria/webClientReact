@@ -22,12 +22,12 @@ const store = createStore(reducers)
 
 
 
-const CourseEditorComponent = ({hideEditor, match, courseId, moduleId, history}) =>
+const CourseEditorComponent = ({hideEditor, match, courseId, moduleId, lessonId, topicId, history}) =>
     <Provider store={store}>
         <div>
             {/*<button onClick={() => history.push("/")}>XX</button>*/}
             {/*<LessonTabs lessons={this.state.lessons} hideEditor={this.props.hideEditor}/>*/}
-            <LessonTabs courseId={courseId} moduleId={moduleId} history={history}/>
+            <LessonTabs courseId={courseId} moduleId={moduleId} lessonId={lessonId} topicId={topicId} history={history}/>
 
             <div className="row">
                 <div className="col-4">
@@ -39,7 +39,7 @@ const CourseEditorComponent = ({hideEditor, match, courseId, moduleId, history})
                     />
                 </div>
                 <div className="col-8">
-                    <TopicPills/>
+                    <TopicPills courseId={courseId} moduleId={moduleId} lessonId={lessonId} topicId={topicId} history={history}/>
                     <WidgetList></WidgetList>
                 </div>
             </div>

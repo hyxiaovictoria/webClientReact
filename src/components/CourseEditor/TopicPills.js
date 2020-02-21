@@ -9,7 +9,8 @@ import {createLesson, updateLesson} from "../../services/LessonService";
 class TopicPills extends React.Component {
 
     componentDidMount() {
-        this.props.findTopicsForLesson(this.props.lessonId)
+        if (typeof(this.props.lessonId) != 'undefined')
+            this.props.findTopicsForLesson(this.props.lessonId)
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {

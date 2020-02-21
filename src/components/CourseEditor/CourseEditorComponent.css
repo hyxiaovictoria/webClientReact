@@ -48,9 +48,24 @@ h6{
     right : 10px;
 }
 
-.fa-right-only-50{
+.fa-right-only-10{
     position : absolute;
-    right : 50px;
+    right : 10px;
+}
+
+.fa-right-only-30{
+    position : absolute;
+    right : 30px;
+}
+
+.fa-right-only-50{
+     position : absolute;
+     right : 50px;
+}
+
+.fa-right-only-70{
+    position : absolute;
+    right : 70px;
 }
 
 .fa-top-margin-50px{

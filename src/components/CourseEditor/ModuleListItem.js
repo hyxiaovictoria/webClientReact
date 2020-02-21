@@ -16,9 +16,9 @@ const ModuleListItem = ({save, edit, editing, module, deleteModule, active, sele
         </span>
         }
 
-        <span className="fa-right-only-50">
+        <span>
             {!editing && <a onClick={edit}>
-                <i className="fa fa-edit"></i>
+                <i className="fa fa-edit fa-right-only-70"></i>
             </a>
             }
             {editing && <input
@@ -28,13 +28,13 @@ const ModuleListItem = ({save, edit, editing, module, deleteModule, active, sele
             &nbsp;&nbsp;
             {editing &&<a onClick={() =>
                 deleteModule(module._id)}>
-                <i className="fas fa-trash"></i>
+                <i className="fas fa-trash fa-right-only-70"></i>
             </a>
             }
             &nbsp;&nbsp;
             {editing &&
             <a onClick={save}>
-                <i className="fas fa-check-circle"></i>
+                <i className="fas fa-check-circle fa-right-only-50"></i>
             </a>
             }
         </span>

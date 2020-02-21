@@ -5,7 +5,7 @@ import "./CourseEditorComponent.css"
 import {updateModule, findModulesForCourse, createModule, deleteModule} from "../../services/ModuleService";
 
 
-const ModuleListItem = ({save, edit, editing, module, deleteModule, saveModule, active, select}) =>
+const ModuleListItem = ({save, edit, editing, module, active, select}) =>
     <li
         onClick={select}
         className={`wbdv-module-item ${active ? 'active':''}`}>
@@ -67,9 +67,6 @@ const dispatchToPropertyMapper = (dispatch) => ({
     //                 lesson: actualLesson
     //             })),
     deleteModule: (moduleId) => {
-        // fetch(`${MODULES_API_URL}/${moduleId}`, {
-        //     method: 'DELETE'
-        // }).then(response => response.json())
         deleteModule(moduleId)
             .then(status => dispatch({
                 type: 'DELETE_MODULE',

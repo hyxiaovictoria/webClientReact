@@ -16,6 +16,7 @@ class LessonTabs extends React.Component {
     }
 
     state = {
+        newLessonTitle: '',
         selectedLessonId: '',
         editingLessonId: '',
         lesson: {
@@ -35,7 +36,7 @@ class LessonTabs extends React.Component {
                         <i className="fa fa-times fa-2x fa-inverse"></i>
                     </a>
                     <h4 className="wbdv-course-title col-sm-3">{this.props.courseId}</h4>
-                    <ul className="nav nav-tabs wbdv-page-tab col-sm-6">
+                    <ul className="nav nav-tabs wbdv-page-tab col-sm-5">
                         {this.props.lessons.map(lesson =>
                             <li key={lesson._id} className="nav-item">
                                 {this.state.editingLessonId !== lesson._id
@@ -96,8 +97,20 @@ class LessonTabs extends React.Component {
                             </li>
                         )}
                     </ul>
+                    <input
+                        onChange={e => {this.setState({newLessonTitle: e.target.value})}}
+                        // value={module.title}
+                    >
+                    </input>
                     <a className="wbdv-new-page-btn col-sm-1"
-                        onClick={() => this.props.addLesson(this.props.moduleId)}>
+                        onClick={() =>
+                            {
+                                const lesson = {title: this.state.newLessonTitle,
+                                          _id: new Date().getTime()}
+                                this.props.addLesson(this.props.moduleId, lesson)
+                            }
+
+                        }>
                         <i className="fa fa-plus fa-2x fa-inverse"></i>
                     </a>
                 </nav>
@@ -187,10 +200,8 @@ const dispatcherToPropertyMapper = (dispatcher) => ({
             lessonId: actualLesson._id
         })
     },
-    addLesson: async (moduleId) => {
-        const newLesson = await createLesson(moduleId,
-            {title: 'New lesson',
-                    _id: new Date().getTime()})
+    addLesson: async (moduleId, lesson) => {
+        const newLesson = await createLesson(moduleId,lesson)
         dispatcher({
             type: 'CREATE_LESSON',
             lesson: newLesson,

@@ -6,7 +6,8 @@ import {findLessonsForModule, createLesson, updateLesson, deleteLesson} from "..
 class LessonTabs extends React.Component {
 
     componentDidMount() {
-        this.props.findLessonsForModule(this.props.moduleId)
+        if (typeof(this.props.moduleId) != "undefined")
+            this.props.findLessonsForModule(this.props.moduleId)
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {

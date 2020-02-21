@@ -19,6 +19,10 @@ class ModuleListComponent extends React.Component {
         }
     }
 
+    updateForm = (newState) => {
+        this.setState(newState)
+    }
+
     render() {
         const active = true
         return (
@@ -97,10 +101,14 @@ class ModuleListComponent extends React.Component {
                 <li className="list-group-item">
                     <input type="text" id="moduleNew"
                            placeholder="New Module Title"
-                           onChange={e => this.state.newModuleTitle = e.target.value}
+                           onChange={(e) => {
+                               this.updateForm({newModuleTitle: e.target.value})
+                               console.log('YH(newModuleTitle): ' + e.target.value)
+                                }
+                           }
                            value={this.state.newModuleTitle}/>
                     <button onClick={
-                        () => this.props.createModule(this.props.courseId, {title: 'New Module'})
+                        () => this.props.createModule(this.props.courseId, {title: this.state.newModuleTitle})
                     }>
                         Add
                     </button>

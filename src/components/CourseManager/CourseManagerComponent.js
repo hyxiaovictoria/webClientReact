@@ -17,10 +17,12 @@ class CourseManagerComponent extends React.Component {
                             </a>
                             <input type="text" className="wbdv-field wbdv-new-course form-control col-sm-6" id="email3"
                                    placeholder="New Course Title"
-                                   onChange={(e) =>
+                                   onChange={(e) => {
                                        this.props.updateForm({
-                                            newCourseTitle: e.target.value
-                                       })}
+                                           newCourseTitle: e.target.value
+                                       })
+                                   }
+                                   }
                                    value={this.props.state.newCourseTitle}/>
                             <a onClick={this.props.addCourse}>
                                                 <span className="wbdv-button wbdv-add-course fa-stack fa-1x wd-bottom-right col-sm-1">

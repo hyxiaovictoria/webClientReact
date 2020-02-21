@@ -2,7 +2,7 @@ import React from "react";
 import {connect} from 'react-redux'
 import {COURSES_MODULES_API_URL, MODULES_API_URL} from "../../constants";
 import "./CourseEditorComponent.css"
-import {updateModule, findModulesForCourse, createModule} from "../../services/ModuleService";
+import {updateModule, findModulesForCourse, createModule, deleteModule} from "../../services/ModuleService";
 
 
 const ModuleListItem = ({save, edit, editing, module, deleteModule, saveModule, active, select}) =>

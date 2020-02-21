@@ -5,7 +5,6 @@ import {connect} from "react-redux";
 import ModuleListItem from "./ModuleListItem";
 
 class ModuleListComponent extends React.Component {
-
     componentDidMount() {
         this.props.findModulesForCourse(this.props.courseId)
     }

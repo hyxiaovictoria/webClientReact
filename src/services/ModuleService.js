@@ -1,4 +1,4 @@
-import {MODULES_API_URL, COURSES_MODULES_API_URL} from "../constants";
+import {MODULES_API_URL, COURSES_MODULES_API_URL, COURSES_API_URL} from "../constants";
 
 export const findModulesForCourse = (courseId) =>
     fetch(COURSES_MODULES_API_URL(courseId))
@@ -30,20 +30,14 @@ export const deleteModule = (moduleId) =>
         method: 'DELETE'
     }).then(response =>response.json())
 
-// export default {
-//     findModulesForCourse, createModule
-// }
+export const findAllModules = async () => {
+    const response = await fetch(MODULES_API_URL)
 
-// export const findAllModules = () =>
-//     fetch(`${API_URL}/modules`)
-//         .then(response => response.json())
-//
+    return await response.json()
+}
 
-//
-// export const deleteModule = async (moduleId) => {
-//     const response = await fetch(`${API_URL}/modules/${moduleId}`, {
-//         method: 'DELETE'
-//     })
-//
-//     return await response.json()
-// }
+export const findModuleById = async (moduleId) => {
+    const response = await fetch(`${MODULES_API_URL}/${moduleId}`)
+
+    return await response.json()
+}

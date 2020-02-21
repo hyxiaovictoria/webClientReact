@@ -90,9 +90,13 @@ class ModuleListComponent extends React.Component {
                                     activeModuleId: module._id
                                 })
                             }}
-                            save={() => this.setState({
-                                editingModuleId: ''
-                            })}
+                            save={() => {
+                                this.setState({editingModuleId: ''})
+                                console.log('YH_moduleTitleToSave: '
+                                    + this.props.courseId + ' '
+                                    + module._id + ' '
+                                    + module.title)
+                            }}
                             editing={module._id === this.state.editingModuleId}
                             active={module._id === this.state.activeModuleId}
                             module={module}/>
@@ -122,19 +126,6 @@ const stateToPropertyMapper = (state) => ({
     modules: state.modules.modules
 })
 
-const dispatchToPropertyMapper = (dispatcher) => ({
-    deleteModule: (moduleId) => {
-        fetch(`${MODULES_API_URL}/${moduleId}`, {
-            method: 'DELETE'
-        }).then(response => response.json())
-            .then(status => dispatcher({
-                type: 'DELETE_MODULE',
-                moduleId: moduleId
-            }))
-    }
-})
-
 export default connect(
-    stateToPropertyMapper,
-    dispatchToPropertyMapper
+    stateToPropertyMapper
 )(ModuleListComponent)

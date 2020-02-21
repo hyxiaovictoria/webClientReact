@@ -28,9 +28,10 @@ class LessonTabs extends React.Component {
         return(
             <div>
                 <nav className="navbar navbar-dark bg-dark">
-                    <a onClick={this.props.hideEditor}
+                    <a
+                        // onClick={() => this.props.history.push("/")}
                        className="wbdv-course-editor wbdv-close col-sm-1"
-                       href="/">
+                        href="/">
                         <i className="fa fa-times fa-2x fa-inverse"></i>
                     </a>
                     <h4 className="wbdv-course-title col-sm-3">{this.props.courseId}</h4>

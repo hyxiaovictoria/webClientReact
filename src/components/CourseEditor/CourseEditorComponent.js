@@ -20,9 +20,12 @@ const reducers = combineReducers({
 
 const store = createStore(reducers)
 
+
+
 const CourseEditorComponent = ({hideEditor, match, courseId, moduleId, history}) =>
     <Provider store={store}>
         <div>
+            {/*<button onClick={() => history.push("/")}>XX</button>*/}
             {/*<LessonTabs lessons={this.state.lessons} hideEditor={this.props.hideEditor}/>*/}
             <LessonTabs courseId={courseId} moduleId={moduleId}/>
 

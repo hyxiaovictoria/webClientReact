@@ -10,6 +10,7 @@ class ModuleListComponent extends React.Component {
     }
 
     state = {
+        newModuleTitle: '',
         activeModuleId: this.props.moduleId,
         editingModuleId: '',
         module: {
@@ -94,6 +95,10 @@ class ModuleListComponent extends React.Component {
                             )
                 }
                 <li className="list-group-item">
+                    <input type="text" id="moduleNew"
+                           placeholder="New Module Title"
+                           onChange={e => this.state.newModuleTitle = e.target.value}
+                           value={this.state.newModuleTitle}/>
                     <button onClick={
                         () => this.props.createModule(this.props.courseId, {title: 'New Module'})
                     }>

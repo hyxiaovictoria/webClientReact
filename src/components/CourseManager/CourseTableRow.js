@@ -7,6 +7,10 @@ class CourseTableRow extends React.Component {
         updatedCourseTitle: ''
     }
 
+    updateForm = (e) => {
+        this.setState({updatedCourseTitle: e.target.value})
+    }
+
     render() {
         return(
             <tr className="wbdv-row">
@@ -17,7 +21,9 @@ class CourseTableRow extends React.Component {
                     </Link>
                 }
                 {this.state.editing && <input
-                    id='courseEditInput'>
+                    id='courseEditInput'
+                onChange={this.updateForm}
+                value={this.state.updatedCourseTitle}>
                 </input>}
             </td>
             <td>me

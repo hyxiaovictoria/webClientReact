@@ -13,8 +13,8 @@ export const createModule = (courseId, module) =>
         }
     }).then(response => response.json())
 
-export const updateModule = async (module) => {
-    const response = await fetch(`${MODULES_API_URL}/${module._id}`, {
+export const updateModule = async (moduleId, module) => {
+    const response = await fetch(`${MODULES_API_URL}/${moduleId}`, {
         method: 'PUT',
         body: JSON.stringify(module),
         headers: {

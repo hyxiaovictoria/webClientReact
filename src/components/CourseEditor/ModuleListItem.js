@@ -2,10 +2,10 @@ import React from "react";
 import {connect} from 'react-redux'
 import {COURSES_MODULES_API_URL, MODULES_API_URL} from "../../constants";
 import "./CourseEditorComponent.css"
+import {updateModule, findModulesForCourse, createModule} from "../../services/ModuleService";
 
 
-
-const ModuleListItem = ({save, edit, editing, module, deleteModule, active, select}) =>
+const ModuleListItem = ({save, edit, editing, module, deleteModule, saveModule, active, select}) =>
     <li
         onClick={select}
         className={`wbdv-module-item ${active ? 'active':''}`}>
@@ -26,14 +26,17 @@ const ModuleListItem = ({save, edit, editing, module, deleteModule, active, sele
             </input>}
 
             &nbsp;&nbsp;
-            {editing &&<a onClick={() =>
-                deleteModule(module._id)}>
+            {editing &&<a onClick={() => {
+                deleteModule(module._id)
+                save()
+            }}>
                 <i className="fas fa-trash fa-right-only-70"></i>
             </a>
             }
             &nbsp;&nbsp;
             {editing &&
-            <a onClick={save}>
+            <a onClick={() =>
+            updateModule(module._id, module)}>
                 <i className="fas fa-check-circle fa-right-only-50"></i>
             </a>
             }
@@ -42,6 +45,25 @@ const ModuleListItem = ({save, edit, editing, module, deleteModule, active, sele
 
 const stateToPropertyMapper = (state) => ({})
 const dispatchToPropertyMapper = (dispatch) => ({
+    // findModulesForCourse: courseId =>
+    //     fetch(findModulesForCourse(courseId))
+    //         .then(modules => dispatcher({
+    //             type: 'FIND_MODULES_FOR_COURSE',
+    //             modules: modules
+    //         })),
+    // addLesson: (moduleId) =>
+    //     fetch(MODULES_LESSONS_API_URL(moduleId), {
+    //         method: 'POST',
+    //         body: JSON.stringify({title: 'New Lesson'}),
+    //         headers: {
+    //             'content-type': 'application/json'
+    //         }
+    //     }).then(response => response.json())
+    //         .then(actualLesson =>
+    //             dispatcher({
+    //                 type: 'CREATE_LESSON',
+    //                 lesson: actualLesson
+    //             })),
     deleteModule: (moduleId) => {
         fetch(`${MODULES_API_URL}/${moduleId}`, {
             method: 'DELETE'
@@ -50,6 +72,15 @@ const dispatchToPropertyMapper = (dispatch) => ({
                 type: 'DELETE_MODULE',
                 moduleId: moduleId
             }))
+    },
+    updateModule: (moduleId, module) => {
+        updateModule(moduleId, module).then(status =>
+            dispatch({
+                type:'UPDATE_MODULE',
+                moduleId: moduleId,
+                module: module
+            })
+        )
     }
 })
 

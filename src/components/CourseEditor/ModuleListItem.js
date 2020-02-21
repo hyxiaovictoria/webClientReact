@@ -21,8 +21,11 @@ const ModuleListItem = ({save, edit, editing, module, deleteModule, saveModule, 
                 <i className="fa fa-edit fa-right-only-70"></i>
             </a>
             }
-            {editing && <input
-                onChange={e => {module.title = e.target.value}}>
+            {editing &&
+                <input
+                    onChange={e => {module.title = e.target.value}}
+                    // value={module.title}
+                >
             </input>}
 
             &nbsp;&nbsp;

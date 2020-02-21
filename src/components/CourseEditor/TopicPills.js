@@ -22,6 +22,7 @@ class TopicPills extends React.Component {
     }
 
     state = {
+        newTopicTitle: '',
         selectedTopicId: '',
         editingTopicId: '',
         topic: {
@@ -42,8 +43,20 @@ class TopicPills extends React.Component {
                         </li>
                     )}
                     <li className="nav-item wbdv-topic-pill">
+                        <input
+                            onChange={e => {this.setState({newTopicTitle: e.target.value})}}
+                            // value={module.title}
+                        >
+                        </input>
                         <a className="nav-link wbdv-white"
-                        onClick={() => this.props.addTopic(this.props.lessonId)}>
+                        onClick={() => {
+                            const lesson = {
+                                title: this.state.newTopicTitle,
+                                _id: new Date().getTime()
+                            }
+                            this.props.addTopic(this.props.lessonId, lesson)
+                        }
+                        }>
                             <i className="fa fa-plus fa-1x"></i>
                         </a>
                     </li>
@@ -73,10 +86,8 @@ const dispatcherToPropertyMapper = (dispatcher) => ({
     //         lessonId: actualLesson._id
     //     })
     // },
-    addTopic: async (lessonId) => {
-        const newTopic = await createTopic(lessonId,
-            {title: 'New topic',
-                _id: new Date().getTime()})
+    addTopic: async (lessonId, topic) => {
+        const newTopic = await createTopic(lessonId,topic)
         dispatcher({
             type: 'CREATE_TOPIC',
             topic: newTopic,

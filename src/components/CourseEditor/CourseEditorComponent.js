@@ -27,7 +27,7 @@ const CourseEditorComponent = ({hideEditor, match, courseId, moduleId, history})
         <div>
             {/*<button onClick={() => history.push("/")}>XX</button>*/}
             {/*<LessonTabs lessons={this.state.lessons} hideEditor={this.props.hideEditor}/>*/}
-            <LessonTabs courseId={courseId} moduleId={moduleId}/>
+            <LessonTabs courseId={courseId} moduleId={moduleId} history={history}/>
 
             <div className="row">
                 <div className="col-4">

@@ -38,7 +38,15 @@ class LessonTabs extends React.Component {
                     <h4 className="wbdv-course-title col-sm-3">{this.props.courseId}</h4>
                     <ul className="nav nav-tabs wbdv-page-tab col-sm-5">
                         {this.props.lessons.map(lesson =>
-                            <li key={lesson._id} className="nav-item">
+                            <li onClick={() => {
+                                this.props.history.push(
+                                    `/course-editor/${this.props.courseId}/module/${this.props.moduleId}/lesson/${lesson._id}`)
+                                this.setState({
+                                    activeLessonId: lesson._id
+                                })
+                            }
+                            }
+                                key={lesson._id} className="nav-item">
                                 {this.state.editingLessonId !== lesson._id
                                     &&
                                     <span className="wbdv-white">{lesson.title}</span>

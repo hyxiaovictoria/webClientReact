@@ -5,8 +5,7 @@ import ModuleListComponent from "../components/CourseEditor/ModuleListComponent"
 
 const stateToPropertiesMapper = (state) => (
     {
-        modules: state.modules.modules,
-        courseId: 'aa'
+        modules: state.modules.modules
     }
 )
 
@@ -15,10 +14,11 @@ const dispatchToPropertyMapper = (dispatch) => ({
         service.createModule(courseId, module)
             .then(actualModule =>
                 dispatch(createModule(actualModule))),
-    findModulesForCourse: (courseId) =>
+    findModulesForCourse: (courseId) => {
         service.findModulesForCourse(courseId)
             .then(modules =>
                 dispatch(findModulesForCourse(modules)))
+    }
 })
 
 const ModuleListContainer = connect(

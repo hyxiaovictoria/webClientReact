@@ -30,19 +30,10 @@ class WhiteBoardContainer extends React.Component {
         })
     }
 
-    deleteCourse = (course) => {
-        console.log('delete course:' + course)
-        deleteCourse(course._id).then(status => {
-            this.setState(prevState => {
-                return ({
-                    courses: prevState
-                        .courses
-                        .filter(function(crs) {
-                            return crs._id !== course._id
-                        })
-                })
-            })
-        })
+    deleteCourse = async (courseToDelete) => {
+        const status = await deleteCourse(courseToDelete._id)
+        const courses = await findAllCourses()
+        this.setState({courses: courses})
     }
 
     saveCourse = (course, newTitle) => {
@@ -50,17 +41,6 @@ class WhiteBoardContainer extends React.Component {
         console.log('save course ' + course.title)
         updateCourse(course._id, course).then(status => {
         })
-        // deleteCourse(course._id).then(status => {
-        //     this.setState(prevState => {
-        //         return ({
-        //             courses: prevState
-        //                 .courses
-        //                 .filter(function(crs) {
-        //                     return crs._id !== course._id
-        //                 })
-        //         })
-        //     })
-        // })
     }
 
     addCourse = (course) => {

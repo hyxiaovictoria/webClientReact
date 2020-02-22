@@ -1,7 +1,7 @@
 import {WIDGETS_API_URL, TOPICS_WIDGETS_API_URL} from "../constants";
 
 // topicId is not needed as input since widget contains that
-export const createWidget = widget =>
+export const createWidget = (topicId, widget) =>
     fetch(WIDGETS_API_URL, {
         method: "POST",
         body: JSON.stringify(widget),

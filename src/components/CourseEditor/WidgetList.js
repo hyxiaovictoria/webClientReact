@@ -13,7 +13,7 @@ import "../CourseEditor/CourseEditorComponent.css"
 
 class WidgetList extends React.Component {
     state = {
-        newWidgetTitle: 'HEADING',
+        newWidgetType: 'HEADING',
         newWidgetSize: 1,
         newWidgetText: 'Widget text',
         newWidgetName: 'Widget name',
@@ -24,12 +24,14 @@ class WidgetList extends React.Component {
     }
     componentDidMount() {
         console.log('YH_WidgetList_componentDidMount: ' + this.props.topicId)
+        console.log('YH_WidgetList_widgets: ' + JSON.stringify(this.props.widgets))
         this.props.findWidgetsForTopic(this.props.topicId)
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         if(prevProps.topicId !== this.props.topicId) {
             this.props.findWidgetsForTopic(this.props.topicId);
+            console.log('YH_WidgetList_widgets: ' + JSON.stringify(this.props.widgets))
         }
     }
 
@@ -55,7 +57,7 @@ class WidgetList extends React.Component {
                 </div>
                 <div className="fa-top-margin-50px">
                 {
-                    this.props.widgets && this.props.widgets.map(widget =>
+                    this.props.widgets && this.props.widgets.length !== 0 && this.props.widgets.map(widget =>
                         <div key={widget.id}>
                             <span>
                                 <h3>Heading widget</h3>
@@ -99,14 +101,14 @@ class WidgetList extends React.Component {
                 </div>
                 <div className="row fa-top-margin-rel-100px">
                     <div className="col-6">
-                        {this.state.newWidgetTitle === 'HEADING' && <h3>Heading widget</h3>}
-                        {this.state.newWidgetTitle === 'PARAGRAPH' && <h3>Paragraph widget</h3>}
-                        {this.state.newWidgetTitle === 'YOUTUBE' && <h3>Youtube widget</h3>}
-                        {this.state.newWidgetTitle === 'HTML' && <h3>HTML widget</h3>}
+                        {this.state.newWidgetType === 'HEADING' && <h3>Heading widget</h3>}
+                        {this.state.newWidgetType === 'PARAGRAPH' && <h3>Paragraph widget</h3>}
+                        {this.state.newWidgetType === 'YOUTUBE' && <h3>Youtube widget</h3>}
+                        {this.state.newWidgetType === 'HTML' && <h3>HTML widget</h3>}
                     </div>
                     <div className="col-6">
                         <select onChange={(e) => {
-                            this.setState({newWidgetTitle: e.target.value})
+                            this.setState({newWidgetType: e.target.value})
                         }}>
                             <option value="HEADING">Heading</option>
                             <option value="PARAGRAPH">Paragraph</option>
@@ -116,11 +118,21 @@ class WidgetList extends React.Component {
                     </div>
                 </div>
                 <div>
-                    <input type="text"
+                    <input className="row"
+                            type="text"
                            onChange={e => this.setState({newWidgetText: e.target.value})
                            }
                            value={this.state.newWidgetText}/>
-                    <input type="text"
+                    <select onChange={e => {this.setState({newWidgetSize: e.target.value})}}>
+                        <option value='1'>Size 1</option>
+                        <option value='2'>Size 2</option>
+                        <option value='3'>Size 3</option>
+                        <option value='4'>Size 4</option>
+                        <option value='5'>Size 5</option>
+                        <option value='6'>Size 6</option>
+                    </select>
+                    <input className="row"
+                            type="text"
                            onChange={e => this.setState({newWidgetName: e.target.value})
                            }
                            value={this.state.newWidgetName}/>
@@ -128,8 +140,18 @@ class WidgetList extends React.Component {
                 <div>
                     <button className="fa-right-only-50 fa-top-margin-20px"
                         onClick={
-                            () =>
-                                this.props.createWidget(this.props.topicId)}>
+                            () => {
+                                const newWidget = {
+                                    id: (new Date()).getTime() + "",
+                                    title: this.state.newWidgetTitle,
+                                    type: this.state.newWidgetType,
+                                    topicId: this.props.topicId,
+                                    size: this.state.newWidgetSize
+                                }
+                                console.log('YH_WidgetList_click_Add: ' + JSON.stringify(newWidget))
+                                this.props.createWidget(this.props.topicId, newWidget)
+                            }
+                        }>
                             <span className="wbdv-button wbdv-add-course fa-stack fa-1x wd-bottom-right col-sm-1">
                                 <i className="fas fa-circle fa-stack-2x"></i>
                                 <i className="fas fa-plus fa-stack-1x fa-inverse"></i>
@@ -164,16 +186,17 @@ const dispatchToPropertyMapper = (dispatcher) => ({
                 type: 'DELETE_WIDGET',
                 widgetId: widgetId
             })),
-    createWidget: (topicId) =>
-        createWidget({
-            title: "New Widget",
-            type: "HEADING",
-            topicId: topicId,
-            id: (new Date()).getTime() + ""
-        })
-            .then(actualWidget => dispatcher({
-                type: "ADD_WIDGET",
-                widget: actualWidget
+    createWidget: (topicId, widget) =>
+        // createWidget({
+        //     title: "New Widget",
+        //     type: "HEADING",
+        //     topicId: topicId,
+        //     id: (new Date()).getTime() + ""
+        // })
+        createWidget(topicId, widget)
+            .then(widget => dispatcher({
+                type: "CREATE_WIDGET",
+                widget: widget
             })),
     findAllWidgets: () =>
         findAllWidgets()

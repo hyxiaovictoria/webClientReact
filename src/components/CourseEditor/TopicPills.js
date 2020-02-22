@@ -39,8 +39,10 @@ class TopicPills extends React.Component {
                 <ul className="nav nav-pills wbdv-topic-pill-list">
                     {this.props.topics.map(topic =>
                         <li key={topic._id}
+                            onClick={() => this.props.history.push(
+                                `/course-editor/${this.props.courseId}/module/${this.props.moduleId}/lesson/${this.props.lessonId}/topic/${topic._id}`)}
                             className="nav-item wbdv-topic-pill">
-                            <a className="nav-link wbdv-white" href="#">{topic.title}</a>
+                            <a className="nav-link wbdv-white">{topic.title}</a>
                         </li>
                     )}
                     <li className="nav-item wbdv-topic-pill">

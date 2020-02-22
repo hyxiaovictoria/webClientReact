@@ -40,7 +40,7 @@ const CourseEditorComponent = ({hideEditor, match, courseId, moduleId, lessonId,
                 </div>
                 <div className="col-8">
                     <TopicPills courseId={courseId} moduleId={moduleId} lessonId={lessonId} topicId={topicId} history={history}/>
-                    <WidgetList></WidgetList>
+                    <WidgetList courseId={courseId} moduleId={moduleId} lessonId={lessonId} topicId={topicId} history={history}/>
                 </div>
             </div>
         </div>

@@ -13,6 +13,7 @@ import "../CourseEditor/CourseEditorComponent.css"
 
 class WidgetList extends React.Component {
     state = {
+        newWidgetTitle: '',
         editingWidgetId: '',
         widget: {
             id: ''
@@ -92,6 +93,24 @@ class WidgetList extends React.Component {
                         </div>
                     )
                 }
+                </div>
+                <div className="row">
+                    <div className="col-6">
+                        {this.state.newWidgetTitle === 'HEADING' && <h3>Heading widget</h3>}
+                        {this.state.newWidgetTitle === 'PARAGRAPH' && <h3>Paragraph widget</h3>}
+                        {this.state.newWidgetTitle === 'YOUTUBE' && <h3>Youtube widget</h3>}
+                        {this.state.newWidgetTitle === 'HTML' && <h3>HTML widget</h3>}
+                    </div>
+                    <div className="col-6">
+                        <select onChange={(e) => {
+                            this.setState({newWidgetTitle: e.target.value})
+                        }}>
+                            <option value="HEADING">Heading</option>
+                            <option value="PARAGRAPH">Paragraph</option>
+                            <option value="YOUTUBE">YouTube</option>
+                            <option value="HTML">HTML</option>
+                        </select>
+                    </div>
                 </div>
                 <div>
                     <button className="fa-right-only-50 fa-top-margin-20px"

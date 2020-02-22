@@ -13,7 +13,7 @@ import "../CourseEditor/CourseEditorComponent.css"
 
 class WidgetList extends React.Component {
     state = {
-        newWidgetTitle: '',
+        newWidgetTitle: 'HEADING',
         editingWidgetId: '',
         widget: {
             id: ''
@@ -94,7 +94,7 @@ class WidgetList extends React.Component {
                     )
                 }
                 </div>
-                <div className="row">
+                <div className="row fa-top-margin-rel-100px">
                     <div className="col-6">
                         {this.state.newWidgetTitle === 'HEADING' && <h3>Heading widget</h3>}
                         {this.state.newWidgetTitle === 'PARAGRAPH' && <h3>Paragraph widget</h3>}

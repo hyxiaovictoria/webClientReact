@@ -73,6 +73,11 @@ h6{
     margin-top: 50px;
 }
 
+.fa-top-margin-rel-100px{
+    position : relative;
+    margin-top: 100px;
+}
+
 .fa-top-margin-20px{
     position : absolute;
     margin-top: 20px;

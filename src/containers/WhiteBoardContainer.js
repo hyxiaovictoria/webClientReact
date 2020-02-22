@@ -118,7 +118,7 @@ class WhiteBoardContainer extends React.Component {
                         }
                     />
                     <Route
-                        path="/course-editor/:courseId/module/:moduleId/lesson/:lessonId/topic/topicId"
+                        path="/course-editor/:courseId/module/:moduleId/lesson/:lessonId/topic/:topicId"
                         exact={true}
                         render={(props)=>
                             <CourseEditorComponent

@@ -19,6 +19,7 @@ class WidgetList extends React.Component {
         }
     }
     componentDidMount() {
+        console.log('YH_WidgetList_componentDidMount: ' + this.props.topicId)
         this.props.findWidgetsForTopic(this.props.topicId)
     }
 
@@ -38,7 +39,7 @@ class WidgetList extends React.Component {
     render(){
         return(
             <div>
-                <div className="fa-right">
+                <div className="float-right">
                     <button className="btn btn-primary wbdv-button wbdv-save btn-success">Save</button>
                     &nbsp;&nbsp;
                     <label className="text-black-50">Preview</label>

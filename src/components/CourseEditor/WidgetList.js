@@ -14,6 +14,9 @@ import "../CourseEditor/CourseEditorComponent.css"
 class WidgetList extends React.Component {
     state = {
         newWidgetTitle: 'HEADING',
+        newWidgetSize: 1,
+        newWidgetText: 'Widget text',
+        newWidgetName: 'Widget name',
         editingWidgetId: '',
         widget: {
             id: ''
@@ -111,6 +114,16 @@ class WidgetList extends React.Component {
                             <option value="HTML">HTML</option>
                         </select>
                     </div>
+                </div>
+                <div>
+                    <input type="text"
+                           onChange={e => this.setState({newWidgetText: e.target.value})
+                           }
+                           value={this.state.newWidgetText}/>
+                    <input type="text"
+                           onChange={e => this.setState({newWidgetName: e.target.value})
+                           }
+                           value={this.state.newWidgetName}/>
                 </div>
                 <div>
                     <button className="fa-right-only-50 fa-top-margin-20px"

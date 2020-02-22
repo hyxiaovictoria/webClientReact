@@ -23,9 +23,8 @@ class WidgetList extends React.Component {
         }
     }
     componentDidMount() {
-        console.log('YH_WidgetList_componentDidMount: ' + this.props.topicId)
-        console.log('YH_WidgetList_widgets: ' + JSON.stringify(this.props.widgets))
-        this.props.findWidgetsForTopic(this.props.topicId)
+        // this.props.findWidgetsForTopic(this.props.topicId)
+        this.props.findWidgetsForTopic('222')
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
@@ -57,7 +56,7 @@ class WidgetList extends React.Component {
                 </div>
                 <div className="fa-top-margin-50px">
                 {
-                    this.props.widgets && this.props.widgets.length !== 0 && this.props.widgets.map(widget =>
+                    this.props.widgets && this.props.widgets.map(widget =>
                         <div key={widget.id}>
                             <span>
                                 <h3>Heading widget</h3>
@@ -139,19 +138,20 @@ class WidgetList extends React.Component {
                 </div>
                 <div>
                     <button className="fa-right-only-50 fa-top-margin-20px"
-                        onClick={
-                            () => {
-                                const newWidget = {
-                                    id: (new Date()).getTime() + "",
-                                    title: this.state.newWidgetTitle,
-                                    type: this.state.newWidgetType,
-                                    topicId: this.props.topicId,
-                                    size: this.state.newWidgetSize
-                                }
-                                console.log('YH_WidgetList_click_Add: ' + JSON.stringify(newWidget))
-                                this.props.createWidget(this.props.topicId, newWidget)
-                            }
-                        }>
+                        // onClick={
+                        //     () => {
+                        //         const newWidget = {
+                        //             id: (new Date()).getTime() + "",
+                        //             text: this.state.newWidgetText,
+                        //             type: this.state.newWidgetType,
+                        //             topicId: this.props.topicId,
+                        //             size: this.state.newWidgetSize
+                        //         }
+                        //         console.log('YH_WidgetList_click_Add: ' + JSON.stringify(newWidget))
+                        //         this.props.createWidget(this.props.topicId, newWidget)
+                        //     }
+                        // }
+                    >
                             <span className="wbdv-button wbdv-add-course fa-stack fa-1x wd-bottom-right col-sm-1">
                                 <i className="fas fa-circle fa-stack-2x"></i>
                                 <i className="fas fa-plus fa-stack-1x fa-inverse"></i>

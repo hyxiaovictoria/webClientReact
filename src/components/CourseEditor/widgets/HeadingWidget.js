@@ -18,7 +18,6 @@ class HeadingWidget extends React.Component {
     render () {
         return(
             <div>
-
                 {
                     !this.state.editing &&
                     <div>

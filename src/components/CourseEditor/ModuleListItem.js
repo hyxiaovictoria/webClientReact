@@ -8,7 +8,8 @@ import {updateModule, findModulesForCourse, createModule, deleteModule} from "..
 const ModuleListItem = ({save, edit, editing, module, active, select}) =>
     <li
         onClick={select}
-        className={`wbdv-module-item ${active ? 'active':''}`}>
+        className={`wbdv-module-item list-group-item ${active ? 'active':''} `}
+    >
 
         {!editing &&
         <span className="wbdv-module-item-title">

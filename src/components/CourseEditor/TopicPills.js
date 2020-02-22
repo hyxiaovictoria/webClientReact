@@ -45,12 +45,12 @@ class TopicPills extends React.Component {
                             <a className="nav-link wbdv-white">{topic.title}</a>
                         </li>
                     )}
+                    <input
+                        onChange={e => {this.setState({newTopicTitle: e.target.value})}}
+                        // value={module.title}
+                    >
+                    </input>
                     <li className="nav-item wbdv-topic-pill">
-                        <input
-                            onChange={e => {this.setState({newTopicTitle: e.target.value})}}
-                            // value={module.title}
-                        >
-                        </input>
                         <a className="nav-link wbdv-white"
                         onClick={() => {
                             const lesson = {

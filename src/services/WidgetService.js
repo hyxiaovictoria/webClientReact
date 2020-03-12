@@ -2,13 +2,13 @@ import {WIDGETS_API_URL, TOPICS_WIDGETS_API_URL} from "../constants";
 
 // topicId is not needed as input since widget contains that
 export const createWidget = (topicId, widget) =>
-    fetch(WIDGETS_API_URL, {
+    fetch(TOPICS_WIDGETS_API_URL(topicId), {
         method: "POST",
         body: JSON.stringify(widget),
         headers: {
             'content-type': 'application/json'
         }
-    }).then(response => console.log(response.json()))
+    }).then(response => response.json())
         // .then(() => findWidgetsForTopic())
         // .then(response => response.json())
         // .then(response => console.log('After creating a new widget: ' + response))

@@ -138,19 +138,18 @@ class WidgetList extends React.Component {
                 </div>
                 <div>
                     <button className="fa-right-only-50 fa-top-margin-20px"
-                        // onClick={
-                        //     () => {
-                        //         const newWidget = {
-                        //             id: (new Date()).getTime() + "",
-                        //             text: this.state.newWidgetText,
-                        //             type: this.state.newWidgetType,
-                        //             topicId: this.props.topicId,
-                        //             size: this.state.newWidgetSize
-                        //         }
-                        //         console.log('YH_WidgetList_click_Add: ' + JSON.stringify(newWidget))
-                        //         this.props.createWidget(this.props.topicId, newWidget)
-                        //     }
-                        // }
+                        onClick={
+                            () => {
+                                const newWidget = {
+                                    text: this.state.newWidgetText,
+                                    type: this.state.newWidgetType,
+                                    topicId: this.props.topicId,
+                                    size: this.state.newWidgetSize
+                                }
+                                console.log('YH_WidgetList_click_Add: ' + JSON.stringify(newWidget))
+                                this.props.createWidget(this.props.topicId, newWidget)
+                            }
+                        }
                     >
                             <span className="wbdv-button wbdv-add-course fa-stack fa-1x wd-bottom-right col-sm-1">
                                 <i className="fas fa-circle fa-stack-2x"></i>
@@ -186,18 +185,15 @@ const dispatchToPropertyMapper = (dispatcher) => ({
                 type: 'DELETE_WIDGET',
                 widgetId: widgetId
             })),
-    createWidget: (topicId, widget) =>
-        // createWidget({
-        //     title: "New Widget",
-        //     type: "HEADING",
-        //     topicId: topicId,
-        //     id: (new Date()).getTime() + ""
-        // })
-        createWidget(topicId, widget)
-            .then(widget => dispatcher({
-                type: "CREATE_WIDGET",
-                widget: widget
-            })),
+    createWidget: async (topicId, widget) => {
+        const newWidget = await createWidget(topicId, widget)
+        console.log('Yue(newWidget): ' + JSON.stringify(newWidget))
+        dispatcher({
+            type: "CREATE_WIDGET",
+            widget: newWidget,
+            widgetId: newWidget.id
+        })
+    },
     findAllWidgets: () =>
         findAllWidgets()
             .then(actualWidgets => dispatcher({

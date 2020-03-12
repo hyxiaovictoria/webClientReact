@@ -57,7 +57,7 @@ class TopicPills extends React.Component {
                                 title: this.state.newTopicTitle,
                                 _id: new Date().getTime()
                             }
-                            this.props.addTopic(this.props.lessonId, lesson)
+                            this.props.createTopic(this.props.lessonId, lesson)
                         }
                         }>
                             <i className="fa fa-plus fa-1x"></i>
@@ -89,7 +89,7 @@ const dispatcherToPropertyMapper = (dispatcher) => ({
     //         lessonId: actualLesson._id
     //     })
     // },
-    addTopic: async (lessonId, topic) => {
+    createTopic: async (lessonId, topic) => {
         const newTopic = await createTopic(lessonId,topic)
         dispatcher({
             type: 'CREATE_TOPIC',

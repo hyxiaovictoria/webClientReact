@@ -44,7 +44,7 @@ class WidgetList extends React.Component {
     render(){
         return(
             <div>
-                <div className="float-right">
+                <div className="row">
                     <button className="btn btn-primary wbdv-button wbdv-save btn-success">Save</button>
                     &nbsp;&nbsp;
                     <label className="text-black-50">Preview</label>
@@ -57,7 +57,7 @@ class WidgetList extends React.Component {
                 <div>
                     {
                         this.props.widgets && this.props.widgets.map(widget =>
-                            <div key={widget.id}>
+                            <div className="fa-margin-50px" key={widget.id}>
                             <span>
                                 <h3>Heading widget</h3>
                             </span>

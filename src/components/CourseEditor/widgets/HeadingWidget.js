@@ -68,30 +68,6 @@ class HeadingWidget extends React.Component {
                                 value = "Widget name"
                                 type="text"/>
                         </div>
-                        <span className="float-right">
-                                <select
-                                    onChange={(e) => {
-                                        const newSize = parseInt(e.target.value);
-                                        this.setState(prevState => {
-                                            prevState.widget.size = newSize;
-                                            return prevState
-                                        })
-                                    }}
-                                    value={this.state.widget.size}>
-                                    <option value={1}>Heading 1</option>
-                                    <option value={2}>Heading 2</option>
-                                    <option value={3}>Heading 3</option>
-                                    <option value={4}>Heading 4</option>
-                                </select>
-                                    <button onClick={
-                                        () =>
-                                        {
-                                            this.props.saveWidget(this.state.widget)
-                                        }}>
-                                        Save
-                                    </button>
-
-                                </span>
                     </div>
                 }
             </div>

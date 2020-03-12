@@ -54,7 +54,7 @@ class WidgetList extends React.Component {
                         <span className="slider round"></span>
                     </label>
                 </div>
-                <div className="fa-top-margin-50px">
+                <div>
                     {
                         this.props.widgets && this.props.widgets.map(widget =>
                             <div key={widget.id}>
@@ -135,21 +135,18 @@ class WidgetList extends React.Component {
                            onChange={e => this.setState({newWidgetName: e.target.value})
                            }
                            value={this.state.newWidgetName}/>
-                </div>
-                <div>
-                    <button className="fa-right-only-50 fa-top-margin-20px"
-                        onClick={
-                            () => {
-                                const newWidget = {
-                                    text: this.state.newWidgetText,
-                                    type: this.state.newWidgetType,
-                                    topicId: this.props.topicId,
-                                    size: this.state.newWidgetSize
+                    <button className="fa-right-only-50"
+                            onClick={
+                                () => {
+                                    const newWidget = {
+                                        text: this.state.newWidgetText,
+                                        type: this.state.newWidgetType,
+                                        topicId: this.props.topicId,
+                                        size: this.state.newWidgetSize
+                                    }
+                                    this.props.createWidget(this.props.topicId, newWidget)
                                 }
-                                console.log('YH_WidgetList_click_Add: ' + JSON.stringify(newWidget))
-                                this.props.createWidget(this.props.topicId, newWidget)
                             }
-                        }
                     >
                             <span className="wbdv-button wbdv-add-course fa-stack fa-1x wd-bottom-right col-sm-1">
                                 <i className="fas fa-circle fa-stack-2x"></i>

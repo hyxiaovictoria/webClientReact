@@ -1,7 +1,8 @@
 import {TOPICS_API_URL, LESSONS_TOPICS_API_URL} from "../constants";
 
+// TODO: Fix lessonId issue
 export const findTopicsForLesson = (lessonId) =>
-    fetch(LESSONS_TOPICS_API_URL(lessonId))
+    fetch(LESSONS_TOPICS_API_URL('tid'))
         .then(response => response.json())
 
 export const createTopic = (lessonId, topic) =>

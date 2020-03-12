@@ -55,13 +55,13 @@ class WidgetList extends React.Component {
                     </label>
                 </div>
                 <div className="fa-top-margin-50px">
-                {
-                    this.props.widgets && this.props.widgets.map(widget =>
-                        <div key={widget.id}>
+                    {
+                        this.props.widgets && this.props.widgets.map(widget =>
+                            <div key={widget.id}>
                             <span>
                                 <h3>Heading widget</h3>
                             </span>
-                            <span>
+                                <span>
                                 <button>
                                      <i className="fas fa-arrow-circle-up fa-2x"></i>
                                 </button>
@@ -92,11 +92,11 @@ class WidgetList extends React.Component {
                                 </button>
 
                             </span>
-                            {widget.type === "HEADING"   && <HeadingWidget   saveWidget={this.saveWidget} editing={true} {...this.props} widget={widget}/>}
-                            {widget.type === "PARAGRAPH" && <ParagraphWidget updateWidget={this.updateWidget} editing={this.state.widget.id === widget.id} widget={widget}/>}
-                        </div>
-                    )
-                }
+                                {widget.type === "HEADING"   && <HeadingWidget   saveWidget={this.saveWidget} editing={true} {...this.props} widget={widget}/>}
+                                {widget.type === "PARAGRAPH" && <ParagraphWidget updateWidget={this.updateWidget} editing={this.state.widget.id === widget.id} widget={widget}/>}
+                            </div>
+                        )
+                    }
                 </div>
                 <div className="row fa-top-margin-rel-100px">
                     <div className="col-6">
@@ -118,7 +118,7 @@ class WidgetList extends React.Component {
                 </div>
                 <div>
                     <input className="row"
-                            type="text"
+                           type="text"
                            onChange={e => this.setState({newWidgetText: e.target.value})
                            }
                            value={this.state.newWidgetText}/>
@@ -131,7 +131,7 @@ class WidgetList extends React.Component {
                         <option value='6'>Size 6</option>
                     </select>
                     <input className="row"
-                            type="text"
+                           type="text"
                            onChange={e => this.setState({newWidgetName: e.target.value})
                            }
                            value={this.state.newWidgetName}/>

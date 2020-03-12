@@ -40,7 +40,7 @@ class TopicPills extends React.Component {
                     {this.props.topics.map(topic =>
                         <li key={topic._id}
                             onClick={() => this.props.history.push(
-                                `/course-editor/${this.props.courseId}/module/${this.props.moduleId}/lesson/${this.props.lessonId}/topic/${topic._id}`)}
+                                `/course-editor/${this.props.courseId}/module/${this.props.moduleId}/lesson/${this.props.lessonId}/topic/${topic.id}`)}
                             className="nav-item wbdv-topic-pill">
                             <a className="nav-link wbdv-white">{topic.title}</a>
                         </li>
@@ -94,7 +94,7 @@ const dispatcherToPropertyMapper = (dispatcher) => ({
         dispatcher({
             type: 'CREATE_TOPIC',
             topic: newTopic,
-            topicId: newTopic._id
+            topicId: newTopic.id
         })
     }//,
     // deleteLesson: (lessonId) =>

@@ -17,6 +17,7 @@ class WidgetList extends React.Component {
         newWidgetSize: 1,
         newWidgetText: 'Widget text',
         newWidgetName: 'Widget name',
+        newWidgetListIsInOrder: 0,
         editingWidgetId: '',
         widget: {
             id: ''
@@ -104,6 +105,8 @@ class WidgetList extends React.Component {
                         {this.state.newWidgetType === 'PARAGRAPH' && <h3>Paragraph widget</h3>}
                         {this.state.newWidgetType === 'YOUTUBE' && <h3>Youtube widget</h3>}
                         {this.state.newWidgetType === 'HTML' && <h3>HTML widget</h3>}
+                        {this.state.newWidgetType === 'LIST' && <h3>List widget</h3>}
+                        {this.state.newWidgetType === 'IMAGE' && <h3>Image widget</h3>}
                     </div>
                     <div className="col-6">
                         <select onChange={(e) => {
@@ -113,16 +116,21 @@ class WidgetList extends React.Component {
                             <option value="PARAGRAPH">Paragraph</option>
                             <option value="YOUTUBE">YouTube</option>
                             <option value="HTML">HTML</option>
+                            <option value="LIST">List</option>
+                            <option value="IMAGE">Image</option>
                         </select>
                     </div>
                 </div>
+                {this.state.newWidgetType === 'HEADING' &&
                 <div>
                     <input className="row"
                            type="text"
                            onChange={e => this.setState({newWidgetText: e.target.value})
                            }
                            value={this.state.newWidgetText}/>
-                    <select onChange={e => {this.setState({newWidgetSize: e.target.value})}}>
+                    <select onChange={e => {
+                        this.setState({newWidgetSize: e.target.value})
+                    }}>
                         <option value='1'>Size 1</option>
                         <option value='2'>Size 2</option>
                         <option value='3'>Size 3</option>
@@ -135,6 +143,29 @@ class WidgetList extends React.Component {
                            onChange={e => this.setState({newWidgetName: e.target.value})
                            }
                            value={this.state.newWidgetName}/>
+                </div>
+                }
+                {this.state.newWidgetType === 'LIST' &&
+                <div>
+                    <input className="row"
+                           type="text"
+                           onChange={e => this.setState({newWidgetText: e.target.value})
+                           }
+                           value={this.state.newWidgetText}/>
+                    <select onChange={e => {
+                        this.setState({newWidgetListIsInOrder: e.target.value})
+                    }}>
+                        <option value='0'>Unordered list</option>
+                        <option value='1'>Ordered list</option>
+                    </select>
+                    <input className="row"
+                           type="text"
+                           onChange={e => this.setState({newWidgetName: e.target.value})
+                           }
+                           value={this.state.newWidgetName}/>
+                </div>
+                }
+                <div>
                     <button className="fa-right-only-50"
                             onClick={
                                 () => {
@@ -142,7 +173,8 @@ class WidgetList extends React.Component {
                                         text: this.state.newWidgetText,
                                         type: this.state.newWidgetType,
                                         topicId: this.props.topicId,
-                                        size: this.state.newWidgetSize
+                                        size: this.state.newWidgetSize,
+                                        order: this.state.newWidgetListIsInOrder
                                     }
                                     this.props.createWidget(this.props.topicId, newWidget)
                                 }
@@ -153,6 +185,7 @@ class WidgetList extends React.Component {
                                 <i className="fas fa-plus fa-stack-1x fa-inverse"></i>
                             </span>
                     </button>
+
                 </div>
             </div>
         )
@@ -184,7 +217,6 @@ const dispatchToPropertyMapper = (dispatcher) => ({
             })),
     createWidget: async (topicId, widget) => {
         const newWidget = await createWidget(topicId, widget)
-        console.log('Yue(newWidget): ' + JSON.stringify(newWidget))
         dispatcher({
             type: "CREATE_WIDGET",
             widget: newWidget,

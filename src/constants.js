@@ -14,6 +14,6 @@ export const LESSONS_TOPICS_API_URL = (lessonId) =>  `http://localhost:8080/api/
 // export const TOPICS_WIDGETS_API_URL = (topicId) =>   `https://wbdv-generic-server.herokuapp.com/api/xiaohai/topics/${topicId}/widgets`
 // export const TOPICS_WIDGETS_API_URL = (topicId) => `http://localhost:8080/topics/${topicId}/widgets`
 // export const TOPICS_WIDGETS_API_URL = (topicId) => `https://wbdv-sp20-xiaohai-server-java2.herokuapp.com/topics/${topicId}/widgets`
-export const TOPICS_WIDGETS_API_URL = (widgetId) => `http://localhost:8080/api/topics/${widgetId}/widgets`
+export const TOPICS_WIDGETS_API_URL = (topicId) => `http://localhost:8080/api/topics/${topicId}/widgets`
 export const DEFAULT_COURSE_TITLE = "New Course"
 export const DEFAULT_SECTION_TITLE = "New Section"

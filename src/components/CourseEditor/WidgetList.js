@@ -200,6 +200,7 @@ class WidgetList extends React.Component {
                                 () => {
                                     const newWidget = {
                                         text: this.state.newWidgetText,
+                                        name: this.state.newWidgetName,
                                         type: this.state.newWidgetType,
                                         topicId: this.props.topicId,
                                         url: this.state.newURL,

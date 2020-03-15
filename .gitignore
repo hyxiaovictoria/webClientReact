@@ -5,6 +5,7 @@
 .idea
 /.pnp
 .pnp.js
+.package-lock.js
 
 # testing
 /coverage

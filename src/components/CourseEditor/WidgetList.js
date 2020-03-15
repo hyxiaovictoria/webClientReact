@@ -17,6 +17,7 @@ class WidgetList extends React.Component {
         newWidgetSize: 1,
         newWidgetText: 'Widget text',
         newWidgetName: 'Widget name',
+        newURL: 'Image URL',
         newWidgetListIsInOrder: 0,
         editingWidgetId: '',
         widget: {
@@ -145,6 +146,20 @@ class WidgetList extends React.Component {
                            value={this.state.newWidgetName}/>
                 </div>
                 }
+                {this.state.newWidgetType === 'PARAGRAPH' &&
+                <div>
+                    <input className="row"
+                           type="text"
+                           onChange={e => this.setState({newWidgetText: e.target.value})
+                           }
+                           value={this.state.newWidgetText}/>
+                    <input className="row"
+                           type="text"
+                           onChange={e => this.setState({newWidgetName: e.target.value})
+                           }
+                           value={this.state.newWidgetName}/>
+                </div>
+                }
                 {this.state.newWidgetType === 'LIST' &&
                 <div>
                     <input className="row"
@@ -165,6 +180,20 @@ class WidgetList extends React.Component {
                            value={this.state.newWidgetName}/>
                 </div>
                 }
+                {this.state.newWidgetType === 'IMAGE' &&
+                <div>
+                    <input className="row"
+                           type="text"
+                           onChange={e => this.setState({newURL: e.target.value})
+                           }
+                           value={this.state.newURL}/>
+                    <input className="row"
+                           type="text"
+                           onChange={e => this.setState({newWidgetName: e.target.value})
+                           }
+                           value={this.state.newWidgetName}/>
+                </div>
+                }
                 <div>
                     <button className="fa-right-only-50"
                             onClick={
@@ -173,6 +202,7 @@ class WidgetList extends React.Component {
                                         text: this.state.newWidgetText,
                                         type: this.state.newWidgetType,
                                         topicId: this.props.topicId,
+                                        url: this.state.newURL,
                                         size: this.state.newWidgetSize,
                                         isInOrder: this.state.newWidgetListIsInOrder
                                     }

@@ -1,6 +1,6 @@
 import React from "react";
 
 const ParagraphWidget = ({widget}) =>
-    <h1>Paragraph Widget {widget.title}</h1>
+    <h3>Paragraph Widget {widget.title}</h3>
 
 export default ParagraphWidget

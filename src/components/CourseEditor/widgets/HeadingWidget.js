@@ -32,6 +32,9 @@ class HeadingWidget extends React.Component {
                 {
                     this.state.editing &&
                     <div>
+                        <span>
+                            <h3>Heading widget</h3>
+                        </span>
                         <div className="form-row">
                             <input className="form-control wbdv-width-100"
                                    type="text"

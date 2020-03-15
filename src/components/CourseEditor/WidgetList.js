@@ -2,6 +2,8 @@ import React from "react";
 import {connect} from "react-redux";
 import HeadingWidget from "./widgets/HeadingWidget";
 import ParagraphWidget from "./widgets/PararagraphWidget";
+// import ListWidget from "./widgets/ListWidget";
+
 import {
     findAllWidgets,
     createWidget,
@@ -60,42 +62,51 @@ class WidgetList extends React.Component {
                     {
                         this.props.widgets && this.props.widgets.map(widget =>
                             <div className="fa-margin-50px" key={widget.id}>
-                            <span>
-                                <h3>Heading widget</h3>
-                            </span>
-                                <span>
-                                <button>
-                                     <i className="fas fa-arrow-circle-up fa-2x"></i>
-                                </button>
-                                <button>
-                                    <i className="fas fa-arrow-circle-down fa-2x"></i>
-                                </button>
-                                <select onChange={(e) => {
-                                    const newType = e.target.value
-                                    this.setState(prevState => {
-                                        this.state.widget.type = newType;
-                                        return {
-                                            widget: {
-                                                ...widget, type: newType
-                                            }
-                                        }})
-                                    this.props.updateWidget(this.state.widget.id, this.state.widget)
-                                }}
-                                        value={this.state.widget.type}>
-                                    <option value="HEADING">Heading</option>
-                                    <option value="PARAGRAPH">Paragraph</option>
-                                    <option value="YOUTUBE">YouTube</option>
-                                    <option value="HTML">HTML</option>
-                                </select>
-                                    <button onClick={() => {
-                                        this.props.deleteWidget(widget.id)
-                                    }}>
-                                    <i className="fas fa-trash fa-2x"></i>
-                                </button>
-
-                            </span>
-                                {widget.type === "HEADING"   && <HeadingWidget   saveWidget={this.saveWidget} editing={true} {...this.props} widget={widget}/>}
-                                {widget.type === "PARAGRAPH" && <ParagraphWidget updateWidget={this.updateWidget} editing={this.state.widget.id === widget.id} widget={widget}/>}
+                                {/*<span>*/}
+                                {/*    <h3>Heading widget</h3>*/}
+                                {/*</span>*/}
+                                {/*<span>*/}
+                                {/*    <button>*/}
+                                {/*         <i className="fas fa-arrow-circle-up fa-2x"></i>*/}
+                                {/*    </button>*/}
+                                {/*    <button>*/}
+                                {/*        <i className="fas fa-arrow-circle-down fa-2x"></i>*/}
+                                {/*    </button>*/}
+                                {/*    <select onChange={(e) => {*/}
+                                {/*        const newType = e.target.value*/}
+                                {/*        this.setState(prevState => {*/}
+                                {/*            this.state.widget.type = newType;*/}
+                                {/*            return {*/}
+                                {/*                widget: {*/}
+                                {/*                    ...widget, type: newType*/}
+                                {/*                }*/}
+                                {/*            }})*/}
+                                {/*        this.props.updateWidget(this.state.widget.id, this.state.widget)*/}
+                                {/*    }}*/}
+                                {/*            value={this.state.widget.type}>*/}
+                                {/*        <option value="HEADING">Heading</option>*/}
+                                {/*        <option value="PARAGRAPH">Paragraph</option>*/}
+                                {/*        <option value="YOUTUBE">YouTube</option>*/}
+                                {/*        <option value="HTML">HTML</option>*/}
+                                {/*    </select>*/}
+                                {/*    <button onClick={() => {*/}
+                                {/*        this.props.deleteWidget(widget.id)*/}
+                                {/*        }}>*/}
+                                {/*        <i className="fas fa-trash fa-2x"></i>*/}
+                                {/*    </button>*/}
+                                {/*</span>*/}
+                                {widget.type === "HEADING" && <HeadingWidget
+                                    saveWidget={this.saveWidget}
+                                    editing={true} {...this.props}
+                                    widget={widget}/>}
+                                {widget.type === "PARAGRAPH" && <ParagraphWidget
+                                    updateWidget={this.updateWidget}
+                                    editing={this.state.widget.id === widget.id}
+                                    widget={widget}/>}
+                                {/*{widget.type === "LIST" && <ListWidget*/}
+                                {/*    updateWidget={this.updateWidget}*/}
+                                {/*    editing={this.state.widget.id === widget.id}*/}
+                                {/*    widget={widget}/>}*/}
                             </div>
                         )
                     }

@@ -174,7 +174,7 @@ class WidgetList extends React.Component {
                                         type: this.state.newWidgetType,
                                         topicId: this.props.topicId,
                                         size: this.state.newWidgetSize,
-                                        order: this.state.newWidgetListIsInOrder
+                                        isInOrder: this.state.newWidgetListIsInOrder
                                     }
                                     this.props.createWidget(this.props.topicId, newWidget)
                                 }

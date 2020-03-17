@@ -2,7 +2,7 @@ import React from "react";
 import {connect} from "react-redux";
 import HeadingWidget from "./widgets/HeadingWidget";
 import ParagraphWidget from "./widgets/PararagraphWidget";
-// import ListWidget from "./widgets/ListWidget";
+import ListWidget from "./widgets/ListWidget";
 
 import {
     findAllWidgets,
@@ -24,7 +24,8 @@ class WidgetList extends React.Component {
         editingWidgetId: '',
         widget: {
             id: ''
-        }
+        },
+        preview: true
     }
     componentDidMount() {
         // this.props.findWidgetsForTopic(this.props.topicId)
@@ -53,7 +54,10 @@ class WidgetList extends React.Component {
                     &nbsp;&nbsp;
                     <label className="text-black-50">Preview</label>
                     &nbsp;&nbsp;
-                    <label className="switch">
+                    <label className="switch" onChange={() => {
+                        this.setState({preview : !this.state.preview});
+                        console.log("preview = " + this.state.preview)
+                        }}>
                         <input type="checkbox" id="customSwitch1"/>
                         <span className="slider round"></span>
                     </label>
@@ -107,6 +111,16 @@ class WidgetList extends React.Component {
                                 {/*    updateWidget={this.updateWidget}*/}
                                 {/*    editing={this.state.widget.id === widget.id}*/}
                                 {/*    widget={widget}/>}*/}
+                                {widget.type==="LIST" && <ol><ListWidget
+                                    preview={ this.state.preview}
+                                    handleChangeList={this.props.handleChangeList}
+                                    listChange = {this.props.listChange}
+                                    widget={widget}/></ol>}
+                                {widget.type==="LIST" && widget.isInOrder===0 &&  <ul><ListWidget
+                                    preview={ this.state.preview}
+                                    handleChangeList={this.props.handleChangeList}
+                                    listChange = {this.props.listChange}
+                                    widget={widget}/></ul>}
                             </div>
                         )
                     }

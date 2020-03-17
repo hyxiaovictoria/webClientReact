@@ -3,6 +3,7 @@ import {connect} from "react-redux";
 import HeadingWidget from "./widgets/HeadingWidget";
 import ParagraphWidget from "./widgets/PararagraphWidget";
 import ListWidget from "./widgets/ListWidget";
+import ImageWidget from "./widgets/ImageWidget";
 
 import {
     findAllWidgets,
@@ -121,6 +122,13 @@ class WidgetList extends React.Component {
                                     handleChangeList={this.props.handleChangeList}
                                     listChange = {this.props.listChange}
                                     widget={widget}/></ul>}
+                                {widget.type==="IMAGE" && <ImageWidget
+                                    preview={this.state.preview}
+                                    handleChangeList={this.props.handleChangeList}
+                                    listChange = {this.props.listChange}
+                                    widget={widget}
+                                    />
+                                }
                             </div>
                         )
                     }

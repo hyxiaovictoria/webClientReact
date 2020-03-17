@@ -115,20 +115,20 @@ class WidgetList extends React.Component {
                                 {widget.type==="LIST" && widget.isInOrder===1 && <ol><ListWidget
                                     preview={ this.state.preview}
                                     handleChangeList={this.props.handleChangeList}
-                                    listChange = {this.props.listChange}
+                                    updateWidget = {this.props.updateWidget}
                                     widget={widget}/></ol>}
                                 {widget.type==="LIST" && widget.isInOrder===0 &&  <ul><ListWidget
                                     preview={ this.state.preview}
                                     handleChangeList={this.props.handleChangeList}
-                                    listChange = {this.props.listChange}
+                                    updateWidget = {this.props.updateWidget}
                                     widget={widget}/></ul>}
-                                {widget.type==="IMAGE" && <ImageWidget
-                                    preview={this.state.preview}
-                                    handleChangeList={this.props.handleChangeList}
-                                    listChange = {this.props.listChange}
-                                    widget={widget}
-                                    />
-                                }
+                                {/*{widget.type==="IMAGE" && <ImageWidget*/}
+                                {/*    preview={this.state.preview}*/}
+                                {/*    handleChangeList={this.props.handleChangeList}*/}
+                                {/*    updateWidgetOrder = {this.props.updateWidgetOrder}*/}
+                                {/*    widget={widget}*/}
+                                {/*    />*/}
+                                {/*}*/}
                             </div>
                         )
                     }
@@ -273,6 +273,12 @@ const dispatchToPropertyMapper = (dispatcher) => ({
                 type: "UPDATE",
                 widget: newWidget
             })),
+    updateWidgetOrder: (widget, isInOrder) =>
+        dispatcher({
+                type: "UPDATE_WIDGET_ORDER",
+                widget: widget,
+                isInOrder : isInOrder
+            }),
     deleteWidget: (widgetId) =>
         deleteWidget(widgetId)
             .then(status => dispatcher({

@@ -1,7 +1,7 @@
 import React from 'react'
 import {ControlLabel, DropdownButton, FormControl, FormGroup, MenuItem} from "react-bootstrap";
 
-const ListWidget = ({widget , listChange , handleChangeList , preview})=>{
+const ListWidget = ({widget , updateWidget , handleChangeList , preview})=>{
     let input ;
     return(
         <div>
@@ -22,8 +22,27 @@ const ListWidget = ({widget , listChange , handleChangeList , preview})=>{
                     key={widget.id}
                     noCaret
                     id={`dropdown-basic-${1}`}>
-                    // <MenuItem eventKey="1" onSelect={()=>listChange(widget , 1)}>Ordered List</MenuItem>
-                    // <MenuItem eventKey="2" onSelect={()=>listChange(widget , 2)}>Unordered List</MenuItem>
+                    <MenuItem eventKey="1"
+                              onSelect={
+                                  ()=> {
+                                      widget.isInOrder = 0;
+                                      console.log(widget.isInOrder)
+                                      updateWidget(widget.id, widget)
+                                  }
+                              }
+                    >
+                        Unordered List
+                    </MenuItem>
+                    <MenuItem eventKey="2"
+                              onSelect={
+                                  ()=> {
+                                      widget.isInOrder = 1;
+                                      updateWidget(widget.id, widget)
+                                  }
+                              }
+                    >
+                        Ordered List
+                    </MenuItem>
                 </DropdownButton>
                 <FormControl
                     className={'my-3'}
@@ -34,9 +53,6 @@ const ListWidget = ({widget , listChange , handleChangeList , preview})=>{
                 <p className={'my-3'}>Preview</p>
             </div>
             {widget.text ? widget.text.split(",").map((item,index)=> <li key={index}>{item}</li>) : <p></p>}
-            {/*<li key="A1">A</li>*/}
-            {/*<li key="B1">B</li>*/}
-            {/*<li key="C1">C</li>*/}
         </div>
     )
 };

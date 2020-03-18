@@ -29,8 +29,7 @@ class WidgetList extends React.Component {
         preview: true
     }
     componentDidMount() {
-        // this.props.findWidgetsForTopic(this.props.topicId)
-        this.props.findWidgetsForTopic('222')
+        this.props.findWidgetsForTopic(this.props.topicId)
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {

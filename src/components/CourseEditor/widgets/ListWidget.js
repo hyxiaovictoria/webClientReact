@@ -7,8 +7,8 @@ const ListWidget = ({widget , updateWidget , handleChangeList , preview})=>{
     return(
         <div>
             <div style={preview?{"display": "none"}:{"display": "inline"}}>
+                <h2>List Widget</h2>
                 <FormGroup controlId="formControlsTextarea">
-                    <ControlLabel>The Input</ControlLabel>
                     <FormControl
                         placeholder={'Enter one list item separated by comma'}
                         componentClass="textarea"
@@ -37,7 +37,7 @@ const ListWidget = ({widget , updateWidget , handleChangeList , preview})=>{
                         updateWidget(widget)
                     }}
                 />
-                <p className={'my-3'}>Preview</p>
+                <h3>Preview</h3>
             </div>
             {widget.text ? widget.text.split(",").map((item,index)=> <li key={index}>{item}</li>) : <p></p>}
         </div>

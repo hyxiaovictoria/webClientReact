@@ -269,16 +269,13 @@ const dispatchToPropertyMapper = (dispatcher) => ({
             })),
     updateWidget: (widgetId, newWidget) =>
         updateWidget(widgetId, newWidget)
-            .then(status => dispatcher({
-                type: "UPDATE",
-                widget: newWidget
-            })),
-    updateWidgetOrder: (widget, isInOrder) =>
-        dispatcher({
-                type: "UPDATE_WIDGET_ORDER",
-                widget: widget,
-                isInOrder : isInOrder
-            }),
+            .then(status =>
+                {
+                    dispatcher({
+                        type: "UPDATE",
+                        widget: newWidget
+                    })
+                }),
     deleteWidget: (widgetId) =>
         deleteWidget(widgetId)
             .then(status => dispatcher({

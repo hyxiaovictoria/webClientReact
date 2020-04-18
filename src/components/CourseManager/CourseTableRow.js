@@ -13,7 +13,13 @@ class CourseTableRow extends React.Component {
 
     render() {
         return(
-            <tr className="wbdv-row">
+            // className={`wbdv-module-item ${active ? 'active':''}`}>
+            <tr className={`wbdv-row ${this.props.course._id === this.state.activeCourseId ? 'selected':''}`}
+                onClick={() => {
+                this.setState({activeCourseId: this.props.course._id});
+                console.log("Current active course id: " + this.state.activeCourseId)
+            }
+            }>
             <td>
                 {!this.state.editing &&
                     <Link to={`/course-editor/${this.props.course._id}`}>

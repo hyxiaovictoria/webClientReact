@@ -43,7 +43,10 @@ class CourseManagerComponent extends React.Component {
                     }
                     {
                         this.props.state.layout === 'grid' &&
-                        <CourseGridComponent courses={this.props.state.courses}/>
+                        <CourseGridComponent
+                            deleteCourse={this.props.deleteCourse}
+                            saveCourse={this.props.saveCourse}
+                            courses={this.props.state.courses}/>
                     }
                 </div>
             </div>

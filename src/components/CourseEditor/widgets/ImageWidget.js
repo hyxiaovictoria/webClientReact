@@ -1,26 +1,37 @@
 import  React from 'react'
-import {FormControl} from "react-bootstrap";
+import {FormControl, FormGroup} from "react-bootstrap";
 
-const ImageWidget = ({widget , handleChangeImage , preview})=>{
+const ImageWidget = ({widget , updateWidget , preview})=>{
     let input;
     return(
         <div>
             <div style={preview?{"display": "none"}:{"display": "inline"}}>
+                <h2>Image Widget</h2>
+                <FormGroup controlId="formControlsTextarea">
                 <FormControl
                     className={'my-3'}
                     componentClass="input"
                     type="text"
-                    value={widget.url}
-                    // onChange={()=>handleChangeImage(widget.id , input.value)}
                     inputRef={(ref) => {input = ref}}
-                    placeholder="Image src"
+                    placeholder="Widget Name"
+                    // value={widget.url}
+                    // onChange={()=>handleChangeImage(widget.id , input.value)}
+                    onChange={(e) => {
+                        widget.url = e.target.value;
+                        updateWidget(widget)
+                    }}
                 />
                 <FormControl
                     className={'my-3'}
                     componentClass="input"
                     type="text"
-                    inputRef={(ref) => {this.input = ref}}
+                    inputRef={(ref) => {input = ref}}
+                    onChange={(e) => {
+                        widget.name = e.target.value;
+                        updateWidget(widget)
+                    }}
                     placeholder="Widget Name" />
+                </FormGroup>
             </div>
             <img src={widget.url} width="300" alt="Picture not found"/>
         </div>

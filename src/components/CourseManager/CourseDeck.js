@@ -7,7 +7,9 @@ class CourseDeck extends React.Component {
             <div className="container-fluid">
                 <div className="card-deck"> {
                     this.props.courses.map((course, index) =>
-                        <CourseCard course={course}
+                        <CourseCard
+                                    key={index}
+                                    course={course}
                                     showEditor={this.props.showEditor}
                                     deleteCourse={this.props.deleteCourse}
                                     saveCourse={this.props.saveCourse}/>

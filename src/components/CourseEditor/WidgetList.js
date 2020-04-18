@@ -114,21 +114,18 @@ class WidgetList extends React.Component {
                                 {/*    widget={widget}/>}*/}
                                 {widget.type==="LIST" && widget.isInOrder===1 && <ol><ListWidget
                                     preview={ this.state.preview}
-                                    handleChangeList={this.props.handleChangeList}
                                     updateWidget = {this.props.updateWidget}
                                     widget={widget}/></ol>}
                                 {widget.type==="LIST" && widget.isInOrder===0 &&  <ul><ListWidget
                                     preview={ this.state.preview}
-                                    handleChangeList={this.props.handleChangeList}
                                     updateWidget = {this.props.updateWidget}
                                     widget={widget}/></ul>}
-                                {/*{widget.type==="IMAGE" && <ImageWidget*/}
-                                {/*    preview={this.state.preview}*/}
-                                {/*    handleChangeList={this.props.handleChangeList}*/}
-                                {/*    updateWidgetOrder = {this.props.updateWidgetOrder}*/}
-                                {/*    widget={widget}*/}
-                                {/*    />*/}
-                                {/*}*/}
+                                {widget.type==="IMAGE" && <ImageWidget
+                                    preview={this.state.preview}
+                                    updateWidget = {this.props.updateWidget}
+                                    widget={widget}
+                                    />
+                                }
                             </div>
                         )
                     }

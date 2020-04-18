@@ -2,7 +2,7 @@ import React from 'react'
 import {ControlLabel, DropdownButton, FormControl, FormGroup, MenuItem} from "react-bootstrap";
 import DropdownMenu from "react-bootstrap/lib/DropdownMenu";
 
-const ListWidget = ({widget , updateWidget , handleChangeList , preview})=>{
+const ListWidget = ({widget , updateWidget , preview})=>{
     let input ;
     return(
         <div>

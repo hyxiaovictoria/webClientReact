@@ -13,11 +13,11 @@ class CourseTableRow extends React.Component {
 
     render() {
         return(
-            // className={`wbdv-module-item ${active ? 'active':''}`}>
-            <tr className={`wbdv-row ${this.props.course._id === this.state.activeCourseId ? 'selected':''}`}
+            <tr className={`wbdv-row ${this.props.active || this.state.editing ? 'selected':''}`}
                 onClick={() => {
+                    this.props.selectCourse(this.props.course._id)
                 this.setState({activeCourseId: this.props.course._id});
-                console.log("Current active course id: " + this.state.activeCourseId)
+                console.log("Current active course id: " + this.props.activeCourseId)
             }
             }>
             <td>

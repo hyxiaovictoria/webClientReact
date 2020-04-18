@@ -30,49 +30,6 @@ class ModuleListComponent extends React.Component {
                 {
                     this.props.modules && this.props.modules.map(
                         module =>
-                            // <li key={module._id}
-                            //     className={`wbdv-module-item ${active ? 'active':''}`}>
-                            //     {this.state.editingModuleId !== module._id &&
-                            //         <span className="wbdv-module-item-title">
-                            //             {module.title}
-                            //         </span>
-                            //     }
-                            //     {this.state.editingModuleId === module._id &&
-                            //     <input
-                            //         value={this.state.module.title}/>
-                            //     }
-                            // {/*{editing &&*/}
-                            // <span className="fa-right-only-50">
-                            //     { this.state.editingModuleId !== module._id &&
-                            //         <a onClick={
-                            //             () => {
-                            //                 this.setState({
-                            //                     editingModuleId: module._id
-                            //                 })
-                            //             }
-                            //         }>
-                            //             <i className="fa fa-edit"></i>
-                            //         </a>
-                            //     }
-                            //     {
-                            //         this.state.editingModuleId === module._id &&
-                            //         <div>
-                            //             <a onClick={
-                            //                 () => this.props.deleteModule(module._id)}>
-                            //                 <i className="fas fa-trash"></i>
-                            //             </a>
-                            //             &nbsp;&nbsp;
-                            //             <a onClick={
-                            //                 () => this.setState({
-                            //                     editingModuleId:''
-                            //                 })
-                            //             }>
-                            //             <i className="fas fa-check-circle"></i>
-                            //             </a>
-                            //         </div>
-                            //         }
-                            // </span>
-                            // </li>
                         <ModuleListItem
                             key={module._id}
                             edit={() => {

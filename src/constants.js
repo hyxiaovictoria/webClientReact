@@ -1,26 +1,14 @@
-// export const COURSES_API_URL = "https://wbdv-generic-server.herokuapp.com/api/xiaohai/courses"
-export const COURSES_API_URL = "https://wbdv-generic-server.herokuapp.com/api/xiaohai/courses"
-export const MODULES_API_URL = "https://wbdv-generic-server.herokuapp.com/api/xiaohai/modules"
-export const LESSONS_API_URL = "https://wbdv-generic-server.herokuapp.com/api/xiaohai/lessons"
-// export const TOPICS_API_URL = "https://wbdv-generic-server.herokuapp.com/api/xiaohai/topics"
-// export const WIDGETS_API_URL = "https://wbdv-generic-server.herokuapp.com/api/xiaohai/widgets"
-// export const WIDGETS_API_URL = "http://localhost:8080/api/widgets"
-// export const TOPICS_API_URL = "http://localhost:8080/api/topics"
+const SERVER_URL1 = "https://wbdv-sp20-final-project-server.herokuapp.com/api/xiaohai";
+const SERVER_URL2 = "http://localhost:8080/api";
+const SERVER_URL3 = "https://wbdv-sp20-xiaohai-server-java.herokuapp.com/api";
 
-export const WIDGETS_API_URL = "https://wbdv-sp20-xiaohai-server-java.herokuapp.com/api/widgets"
-export const TOPICS_API_URL = "https://wbdv-sp20-xiaohai-server-java.herokuapp.com/api/topics"
+export const COURSES_API_URL = `${SERVER_URL1}/courses`;
+export const MODULES_API_URL = `${SERVER_URL1}/modules`;
+export const LESSONS_API_URL = `${SERVER_URL1}/lessons`;
+export const TOPICS_API_URL = `${SERVER_URL2}/topics`;
+export const WIDGETS_API_URL = `${SERVER_URL2}/widgets`;
 
-export const COURSES_MODULES_API_URL = (courseId) => `https://wbdv-generic-server.herokuapp.com/api/xiaohai/courses/${courseId}/modules`
-export const MODULES_LESSONS_API_URL = (moduleId) => `https://wbdv-generic-server.herokuapp.com/api/xiaohai/modules/${moduleId}/lessons`
-// export const LESSONS_TOPICS_API_URL = (lessonId) =>  `https://wbdv-generic-server.herokuapp.com/api/xiaohai/lessons/${lessonId}/topics`
-// export const TOPICS_WIDGETS_API_URL = (topicId) =>   `https://wbdv-generic-server.herokuapp.com/api/xiaohai/topics/${topicId}/widgets`
-// export const TOPICS_WIDGETS_API_URL = (topicId) => `http://localhost:8080/topics/${topicId}/widgets`
-// export const TOPICS_WIDGETS_API_URL = (topicId) => `https://wbdv-sp20-xiaohai-server-java2.herokuapp.com/topics/${topicId}/widgets`
-// export const TOPICS_WIDGETS_API_URL = (topicId) => `http://localhost:8080/api/topics/${topicId}/widgets`
-// export const LESSONS_TOPICS_API_URL = (lessonId) =>  `http://localhost:8080/api/lessons/${lessonId}/topics`
-
-export const TOPICS_WIDGETS_API_URL = (topicId) => `https://wbdv-sp20-xiaohai-server-java.herokuapp.com/api/topics/${topicId}/widgets`
-export const LESSONS_TOPICS_API_URL = (lessonId) =>  `https://wbdv-sp20-xiaohai-server-java.herokuapp.com/api/lessons/${lessonId}/topics`
-
-export const DEFAULT_COURSE_TITLE = "New Course"
-export const DEFAULT_SECTION_TITLE = "New Section"
+export const COURSES_MODULES_API_URL = (courseId) => `${SERVER_URL1}/courses/${courseId}/modules`
+export const MODULES_LESSONS_API_URL = (moduleId) => `${SERVER_URL1}/modules/${moduleId}/lessons`
+export const LESSONS_TOPICS_API_URL = (lessonId) =>  `${SERVER_URL2}/lessons/${lessonId}/topics`
+export const TOPICS_WIDGETS_API_URL = (topicId) => `${SERVER_URL2}/topics/${topicId}/widgets`

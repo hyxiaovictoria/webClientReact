@@ -24,13 +24,13 @@ class WhiteBoardContainer extends React.Component {
     componentDidMount = async () => {
         const courses = await findAllCourses()
         this.setState({
-                courses: courses
-            })
+            courses: courses
+        })
     }
 
     toggle = () => {
         this.setState(prevState => {
-            if(prevState.layout === 'table') {
+            if (prevState.layout === 'table') {
                 return ({layout: 'grid'})
             } else {
                 return ({layout: 'table'})
@@ -74,8 +74,8 @@ class WhiteBoardContainer extends React.Component {
 
     hideEditor = () => {
         this.setState({
-            showEditor: false
-        }
+                showEditor: false
+            }
         )
     }
 
@@ -84,13 +84,13 @@ class WhiteBoardContainer extends React.Component {
     }
 
     render() {
-        return(
+        return (
             <div>
                 <Router>
                     <Route
                         path="/course-editor/:courseId"
                         exact={true}
-                        render={(props)=>
+                        render={(props) =>
                             <CourseEditorComponent
                                 {...props}
                                 courseId={props.match.params.courseId}
@@ -101,7 +101,7 @@ class WhiteBoardContainer extends React.Component {
                     <Route
                         path="/course-editor/:courseId/module/:moduleId"
                         exact={true}
-                        render={(props)=>
+                        render={(props) =>
                             <CourseEditorComponent
                                 {...props}
                                 courseId={props.match.params.courseId}
@@ -113,7 +113,7 @@ class WhiteBoardContainer extends React.Component {
                     <Route
                         path="/course-editor/:courseId/module/:moduleId/lesson/:lessonId"
                         exact={true}
-                        render={(props)=>
+                        render={(props) =>
                             <CourseEditorComponent
                                 {...props}
                                 courseId={props.match.params.courseId}
@@ -126,7 +126,7 @@ class WhiteBoardContainer extends React.Component {
                     <Route
                         path="/course-editor/:courseId/module/:moduleId/lesson/:lessonId/topic/:topicId"
                         exact={true}
-                        render={(props)=>
+                        render={(props) =>
                             <CourseEditorComponent
                                 {...props}
                                 courseId={props.match.params.courseId}
@@ -140,7 +140,7 @@ class WhiteBoardContainer extends React.Component {
                     <Route
                         path="/"
                         exact={true}
-                        render={()=>
+                        render={() =>
                             <CourseManagerComponent
                                 toggle={this.toggle}
                                 state={this.state}

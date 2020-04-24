@@ -12,7 +12,7 @@ class CourseTableComponent extends React.Component {
     }
 
     render() {
-        return(
+        return (
             <div className="container-fluid course-manager-subheader-row">
                 {
                     this.props.courses.map(

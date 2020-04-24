@@ -52,3 +52,8 @@
     background-color: #ffe8c0;
     color: #000000;
 }
+
+.course-grid-container {
+    margin-left: 10px;
+    margin-right: 10px;
+}

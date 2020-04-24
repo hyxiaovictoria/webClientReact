@@ -200,7 +200,12 @@ input:checked + .slider:before {
 }
 
 .wbdv-card{
-    width: 300px;
+    min-width: 260px;
+    max-width: 260px;
+    min-height: 380px;
+    max-height: 380px;
+    background-color: #88f2ff;
+    margin: 5px;
 }
 
 .btn-big-hint{

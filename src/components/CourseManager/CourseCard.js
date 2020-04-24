@@ -14,9 +14,9 @@ export default class CourseCard extends React.Component
 
     render() {
         return (
-            <div className="card wbdv-card" style={{width: '18rem',minWidth:'250px',maxWidth:'250px'}}>
+            <div className="card wbdv-card">
                 <img className="card-img-top"
-                     src="https://picsum.photos/300/200"/>
+                     src="https://picsum.photos/250/250"/>
                 <div className="card-body">
                     {!this.state.editing &&
                     <Link to={`/course-editor/${this.props.course._id}`}>
@@ -31,36 +31,42 @@ export default class CourseCard extends React.Component
                         value={this.state.updatedCourseTitle}>
                     </input>}
                     <div>
-                        {!this.state.editing &&
-                        <a onClick={() => {
-                            this.setState({editing: true})
-                            this.setState({updatedCourseTitle: this.props.course.title})
-                            console.log('editing initialized to: ' + this.state.updatedCourseTitle)
-                        }}>
-                            <i className="fas fa-edit fa-2x"></i>
-                        </a>
-                        }
-                        {this.state.editing &&
-                        <div>
-                            <a onClick={() => this.props.deleteCourse(this.props.course)}>
-                                <i className="fas fa-trash fa-2x"></i>
-                            </a>
-                            <a onClick={() => {
-                                this.state.updatedCourseTitle = document.getElementById('courseEditInput').value
-                                // this.props.course.title = this.state.updatedCourseTitle
-
-                                this.props.saveCourse(this.props.course, this.state.updatedCourseTitle)
-                                this.setState({editing: false})
-                            }}>
-                                <i className="fas fa-check-circle fa-2x"></i>
-                            </a>
-                        </div>
-                        }
                     </div>
-                    <p className="card-text">
-                        <i className="fas fa-file-alt"></i>
-                        Last modified at {this.props.course.time}
-                    </p>
+                    <div className="row form-row">
+                        <div className="col-8">
+                            <p className="card-text">
+                                <i className="fas fa-file-alt fa-2x"></i>
+                                &nbsp;
+                                Modified {this.props.course.time}
+                            </p>
+                        </div>
+                        <div className="col-4">
+                            {!this.state.editing &&
+                            <a onClick={() => {
+                                this.setState({editing: true})
+                                this.setState({updatedCourseTitle: this.props.course.title})
+                                console.log('editing initialized to: ' + this.state.updatedCourseTitle)
+                            }}>
+                                <i className="fas fa-edit fa-2x"></i>
+                            </a>
+                            }
+                            {this.state.editing &&
+                            <div>
+                                <a onClick={() => this.props.deleteCourse(this.props.course)}>
+                                    <i className="fas fa-trash fa-2x"></i>
+                                </a>
+                                <a onClick={() => {
+                                    this.state.updatedCourseTitle = document.getElementById('courseEditInput').value
+
+                                    this.props.saveCourse(this.props.course, this.state.updatedCourseTitle)
+                                    this.setState({editing: false})
+                                }}>
+                                    <i className="fas fa-check-circle fa-2x"></i>
+                                </a>
+                            </div>
+                            }
+                        </div>
+                    </div>
                     {/*<a href="#" className="btn btn-primary">More...</a>*/}
                 </div>
             </div>

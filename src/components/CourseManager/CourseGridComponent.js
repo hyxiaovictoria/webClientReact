@@ -2,8 +2,7 @@ import React from "react";
 import CourseDeck from "./CourseDeck";
 
 const CourseGridComponent = ({courses, deleteCourse, saveCourse, showEditor}) =>
-    <div className="row row-narrow"  style={{marginLeft:'150px',marginRight:'150px'}}>
-        <h1> Course Grid Component</h1>
+    <div className="row row-narrow course-grid-container">
         <table className="table">
             <thead>
             <tr className="wbdv-header">

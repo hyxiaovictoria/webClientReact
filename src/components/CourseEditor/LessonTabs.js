@@ -107,8 +107,10 @@ class LessonTabs extends React.Component {
                         )}
                     </ul>
                     <input
+                        type="text"
+                        placeholder="New Lesson Title"
                         onChange={e => {this.setState({newLessonTitle: e.target.value})}}
-                        // value={module.title}
+                        value={this.state.newLessonTitle}
                     >
                     </input>
                     <a className="wbdv-new-page-btn col-sm-1"
@@ -116,6 +118,7 @@ class LessonTabs extends React.Component {
                             {
                                 const lesson = {title: this.state.newLessonTitle,
                                           _id: new Date().getTime()}
+                                console.log("Add new lesson clicked" + JSON.stringify(lesson))
                                 this.props.addLesson(this.props.moduleId, lesson)
                             }
 
@@ -211,6 +214,7 @@ const dispatcherToPropertyMapper = (dispatcher) => ({
     },
     addLesson: async (moduleId, lesson) => {
         const newLesson = await createLesson(moduleId,lesson)
+        console.log("Created a new lesson: " + JSON.stringify(newLesson))
         dispatcher({
             type: 'CREATE_LESSON',
             lesson: newLesson,

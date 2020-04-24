@@ -1,4 +1,4 @@
-const SERVER_URL1 = "https://wbdv-sp20-final-project-server.herokuapp.com/api/xiaohai";
+const SERVER_URL1 = "https://wbdv-generic-server.herokuapp.com/api/xiaohai";
 const SERVER_URL2 = "http://localhost:8080/api";
 const SERVER_URL3 = "https://wbdv-sp20-xiaohai-server-java.herokuapp.com/api";
 

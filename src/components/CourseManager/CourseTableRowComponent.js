@@ -17,7 +17,7 @@ class CourseTableRowComponent extends React.Component {
 
     render() {
         return(
-            <div className={`row wbdv-row ${this.props.active || this.state.editing ? 'selected':''}`}
+            <div className={`row wbdv-course-row ${this.props.active || this.state.editing ? 'selected':''}`}
                  onClick={() => {
                      this.props.selectCourse(this.props.course._id)
                      this.setState({activeCourseId: this.props.course._id});

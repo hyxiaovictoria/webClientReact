@@ -73,6 +73,8 @@ class CourseManagerComponent extends React.Component {
 
                         <div className="wbdv-owner col-md-2 col-lg-2 col-2 d-none d-sm-none d-md-block">
                             Owned by me
+                            &nbsp;
+                            <i className="wbdv-owner wbdv-sort fas fa-caret-down"></i>
                         </div>
 
                         <div className="wbdv-icon-black col-sm-4 col-md-3 col-lg-2 col-4 float-right">

@@ -13,29 +13,27 @@ class CourseTableComponent extends React.Component {
 
     render() {
         return(
-        <div className="row row-narrow" style={{marginLeft: '150px', marginRight: '150px'}}>
-            <table className="table">
-                <thead>
-                <tr className="wbdv-header">
-                    <th className="wbdv-title bg-warning">
-                        Title (click below link to Course Editor)
-                    </th>
-                    <th className="wbdv-owner">Owned by
-                        <i className="wbdv-header wbdv-sort fas fa-caret-down"></i>
-                    </th>
-                    <th className="wbdv-last-modified">Last modified by me
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <div className="container-fluid couese-manager-subheader-row">
+                <div className="row">
+                    <div className="wbdv-title col-sm-9 col-md-7 col-lg-6 col-9">
+                        Title
+                        <i className="wbdv-icon-black wbdv-sort fas fa-caret-up"></i>
+                    </div>
 
-                        <i className="wbdv-header wbdv-sort fas fa-grip-horizontal"></i>
-                        &nbsp;&nbsp;&nbsp;
-                        <i className="wbdv-button wbdv-list-layout fas fa-sort-alpha-down"></i>
-                    </th>
-                    <th>
-                        &nbsp;
-                    </th>
-                </tr>
-                </thead>
-                <tbody>
+                    <div className="wbdv-owner col-md-3 col-lg-2 col-2 d-none d-sm-none d-md-block">
+                        Owned by
+                    </div>
+
+                    <div className="wbdv-last-modified col-lg-2 col-2 d-none d-md-none d-lg-block">
+                        Last modified
+                    </div>
+
+                    <div className="wbdv-icon-black col-sm-3 col-md-2 col-lg-2 col-3 float-right">
+                        <i className="wbdv-icon-black wbdv-sort fas fa-grip-horizontal"></i>
+                        &emsp;
+                        <i className="wbdv-icon-black wbdv-button wbdv-list-layout fas fa-sort-alpha-down"></i>
+                    </div>
+                </div>
                 {
                     this.props.courses.map(
                         course =>
@@ -49,9 +47,7 @@ class CourseTableComponent extends React.Component {
                             />
                     )
                 }
-                </tbody>
-            </table>
-        </div>)
+            </div>)
     }
 }
 

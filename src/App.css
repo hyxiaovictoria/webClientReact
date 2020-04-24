@@ -39,4 +39,11 @@
 
 .couese-manager-header-row {
   background-color: #78ffff;
+  padding: 10px;
+}
+
+.couese-manager-subheader-row {
+  background-color: #ffe8c0;
+  padding: 10px;
+  margin-top: 10px;
 }

@@ -26,7 +26,7 @@ class ModuleListComponent extends React.Component {
     render() {
         const active = true
         return (
-            <ul className="bg-dark list-group wbdv-module-list">
+            <ul className="couese-manager-header-row list-group wbdv-module-list">
                 {
                     this.props.modules && this.props.modules.map(
                         module =>
@@ -56,10 +56,12 @@ class ModuleListComponent extends React.Component {
                             }}
                             editing={module._id === this.state.editingModuleId}
                             active={module._id === this.state.activeModuleId}
-                            module={module}/>
+                            module={module}
+                            updateForm={this.updateForm}
+                        />
                             )
                 }
-                <li className="list-group-item">
+                <li className="list-group-item wbdv-module-item">
                     <input type="text" id="moduleNew"
                            placeholder="New Module Title"
                            onChange={(e) => {
@@ -67,7 +69,8 @@ class ModuleListComponent extends React.Component {
                                console.log('YH(newModuleTitle): ' + e.target.value)
                                 }
                            }
-                           value={this.state.newModuleTitle}/>
+                           value={this.state.newModuleTitle}
+                    />
                     <button onClick={
                         () => this.props.createModule(this.props.courseId, {title: this.state.newModuleTitle})
                     }>

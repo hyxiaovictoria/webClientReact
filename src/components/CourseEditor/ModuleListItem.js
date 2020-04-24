@@ -5,7 +5,7 @@ import "./CourseEditorComponent.css"
 import {updateModule, findModulesForCourse, createModule, deleteModule} from "../../services/ModuleService";
 
 
-const ModuleListItem = ({save, edit, editing, module, active, select}) =>
+const ModuleListItem = ({save, edit, editing, module, active, select, updateForm}) =>
     <li
         onClick={select}
         className={`wbdv-module-item list-group-item ${active ? 'active':''} `}

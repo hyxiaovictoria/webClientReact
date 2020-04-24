@@ -13,11 +13,11 @@ class CourseManagerComponent extends React.Component {
             <div className="container-fluid">
                 <div className="row couese-manager-header-row">
                     <div className="col-sm-2 col-2 col-md-2 col-lg-1">
-                        <i className="fas fa-bars fa-2x fa-inverse col-sm-1"/>
+                        <i className="fas fa-bars fa-2x fa-inverse col-sm-1 wbdv-icon-black bigger"/>
                     </div>
 
                     <div className="col-xs-4 col-4 col-lg-4 d-none d-md-none d-lg-block">
-                        <h1> Course Manager</h1>
+                        <div className="course-header-title"> Course Manager</div>
                     </div>
 
                     <div className="col-8 col-sm-8 col-md-8 col-lg-6 couese-manager-header-row">

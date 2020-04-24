@@ -10,8 +10,12 @@ h6{
     color: white;
 }
 
+.wbdv-black{
+    color: black;
+}
+
 .wbdv-page-tab{
-    color : white;
+    color : #000000;
     font-size:20px;
 }
 
@@ -27,8 +31,8 @@ h6{
 }
 
 .wbdv-module-item{
-    color: white;
-    background-color : dimgray;
+    color: #000000;
+    background-color : #ffe8c0;
     padding: 15px;
     margin: 5px;
     margin-left: 20px;

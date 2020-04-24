@@ -15,12 +15,9 @@ import widgets from '../../reducers/widgetReducer'
 
 const reducers = combineReducers({
     modules, lessons, topics, widgets
-    // modules, lessons, widgets
 })
 
 const store = createStore(reducers)
-
-
 
 const CourseEditorComponent = ({hideEditor, match, courseId, moduleId, lessonId, topicId, history}) =>
     <Provider store={store}>

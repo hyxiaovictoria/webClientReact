@@ -1,7 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom";
 
-export default class CourseCard extends React.Component
+export default class CourseCardComponent extends React.Component
 {
     state = {
         editing: false,

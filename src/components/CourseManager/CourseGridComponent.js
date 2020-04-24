@@ -1,13 +1,13 @@
 import React from "react";
-import CourseDeck from "./CourseDeck";
+import CourseDeckComponent from "./CourseDeckComponent";
 
 const CourseGridComponent = ({courses, deleteCourse, saveCourse, showEditor}) =>
     <div className="row row-narrow course-grid-container">
         {
-            <CourseDeck courses={courses}
-                        showEditor={showEditor}
-                        deleteCourse={deleteCourse}
-                        saveCourse={saveCourse}/>
+            <CourseDeckComponent courses={courses}
+                                 showEditor={showEditor}
+                                 deleteCourse={deleteCourse}
+                                 saveCourse={saveCourse}/>
         }
     </div>
 

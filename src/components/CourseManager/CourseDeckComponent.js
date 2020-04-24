@@ -1,13 +1,13 @@
-import CourseCard from "./CourseCard";
+import CourseCardComponent from "./CourseCardComponent";
 import React from "react";
 
-class CourseDeck extends React.Component {
+class CourseDeckComponent extends React.Component {
     render() {
         return(
             <div className="container-fluid">
                 <div className="card-deck"> {
                     this.props.courses.map((course, index) =>
-                        <CourseCard
+                        <CourseCardComponent
                                     key={index}
                                     course={course}
                                     showEditor={this.props.showEditor}
@@ -19,4 +19,4 @@ class CourseDeck extends React.Component {
     }
 }
 
-export default CourseDeck
+export default CourseDeckComponent

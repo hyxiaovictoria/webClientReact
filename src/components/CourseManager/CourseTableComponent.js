@@ -1,5 +1,5 @@
 import React from "react";
-import CourseTableRow from "./CourseTableRow"
+import CourseTableRowComponent from "./CourseTableRowComponent"
 import '../../containers/WhiteBoardContainer.css'
 
 class CourseTableComponent extends React.Component {
@@ -17,7 +17,7 @@ class CourseTableComponent extends React.Component {
                 {
                     this.props.courses.map(
                         course =>
-                            <CourseTableRow
+                            <CourseTableRowComponent
                                 {...this.props}
                                 key={course._id}
                                 course={course}

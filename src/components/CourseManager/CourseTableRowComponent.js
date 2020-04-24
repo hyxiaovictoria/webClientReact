@@ -1,7 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom";
 
-class CourseTableRow extends React.Component {
+class CourseTableRowComponent extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -82,4 +82,4 @@ class CourseTableRow extends React.Component {
     }
 }
 
-export default CourseTableRow
+export default CourseTableRowComponent

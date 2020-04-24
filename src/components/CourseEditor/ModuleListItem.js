@@ -5,49 +5,63 @@ import "./CourseEditorComponent.css"
 import {updateModule, findModulesForCourse, createModule, deleteModule} from "../../services/ModuleService";
 
 
-const ModuleListItem = ({save, edit, editing, module, active, select, updateForm}) =>
-    <li
-        onClick={select}
-        className={`wbdv-module-item list-group-item ${active ? 'active':''} `}
-    >
-
-        {!editing &&
-        <span className="wbdv-module-item-title">
-        {module.title}
-        </span>
-        }
-
-        <span>
-            {!editing && <a onClick={edit}>
-                <i className="fa fa-edit fa-right-only-70"></i>
-            </a>
-            }
-            {editing &&
-                <input
-                    onChange={e => {module.title = e.target.value}}
-                    // value={module.title}
+class ModuleListItem extends React.Component {
+    render() {
+        return (
+            <>
+                <li
+                    onClick={this.props.select}
+                    className={`wbdv-module-item list-group-item ${this.props.active ? 'active' : ''} `}
                 >
-            </input>}
+                    {!this.props.editing &&
+                    <span className="wbdv-module-item-title">
+                            {this.props.module.title}
+                        </span>
+                    }
 
-            &nbsp;&nbsp;
-            {editing &&<a onClick={() => {
-                deleteModule(module._id)
-                save()
-            }}>
-                <i className="fas fa-trash fa-right-only-70"></i>
-            </a>
-            }
-            &nbsp;&nbsp;
-            {editing &&
-            <a onClick={() => {
-                updateModule(module._id, module)
-                save()
-            }}>
-                <i className="fas fa-check-circle fa-right-only-50"></i>
-            </a>
-            }
-        </span>
-    </li>
+                    <span>
+                        {!this.props.editing &&
+                        <a onClick={this.props.edit}>
+                            <i className="fa fa-edit fa-right-only-70"></i>
+                        </a>
+                        }
+                        {this.props.editing &&
+                        <input
+                            onChange={e => {
+                                const newTitle = e.target.value;
+                                // console.log("newTitle: " + newTitle);
+                                this.props.update(newTitle);
+                            }}
+                            value={this.props.updatingModule.title}
+                        >
+                        </input>}
+
+                        &nbsp;&nbsp;
+                        {this.props.editing &&
+                        <a onClick={() => {
+                            this.props.deleteModule(this.props.module._id);
+                            this.props.save();
+                        }}>
+                            <i className="fas fa-trash fa-right-only-70"></i>
+                        </a>
+                        }
+                        &nbsp;&nbsp;
+                        {this.props.editing &&
+                        <a onClick={() => {
+                            this.props.updateModule(this.props.updatingModule._id,
+                            this.props.updatingModule)
+                            this.props.save()
+                        }}>
+                            <i className="fas fa-check-circle fa-right-only-50"></i>
+                        </a>
+                        }
+                    </span>
+                </li>
+            </>
+        )
+    }
+
+}
 
 const stateToPropertyMapper = (state) => ({})
 const dispatchToPropertyMapper = (dispatch) => ({
@@ -78,9 +92,10 @@ const dispatchToPropertyMapper = (dispatch) => ({
             }))
     },
     updateModule: (moduleId, module) => {
+        console.log("updateModule: (" + moduleId + ") : " + JSON.stringify(module));
         updateModule(moduleId, module).then(status =>
             dispatch({
-                type:'UPDATE_MODULE',
+                type: 'UPDATE_MODULE',
                 moduleId: moduleId,
                 module: module
             })

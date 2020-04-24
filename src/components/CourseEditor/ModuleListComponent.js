@@ -19,60 +19,74 @@ class ModuleListComponent extends React.Component {
         }
     }
 
-    updateForm = (newState) => {
-        this.setState(newState)
-    }
-
     render() {
-        const active = true
         return (
             <ul className="couese-manager-header-row list-group wbdv-module-list">
                 {
                     this.props.modules && this.props.modules.map(
                         module =>
-                        <ModuleListItem
-                            key={module._id}
-                            edit={() => {
-                                const moduleId = module._id
-                                console.log('ModuleListComponent ' + this.props.courseId)
-                                this.props.history.push(`/course-editor/${this.props.courseId}/module/${moduleId}`)
-                                this.setState({
-                                    editingModuleId: module._id
-                                })
-                            }}
-                            select={() => {
-                                const moduleId = module._id
-                                this.props.history.push(`/course-editor/${this.props.courseId}/module/${moduleId}`)
-                                this.setState({
-                                    activeModuleId: module._id
-                                })
-                            }}
-                            save={() => {
-                                this.setState({editingModuleId: ''})
-                                console.log('YH_moduleTitleToSave: '
-                                    + this.props.courseId + ' '
-                                    + module._id + ' '
-                                    + module.title)
-                            }}
-                            editing={module._id === this.state.editingModuleId}
-                            active={module._id === this.state.activeModuleId}
-                            module={module}
-                            updateForm={this.updateForm}
-                        />
-                            )
+                            <ModuleListItem
+                                key={module._id}
+                                edit={() => {
+                                    const moduleId = module._id
+                                    // console.log('ModuleListComponent ' + this.props.courseId)
+                                    this.props.history.push(`/course-editor/${this.props.courseId}/module/${moduleId}`)
+                                    this.setState({
+                                        editingModuleId: module._id,
+                                        module: {
+                                            title: module.title,
+                                            _id: module._id
+                                        }
+                                    })
+                                }}
+                                update={(newTitle) => {
+                                    this.setState(prevState => ({
+                                        module: {
+                                            ...prevState.module,
+                                            title: newTitle
+                                        }
+                                    }));
+                                    // console.log(JSON.stringify(this.state.module));
+                                }
+                                }
+                                select={() => {
+                                    const moduleId = module._id
+                                    this.setState({
+                                        activeModuleId: module._id
+                                    })
+                                    this.props.history.push(`/course-editor/${this.props.courseId}/module/${moduleId}`)
+                                }}
+                                save={() => {
+                                    this.setState({editingModuleId: ''})
+                                    // console.log('YH_moduleTitleToSave: '
+                                    //     + this.props.courseId + ' '
+                                    //     + this.state.module._id + ' '
+                                    //     + this.state.module.title);
+                                    module.title = this.state.module.title;
+
+                                }}
+                                editing={module._id === this.state.editingModuleId}
+                                active={module._id === this.state.activeModuleId}
+                                module={module}
+                                updatingModule={this.state.module}
+                            />
+                    )
                 }
                 <li className="list-group-item wbdv-module-item">
                     <input type="text" id="moduleNew"
                            placeholder="New Module Title"
                            onChange={(e) => {
-                               this.updateForm({newModuleTitle: e.target.value})
+                               this.setState({newModuleTitle: e.target.value});
                                console.log('YH(newModuleTitle): ' + e.target.value)
-                                }
+                           }
                            }
                            value={this.state.newModuleTitle}
                     />
                     <button onClick={
-                        () => this.props.createModule(this.props.courseId, {title: this.state.newModuleTitle})
+                        () => {
+                            this.props.createModule(this.props.courseId, {title: this.state.newModuleTitle});
+                            this.setState({newModuleTitle: ''});
+                        }
                     }>
                         Add
                     </button>

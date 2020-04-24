@@ -2,6 +2,10 @@ import React from "react";
 import {Link} from "react-router-dom";
 
 class CourseTableRow extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
     state = {
         editing: false,
         updatedCourseTitle: ''
@@ -49,20 +53,20 @@ class CourseTableRow extends React.Component {
                             <a onClick={() => {
                                 this.setState({editing: true})
                                 this.setState({updatedCourseTitle: this.props.course.title})
-                                console.log('editing initialized to: ' + this.state.updatedCourseTitle)
                             }}>
                                 <i className="fas fa-edit fa-2x"></i>
                             </a>
                             }
                             {this.state.editing &&
                             <div>
-                                <a onClick={() => this.props.deleteCourse(this.props.course)}>
+                                <a onClick={() => {
+                                    this.props.deleteCourse(this.props.course)
+                                }}
+                                >
                                     <i className="fas fa-trash fa-2x"></i>
                                 </a>
                                 <a onClick={() => {
                                     this.state.updatedCourseTitle = document.getElementById('courseEditInput').value
-                                    // this.props.course.title = this.state.updatedCourseTitle
-
                                     this.props.saveCourse(this.props.course, this.state.updatedCourseTitle)
                                     this.setState({editing: false})
                                 }}>

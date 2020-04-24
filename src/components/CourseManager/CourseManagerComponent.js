@@ -4,6 +4,10 @@ import CourseTableComponent from "./CourseTableComponent";
 import CourseGridComponent from "../CourseManager/CourseGridComponent";
 
 class CourseManagerComponent extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
     render() {
         return (
             <div className="container-fluid">
@@ -30,26 +34,78 @@ class CourseManagerComponent extends React.Component {
                     </div>
 
                     <div className="col-2 col-sm-2 col-md-2 col-lg-1 float-right">
-                        <a className="wbdv-button wbdv-add-course active float-right">
-                        <i className="fas fa-plus-circle fa-3x fa-inverse bg-red"/>
-                        </a>
+                        <span className="wbdv-button wbdv-add-course active float-right"
+                        onClick={this.props.addCourse}>
+                            <i className="fas fa-plus-circle fa-3x fa-inverse bg-red"/>
+                        </span>
                     </div>
 
                 </div>
+                {this.props.state.layout === "table" &&
+                    <div className="row couese-manager-subheader-row">
+                        <div className="wbdv-title col-sm-9 col-md-7 col-lg-6 col-9">
+                            Title
+                            <i className="wbdv-icon-black wbdv-sort fas fa-caret-up"></i>
+                        </div>
+
+                        <div className="wbdv-owner col-md-3 col-lg-2 col-2 d-none d-sm-none d-md-block">
+                            Owned by
+                        </div>
+
+                        <div className="wbdv-last-modified col-lg-2 col-2 d-none d-md-none d-lg-block">
+                            Last modified
+                        </div>
+
+                        <div className="wbdv-icon-black col-sm-3 col-md-2 col-lg-2 col-3 float-right">
+                            <span onClick={this.props.toggle}>
+                                <i className="wbdv-icon-black wbdv-sort fas fa-grip-horizontal"></i>
+                            </span>
+                            &emsp;
+                            <i className="wbdv-icon-black wbdv-button wbdv-list-layout fas fa-sort-alpha-down"></i>
+                        </div>
+                    </div>
+                }
+                {this.props.state.layout === "grid" &&
+                    <div className="row couese-manager-subheader-row">
+                        <div className="wbdv-title col-sm-8 col-md-7 col-lg-8 col-8">
+                            Recent documents
+                        </div>
+
+                        <div className="wbdv-owner col-md-2 col-lg-2 col-2 d-none d-sm-none d-md-block">
+                            Owned by me
+                        </div>
+
+                        <div className="wbdv-icon-black col-sm-4 col-md-3 col-lg-2 col-4 float-right">
+                            <span onClick={this.props.toggle}>
+                                <i className="wbdv-icon-black wbdv-sort fas fa-list"></i>
+                            </span>
+                            &emsp;
+                            <i className="wbdv-icon-black wbdv-button wbdv-list-layout fas fa-sort-alpha-down"></i>
+
+                            &emsp;
+                            <i className="fas fa-folder"></i>
+                        </div>
+                    </div>
+                }
+
                 <div>
                     {
                         this.props.state.layout === 'table' &&
                         <CourseTableComponent
                             deleteCourse={this.props.deleteCourse}
                             saveCourse={this.props.saveCourse}
-                            courses={this.props.state.courses}/>
+                            courses={this.props.state.courses}
+                            state={this.props.state}
+                        />
                     }
                     {
                         this.props.state.layout === 'grid' &&
                         <CourseGridComponent
                             deleteCourse={this.props.deleteCourse}
                             saveCourse={this.props.saveCourse}
-                            courses={this.props.state.courses}/>
+                            courses={this.props.state.courses}
+                            state={this.props.state}
+                        />
                     }
                 </div>
             </div>

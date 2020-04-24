@@ -13,6 +13,14 @@ class WhiteBoardContainer extends React.Component {
         courses: []
     }
 
+    getCurrentTime = () => {
+        let curT = new Date();
+        let curTime = (curT.getMonth() + 1) + '/' + curT.getDate() + '/' + curT.getFullYear()
+            + ' ' + curT.getHours() + ':' + curT.getMinutes() + ':' + curT.getSeconds();
+
+        return curTime;
+    }
+
     componentDidMount = async () => {
         const courses = await findAllCourses()
         this.setState({
@@ -33,23 +41,21 @@ class WhiteBoardContainer extends React.Component {
     deleteCourse = async (courseToDelete) => {
         const status = await deleteCourse(courseToDelete._id)
         const courses = await findAllCourses()
-        this.setState({courses: courses})
+        this.setState({courses: courses});
     }
 
     saveCourse = (course, newTitle) => {
-        course.title = newTitle
-        console.log('save course ' + course.title)
+        course.title = newTitle;
+        course.time = this.getCurrentTime();
         updateCourse(course._id, course).then(status => {
         })
     }
 
-    addCourse = (course) => {
-        let curT = new Date()
-        let curTime = (curT.getMonth() + 1) + '/' + curT.getDate() + '/' + curT.getFullYear()
-                    + ' ' + curT.getHours() + ':' + curT.getMinutes() + ':' + curT.getSeconds()
+    addCourse = () => {
+
         createCourse({
             title: this.state.newCourseTitle,
-            time: curTime
+            time: this.getCurrentTime()
         }).then(actualCourse => this.setState(prevState => {
             return ({
                 courses: [

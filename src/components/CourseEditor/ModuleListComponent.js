@@ -7,6 +7,14 @@ import ModuleListItem from "./ModuleListItem";
 class ModuleListComponent extends React.Component {
     componentDidMount() {
         this.props.findModulesForCourse(this.props.courseId)
+        console.log(JSON.stringify(this.props.modules));
+    }
+
+    componentDidUpdate() {
+        if (this.state.activeModuleId === undefined && this.props.modules.length > 0) {
+            this.setState({activeModuleId: this.props.modules[0]._id});
+            this.props.history.push(`/course-editor/${this.props.courseId}/module/${this.state.activeModuleId}`);
+        }
     }
 
     state = {

@@ -37,16 +37,16 @@
   }
 }
 
-.couese-manager-header-row {
+.course-manager-header-row {
   background-color: #78ffff;
   padding: 10px;
 }
 
-.couese-manager-header-row.black{
+.course-manager-header-row.black{
   color: black;
 }
 
-.couese-manager-subheader-row {
+.course-manager-subheader-row {
   background-color: #c4eebe;
   padding: 10px;
   margin: 5px;

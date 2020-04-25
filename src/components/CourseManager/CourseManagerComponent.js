@@ -11,7 +11,7 @@ class CourseManagerComponent extends React.Component {
     render() {
         return (
             <div className="container-fluid">
-                <div className="row couese-manager-header-row">
+                <div className="row course-manager-header-row">
                     <div className="col-sm-2 col-2 col-md-2 col-lg-1">
                         <i className="fas fa-bars fa-2x fa-inverse col-sm-1 wbdv-icon-black bigger"/>
                     </div>
@@ -20,7 +20,7 @@ class CourseManagerComponent extends React.Component {
                         <div className="course-header-title"> Course Manager</div>
                     </div>
 
-                    <div className="col-8 col-sm-8 col-md-8 col-lg-6 couese-manager-header-row">
+                    <div className="col-8 col-sm-8 col-md-8 col-lg-6 course-manager-header-row">
                         <input type="text" className="form-control form-control-lg wbdv-field wbdv-new-course "
                                id="NewCourseTitle"
                                placeholder="New Course Title"
@@ -42,7 +42,7 @@ class CourseManagerComponent extends React.Component {
 
                 </div>
                 {this.props.state.layout === "table" &&
-                <div className="row couese-manager-subheader-row">
+                <div className="row course-manager-subheader-row">
                     <div className="wbdv-title col-sm-9 col-md-7 col-lg-6 col-9">
                         Title
                         <i className="wbdv-icon-black wbdv-sort fas fa-caret-up"></i>
@@ -66,7 +66,7 @@ class CourseManagerComponent extends React.Component {
                 </div>
                 }
                 {this.props.state.layout === "grid" &&
-                <div className="row couese-manager-subheader-row">
+                <div className="row course-manager-subheader-row">
                     <div className="wbdv-title col-sm-8 col-md-7 col-lg-8 col-8">
                         Recent documents
                     </div>

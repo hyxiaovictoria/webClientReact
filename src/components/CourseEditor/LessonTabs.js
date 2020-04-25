@@ -35,12 +35,13 @@ class LessonTabs extends React.Component {
 
     render() {
         return (
-            <div className="row">
-                <div className="couese-manager-header-row col-sm-4">
+            <div className="container-fluid">
+            <div className="row course-manager-header-row">
+                <div className="col-sm-4">
                     <span
                         onClick={() => this.props.history.push("/")}
                         className="wbdv-course-editor wbdv-close">
-                        <i className="couese-manager-header-row black fa fa-times fa-2x fa-inverse"></i>
+                        <i className="course-manager-header-row black fa fa-times fa-2x fa-inverse"></i>
                     </span>
                     <span className="course-editor-header-title">
                         {this.state.course === undefined ? "" : this.state.course["title"]}
@@ -137,6 +138,7 @@ class LessonTabs extends React.Component {
                    }>
                     <i className="fa fa-plus fa-2x fa-inverse"></i>
                 </a>
+            </div>
             </div>
         )
     }

@@ -9,7 +9,7 @@ import {createLesson, updateLesson} from "../../services/LessonService";
 class TopicPills extends React.Component {
 
     componentDidMount() {
-        if (typeof(this.props.lessonId) != 'undefined')
+        if (typeof (this.props.lessonId) != 'undefined')
             this.props.findTopicsForLesson(this.props.lessonId)
     }
 
@@ -17,7 +17,7 @@ class TopicPills extends React.Component {
         console.log('this.props.lessonId' + this.props.lessonId)
         console.log('prevProps.lessonId' + prevProps.lessonId)
 
-        if(this.props.lessonId !== prevProps.lessonId) {
+        if (this.props.lessonId !== prevProps.lessonId) {
             this.props.findTopicsForLesson(this.props.lessonId)
         }
     }
@@ -46,20 +46,22 @@ class TopicPills extends React.Component {
                         </li>
                     )}
                     <input
-                        onChange={e => {this.setState({newTopicTitle: e.target.value})}}
+                        onChange={e => {
+                            this.setState({newTopicTitle: e.target.value})
+                        }}
                         // value={module.title}
                     >
                     </input>
                     <li className="nav-item wbdv-topic-pill">
                         <a className="nav-link wbdv-white"
-                        onClick={() => {
-                            const lesson = {
-                                title: this.state.newTopicTitle,
-                                _id: new Date().getTime()
-                            }
-                            this.props.createTopic(this.props.lessonId, lesson)
-                        }
-                        }>
+                           onClick={() => {
+                               const lesson = {
+                                   title: this.state.newTopicTitle,
+                                   _id: new Date().getTime()
+                               }
+                               this.props.createTopic(this.props.lessonId, lesson)
+                           }
+                           }>
                             <i className="fa fa-plus fa-1x"></i>
                         </a>
                     </li>
@@ -90,7 +92,7 @@ const dispatcherToPropertyMapper = (dispatcher) => ({
     //     })
     // },
     createTopic: async (lessonId, topic) => {
-        const newTopic = await createTopic(lessonId,topic)
+        const newTopic = await createTopic(lessonId, topic)
         dispatcher({
             type: 'CREATE_TOPIC',
             topic: newTopic,
@@ -117,7 +119,7 @@ const dispatcherToPropertyMapper = (dispatcher) => ({
     //         )
 })
 
-export default connect (
+export default connect(
     stateToPropertyMapper,
     dispatcherToPropertyMapper
 )(TopicPills)

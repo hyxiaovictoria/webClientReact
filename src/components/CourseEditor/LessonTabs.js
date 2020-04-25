@@ -35,75 +35,75 @@ class LessonTabs extends React.Component {
             <div className="container-fluid">
                 <div className="row course-manager-lesson-row">
                     <div className="col-sm-7 col-md-7 col-lg-8">
-                    <ul className="nav nav-tabs wbdv-page-tab">
-                        {this.props.lessons.map(lesson =>
-                            <li onClick={() => {
-                                this.props.history.push(
-                                    `/course-editor/${this.props.courseId}/module/${this.props.moduleId}/lesson/${lesson._id}`)
-                                this.setState({
-                                    activeLessonId: lesson._id
-                                })
-                            }
-                            }
-                                key={lesson._id} className="nav-item">
-                                {this.state.editingLessonId !== lesson._id
-                                &&
-                                <span className="wbdv-black">{lesson.title}</span>
-                                }
-
-                                {this.state.editingLessonId === lesson._id
-                                &&
-                                <input
-                                    onChange={(e) => {
-                                        const newTitle = e.target.value
-                                        this.setState(prevState => ({
-                                            lesson: {
-                                                ...prevState.lesson,
-                                                title: newTitle
-                                            }
-                                        }))
-                                    }}
-                                    value={this.state.lesson.title}/>
-                                }
-
-                                {this.state.editingLessonId !== lesson._id
-                                &&
-                                <a onClick={() => {
+                        <ul className="nav nav-tabs wbdv-page-tab">
+                            {this.props.lessons.map(lesson =>
+                                <li onClick={() => {
+                                    this.props.history.push(
+                                        `/course-editor/${this.props.courseId}/module/${this.props.moduleId}/lesson/${lesson._id}`)
                                     this.setState({
-                                        lesson: lesson,
-                                        editingLessonId: lesson._id
+                                        activeLessonId: lesson._id
                                     })
-                                }}>
-                                    <i className="fas fa-edit"></i>
-                                </a>
                                 }
+                                }
+                                    key={lesson._id} className="nav-item">
+                                    {this.state.editingLessonId !== lesson._id
+                                    &&
+                                    <span className="wbdv-black">{lesson.title}</span>
+                                    }
 
-                                {this.state.editingLessonId === lesson._id
-                                &&
-                                <a onClick={
-                                    () => this.props.deleteLesson(lesson._id)}>
-                                    <i className="fas fa-trash"></i>
-                                </a>
-                                }
-                                {this.state.editingLessonId === lesson._id
-                                &&
-                                <a onClick={() => {
-                                    lesson.title = this.state.lesson.title;
-                                    this.props.updateLesson(this.state.lesson)
-                                        .then(() =>
-                                            this.setState({
-                                                editingLessonId: ''
-                                            })
-                                        )
-                                }
-                                }>
-                                    <i className="fas fa-check-circle"></i>
-                                </a>
-                                }
-                                &emsp;&emsp;
-                            </li>
-                        )}
-                    </ul>
+                                    {this.state.editingLessonId === lesson._id
+                                    &&
+                                    <input
+                                        onChange={(e) => {
+                                            const newTitle = e.target.value
+                                            this.setState(prevState => ({
+                                                lesson: {
+                                                    ...prevState.lesson,
+                                                    title: newTitle
+                                                }
+                                            }))
+                                        }}
+                                        value={this.state.lesson.title}/>
+                                    }
+
+                                    {this.state.editingLessonId !== lesson._id
+                                    &&
+                                    <a onClick={() => {
+                                        this.setState({
+                                            lesson: lesson,
+                                            editingLessonId: lesson._id
+                                        })
+                                    }}>
+                                        <i className="fas fa-edit"></i>
+                                    </a>
+                                    }
+
+                                    {this.state.editingLessonId === lesson._id
+                                    &&
+                                    <a onClick={
+                                        () => this.props.deleteLesson(lesson._id)}>
+                                        <i className="fas fa-trash"></i>
+                                    </a>
+                                    }
+                                    {this.state.editingLessonId === lesson._id
+                                    &&
+                                    <a onClick={() => {
+                                        lesson.title = this.state.lesson.title;
+                                        this.props.updateLesson(this.state.lesson)
+                                            .then(() =>
+                                                this.setState({
+                                                    editingLessonId: ''
+                                                })
+                                            )
+                                    }
+                                    }>
+                                        <i className="fas fa-check-circle"></i>
+                                    </a>
+                                    }
+                                    &emsp;&emsp;
+                                </li>
+                            )}
+                        </ul>
                     </div>
 
                     <div className="col-sm-5 col-md-5 col-lg-4">
@@ -118,13 +118,13 @@ class LessonTabs extends React.Component {
                         />
                         &emsp;
                         <span
-                           onClick={() => {
-                               const lesson = {
-                                   title: this.state.newLessonTitle
-                               }
-                               this.props.addLesson(this.props.moduleId, lesson)
-                           }
-                           }>
+                            onClick={() => {
+                                const lesson = {
+                                    title: this.state.newLessonTitle
+                                }
+                                this.props.addLesson(this.props.moduleId, lesson)
+                            }
+                            }>
                             <i className="wbdv-new-lesson-btn fa fa-plus fa-2x fa-inverse"></i>
                         </span>
                     </div>

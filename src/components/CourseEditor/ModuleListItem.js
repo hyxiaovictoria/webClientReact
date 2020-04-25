@@ -49,7 +49,7 @@ class ModuleListItem extends React.Component {
                         {this.props.editing &&
                         <a onClick={() => {
                             this.props.updateModule(this.props.updatingModule._id,
-                            this.props.updatingModule)
+                                this.props.updatingModule)
                             this.props.save()
                         }}>
                             <i className="fas fa-check-circle fa-right-only-50"></i>

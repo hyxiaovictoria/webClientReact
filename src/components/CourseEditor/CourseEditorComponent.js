@@ -21,46 +21,49 @@ const reducers = combineReducers({
 const store = createStore(reducers)
 
 export default class CourseEditorComponent extends React.Component {
-    state = {course : ""};
+    state = {course: ""};
 
     componentDidMount() {
         findCourseById(this.props.courseId)
             .then(course => this.setState({course: course}));
     }
 
-    render()
-    {
-        return(
+    render() {
+        return (
             <Provider store={store}>
-                <div>
-                    <div className="row course-manager-header-row">
-                <span
-                    onClick={() => this.props.history.push("/")}
-                    className="wbdv-course-editor wbdv-close">
-                    <i className="course-manager-header-row black fa fa-times fa-2x fa-inverse"/>
-                </span>
-                        <span className="course-editor-header-title">
-                    {this.state.course.title}
-                            {/*{this.state.course === undefined ? "" : this.state.course["title"]}*/}
-                </span>
-                    </div>
+                <div className="row course-manager-header-row">
+                    <span
+                        onClick={() => this.props.history.push("/")}
+                        className="wbdv-course-editor wbdv-close">
+                        <i className="course-manager-header-row black fa fa-times fa-2x fa-inverse"/>
+                    </span>
+                    <span className="course-editor-header-title">
+                        {this.state.course.title}
+                        {/*{this.state.course === undefined ? "" : this.state.course["title"]}*/}
+                    </span>
+                </div>
 
-                    <div className="row">
-                        <div className="col-4">
-                            {/*<ModuleListComponent modules={this.state.modules}/>*/}
-                            <ModuleListContainer
-                                moduleId={this.props.moduleId}
-                                history={this.props.history}
-                                courseId={this.props.courseId}
-                            />
-                        </div>
-                        <div className="col-8">
-                            <LessonTabs courseId={this.props.courseId} moduleId={this.props.moduleId} lessonId={this.props.lessonId} topicId={this.props.topicId} history={this.props.history}/>
-                            <TopicPills courseId={this.props.courseId} moduleId={this.props.moduleId} lessonId={this.props.lessonId} topicId={this.props.topicId} history={this.props.history}/>
-                            <WidgetList courseId={this.props.courseId} moduleId={this.props.moduleId} lessonId={this.props.lessonId} topicId={this.props.topicId} history={this.props.history}/>
-                        </div>
+                <div className="row">
+                    <div className="col-4">
+                        <ModuleListContainer
+                            moduleId={this.props.moduleId}
+                            history={this.props.history}
+                            courseId={this.props.courseId}
+                        />
+                    </div>
+                    <div className="col-8">
+                        <LessonTabs courseId={this.props.courseId} moduleId={this.props.moduleId}
+                                    lessonId={this.props.lessonId} topicId={this.props.topicId}
+                                    history={this.props.history}/>
+                        <TopicPills courseId={this.props.courseId} moduleId={this.props.moduleId}
+                                    lessonId={this.props.lessonId} topicId={this.props.topicId}
+                                    history={this.props.history}/>
+                        <WidgetList courseId={this.props.courseId} moduleId={this.props.moduleId}
+                                    lessonId={this.props.lessonId} topicId={this.props.topicId}
+                                    history={this.props.history}/>
                     </div>
                 </div>
+                }
             </Provider>
         );
     }

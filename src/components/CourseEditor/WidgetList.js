@@ -28,13 +28,14 @@ class WidgetList extends React.Component {
         },
         preview: true
     }
+
     componentDidMount() {
         // this.props.findWidgetsForTopic(this.props.topicId)
         this.props.findWidgetsForTopic('222')
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        if(prevProps.topicId !== this.props.topicId) {
+        if (prevProps.topicId !== this.props.topicId) {
             this.props.findWidgetsForTopic(this.props.topicId);
             console.log('YH_WidgetList_widgets: ' + JSON.stringify(this.props.widgets))
         }
@@ -47,8 +48,8 @@ class WidgetList extends React.Component {
         this.props.updateWidget(widget.id, widget)
     }
 
-    render(){
-        return(
+    render() {
+        return (
             <div>
                 <div className="row">
                     <button className="btn btn-primary wbdv-button wbdv-save btn-success">Save</button>
@@ -56,9 +57,9 @@ class WidgetList extends React.Component {
                     <label className="text-black-50">Preview</label>
                     &nbsp;&nbsp;
                     <label className="switch" onChange={() => {
-                        this.setState({preview : !this.state.preview});
+                        this.setState({preview: !this.state.preview});
                         console.log("preview = " + this.state.preview)
-                        }}>
+                    }}>
                         <input type="checkbox" id="customSwitch1"/>
                         <span className="slider round"></span>
                     </label>
@@ -112,19 +113,19 @@ class WidgetList extends React.Component {
                                 {/*    updateWidget={this.updateWidget}*/}
                                 {/*    editing={this.state.widget.id === widget.id}*/}
                                 {/*    widget={widget}/>}*/}
-                                {widget.type==="LIST" && widget.isInOrder===1 && <ol><ListWidget
-                                    preview={ this.state.preview}
-                                    updateWidget = {this.props.updateWidget}
-                                    widget={widget}/></ol>}
-                                {widget.type==="LIST" && widget.isInOrder===0 &&  <ul><ListWidget
-                                    preview={ this.state.preview}
-                                    updateWidget = {this.props.updateWidget}
-                                    widget={widget}/></ul>}
-                                {widget.type==="IMAGE" && <ImageWidget
+                                {widget.type === "LIST" && widget.isInOrder === 1 && <ol><ListWidget
                                     preview={this.state.preview}
-                                    updateWidget = {this.props.updateWidget}
+                                    updateWidget={this.props.updateWidget}
+                                    widget={widget}/></ol>}
+                                {widget.type === "LIST" && widget.isInOrder === 0 && <ul><ListWidget
+                                    preview={this.state.preview}
+                                    updateWidget={this.props.updateWidget}
+                                    widget={widget}/></ul>}
+                                {widget.type === "IMAGE" && <ImageWidget
+                                    preview={this.state.preview}
+                                    updateWidget={this.props.updateWidget}
                                     widget={widget}
-                                    />
+                                />
                                 }
                             </div>
                         )
@@ -266,13 +267,12 @@ const dispatchToPropertyMapper = (dispatcher) => ({
             })),
     updateWidget: (widgetId, newWidget) =>
         updateWidget(widgetId, newWidget)
-            .then(status =>
-                {
-                    dispatcher({
-                        type: "UPDATE",
-                        widget: newWidget
-                    })
-                }),
+            .then(status => {
+                dispatcher({
+                    type: "UPDATE",
+                    widget: newWidget
+                })
+            }),
     deleteWidget: (widgetId) =>
         deleteWidget(widgetId)
             .then(status => dispatcher({

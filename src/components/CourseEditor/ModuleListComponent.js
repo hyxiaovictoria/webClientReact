@@ -11,9 +11,10 @@ class ModuleListComponent extends React.Component {
     }
 
     componentDidUpdate() {
-        if (this.state.activeModuleId === undefined && this.props.modules.length > 0) {
+        // Set first module to be active by default
+        if (this.state.activeModuleId === undefined && (this.props.modules.length > 0)) {
             this.setState({activeModuleId: this.props.modules[0]._id});
-            this.props.history.push(`/course-editor/${this.props.courseId}/module/${this.state.activeModuleId}`);
+            this.props.history.push(`/course-editor/${this.props.courseId}/module/${this.props.modules[0]._id}`);
         }
     }
 

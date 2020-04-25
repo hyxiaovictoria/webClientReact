@@ -47,6 +47,11 @@
   padding: 10px;
 }
 
+.course-manager-topic-row {
+  background-color: #61ffb4;
+  padding: 10px;
+}
+
 .course-manager-header-row.black{
   color: black;
 }

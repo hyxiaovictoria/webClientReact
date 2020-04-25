@@ -35,7 +35,8 @@ class TopicPills extends React.Component {
 
     render() {
         return (
-            <div className="form-row">
+            <div className="row course-manager-topic-row">
+                <div className="col-sm-7 col-md-7 col-lg-8">
                 <ul className="nav nav-pills wbdv-topic-pill-list">
                     {this.props.topics.map(topic =>
                         <li key={topic._id}
@@ -45,27 +46,29 @@ class TopicPills extends React.Component {
                             <a className="nav-link wbdv-white">{topic.title}</a>
                         </li>
                     )}
+                </ul>
+                </div>
+                <div className="col-sm-5 col-md-5 col-lg-4">
                     <input
+                        placeholder="New Topic Title"
+                        type="text"
                         onChange={e => {
                             this.setState({newTopicTitle: e.target.value})
                         }}
-                        // value={module.title}
-                    >
-                    </input>
-                    <li className="nav-item wbdv-topic-pill">
-                        <a className="nav-link wbdv-white"
-                           onClick={() => {
-                               const lesson = {
-                                   title: this.state.newTopicTitle,
-                                   _id: new Date().getTime()
-                               }
-                               this.props.createTopic(this.props.lessonId, lesson)
+                        value={this.state.newTopicTitle}
+                    />
+                    <span className="nav-link"
+                       onClick={() => {
+                           const topic = {
+                               title: this.state.newTopicTitle
                            }
-                           }>
-                            <i className="fa fa-plus fa-1x"></i>
-                        </a>
-                    </li>
-                </ul>
+                           this.props.createTopic(this.props.lessonId, topic);
+                           this.setState({newTopicTitle: ""})
+                       }
+                       }>
+                        <i className="wbdv-new-topic-btn fa fa-plus fa-1x"></i>
+                    </span>
+                </div>
             </div>
         )
     }

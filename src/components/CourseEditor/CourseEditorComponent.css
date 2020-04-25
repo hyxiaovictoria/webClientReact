@@ -219,3 +219,7 @@ input:checked + .slider:before {
 .wbdv-new-lesson-btn {
     color: black;
 }
+
+.wbdv-new-topic-btn {
+    color: black;
+}

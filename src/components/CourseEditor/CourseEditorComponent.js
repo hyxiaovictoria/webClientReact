@@ -12,6 +12,7 @@ import modules from '../../reducers/moduleReducer'
 import lessons from '../../reducers/lessonReducer'
 import topics from '../../reducers/topicReducer'
 import widgets from '../../reducers/widgetReducer'
+import {findCourseById} from "../../services/CourseService";
 
 const reducers = combineReducers({
     modules, lessons, topics, widgets
@@ -19,39 +20,48 @@ const reducers = combineReducers({
 
 const store = createStore(reducers)
 
-const CourseEditorComponent = ({hideEditor, match, courseId, moduleId, lessonId, topicId, history}) =>
-    <Provider store={store}>
-        <div>
-            <div className="row course-manager-header-row">
+export default class CourseEditorComponent extends React.Component {
+    state = {course : ""};
+
+    componentDidMount() {
+        findCourseById(this.props.courseId)
+            .then(course => this.setState({course: course}));
+    }
+
+    render()
+    {
+        return(
+            <Provider store={store}>
+                <div>
+                    <div className="row course-manager-header-row">
                 <span
-                    onClick={() => history.push("/")}
+                    onClick={() => this.props.history.push("/")}
                     className="wbdv-course-editor wbdv-close">
                     <i className="course-manager-header-row black fa fa-times fa-2x fa-inverse"/>
                 </span>
-                <span className="course-editor-header-title">
-                    {courseId}
-                    {/*{this.state.course === undefined ? "" : this.state.course["title"]}*/}
+                        <span className="course-editor-header-title">
+                    {this.state.course.title}
+                            {/*{this.state.course === undefined ? "" : this.state.course["title"]}*/}
                 </span>
-            </div>
-            {/*<button onClick={() => history.push("/")}>XX</button>*/}
-            {/*<LessonTabs lessons={this.state.lessons} hideEditor={this.props.hideEditor}/>*/}
+                    </div>
 
-            <div className="row">
-                <div className="col-4">
-                    {/*<ModuleListComponent modules={this.state.modules}/>*/}
-                    <ModuleListContainer
-                        moduleId={moduleId}
-                        history={history}
-                        courseId={courseId}
-                    />
+                    <div className="row">
+                        <div className="col-4">
+                            {/*<ModuleListComponent modules={this.state.modules}/>*/}
+                            <ModuleListContainer
+                                moduleId={this.props.moduleId}
+                                history={this.props.history}
+                                courseId={this.props.courseId}
+                            />
+                        </div>
+                        <div className="col-8">
+                            <LessonTabs courseId={this.props.courseId} moduleId={this.props.moduleId} lessonId={this.props.lessonId} topicId={this.props.topicId} history={this.props.history}/>
+                            <TopicPills courseId={this.props.courseId} moduleId={this.props.moduleId} lessonId={this.props.lessonId} topicId={this.props.topicId} history={this.props.history}/>
+                            <WidgetList courseId={this.props.courseId} moduleId={this.props.moduleId} lessonId={this.props.lessonId} topicId={this.props.topicId} history={this.props.history}/>
+                        </div>
+                    </div>
                 </div>
-                <div className="col-8">
-                    <LessonTabs courseId={courseId} moduleId={moduleId} lessonId={lessonId} topicId={topicId} history={history}/>
-                    <TopicPills courseId={courseId} moduleId={moduleId} lessonId={lessonId} topicId={topicId} history={history}/>
-                    <WidgetList courseId={courseId} moduleId={moduleId} lessonId={lessonId} topicId={topicId} history={history}/>
-                </div>
-            </div>
-        </div>
-    </Provider>
-
-export default CourseEditorComponent
+            </Provider>
+        );
+    }
+}

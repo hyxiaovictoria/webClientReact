@@ -215,3 +215,7 @@ input:checked + .slider:before {
 .btn-big-hint{
     font-size: 30px
 }
+
+.wbdv-new-lesson-btn {
+    color: black;
+}

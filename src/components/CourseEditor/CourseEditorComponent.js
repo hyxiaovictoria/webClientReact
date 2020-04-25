@@ -22,9 +22,19 @@ const store = createStore(reducers)
 const CourseEditorComponent = ({hideEditor, match, courseId, moduleId, lessonId, topicId, history}) =>
     <Provider store={store}>
         <div>
+            <div className="row course-manager-header-row">
+                <span
+                    onClick={() => history.push("/")}
+                    className="wbdv-course-editor wbdv-close">
+                    <i className="course-manager-header-row black fa fa-times fa-2x fa-inverse"/>
+                </span>
+                <span className="course-editor-header-title">
+                    {courseId}
+                    {/*{this.state.course === undefined ? "" : this.state.course["title"]}*/}
+                </span>
+            </div>
             {/*<button onClick={() => history.push("/")}>XX</button>*/}
             {/*<LessonTabs lessons={this.state.lessons} hideEditor={this.props.hideEditor}/>*/}
-            <LessonTabs courseId={courseId} moduleId={moduleId} lessonId={lessonId} topicId={topicId} history={history}/>
 
             <div className="row">
                 <div className="col-4">
@@ -36,6 +46,7 @@ const CourseEditorComponent = ({hideEditor, match, courseId, moduleId, lessonId,
                     />
                 </div>
                 <div className="col-8">
+                    <LessonTabs courseId={courseId} moduleId={moduleId} lessonId={lessonId} topicId={topicId} history={history}/>
                     <TopicPills courseId={courseId} moduleId={moduleId} lessonId={lessonId} topicId={topicId} history={history}/>
                     <WidgetList courseId={courseId} moduleId={moduleId} lessonId={lessonId} topicId={topicId} history={history}/>
                 </div>

@@ -33,18 +33,8 @@ class LessonTabs extends React.Component {
     render() {
         return (
             <div className="container-fluid">
-                <div className="row course-manager-header-row">
-                    <div className="col-sm-4 col-md-4 col-lg-3">
-                        <span
-                            onClick={() => this.props.history.push("/")}
-                            className="wbdv-course-editor wbdv-close">
-                            <i className="course-manager-header-row black fa fa-times fa-2x fa-inverse"/>
-                        </span>
-                        <span className="course-editor-header-title">
-                            {this.state.course === undefined ? "" : this.state.course["title"]}
-                        </span>
-                    </div>
-                    <div className="col-sm-6 col-md-6 col-lg-7">
+                <div className="row course-manager-lesson-row">
+                    <div className="col-sm-7 col-md-7 col-lg-8">
                     <ul className="nav nav-tabs wbdv-page-tab">
                         {this.props.lessons.map(lesson =>
                             <li onClick={() => {
@@ -116,8 +106,9 @@ class LessonTabs extends React.Component {
                     </ul>
                     </div>
 
-                    <div className="col-sm-2 col-md-2 col-lg-2">
+                    <div className="col-sm-5 col-md-5 col-lg-4">
                         <input
+                            className="wbdv-new-lesson-btn"
                             type="text"
                             placeholder="New Lesson Title"
                             onChange={e => {
@@ -125,7 +116,8 @@ class LessonTabs extends React.Component {
                             }}
                             value={this.state.newLessonTitle}
                         />
-                        <a className="wbdv-new-page-btn col-sm-1"
+                        &emsp;
+                        <span
                            onClick={() => {
                                const lesson = {
                                    title: this.state.newLessonTitle
@@ -133,8 +125,8 @@ class LessonTabs extends React.Component {
                                this.props.addLesson(this.props.moduleId, lesson)
                            }
                            }>
-                            <i className="fa fa-plus fa-2x fa-inverse"></i>
-                        </a>
+                            <i className="wbdv-new-lesson-btn fa fa-plus fa-2x fa-inverse"></i>
+                        </span>
                     </div>
                 </div>
             </div>

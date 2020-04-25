@@ -2,7 +2,7 @@ import React from "react";
 import {connect} from "react-redux";
 import "./CourseEditorComponent.css"
 import {findTopicsForLesson, createTopic, updateTopic, deleteTopic} from "../../services/TopicService";
-import {LESSONS_API_URL, LESSONS_TOPICS_API_URL} from "../../constants";
+import {LESSONS_API_URL, LESSONS_TOPICS_API_URL, TOPICS_API_URL} from "../../constants";
 import {createLesson, updateLesson} from "../../services/LessonService";
 
 
@@ -43,7 +43,62 @@ class TopicPills extends React.Component {
                             onClick={() => this.props.history.push(
                                 `/course-editor/${this.props.courseId}/module/${this.props.moduleId}/lesson/${this.props.lessonId}/topic/${topic.id}`)}
                             className="nav-item wbdv-topic-pill">
-                            <a className="nav-link wbdv-white">{topic.title}</a>
+
+                            {this.state.editingTopicId !== topic._id
+                            &&
+                            <span className="nav-link wbdv-white">{topic.title}</span>
+                            }
+
+                            {this.state.editingTopicId === topic._id
+                            &&
+                            <input
+                                onChange={(e) => {
+                                    const newTitle = e.target.value
+                                    this.setState(prevState => ({
+                                        topic: {
+                                            ...prevState.topic,
+                                            title: newTitle
+                                        }
+                                    }))
+                                }}
+                                value={this.state.topic.title}/>
+                            }
+                            {this.state.editingTopicId !== topic._id
+                            &&
+                            <a onClick={() => {
+                                this.setState({
+                                    topic: topic,
+                                    editingTopicId: topic._id
+                                })
+                            }}>
+                                <i className="fas fa-edit"></i>
+                            </a>
+                            }
+
+
+                            {this.state.editingTopicId === topic._id
+                            &&
+                            <a onClick={
+                                () => this.props.deleteTopic(topic._id)}>
+                                <i className="fas fa-trash"></i>
+                            </a>
+                            }
+                            {this.state.editingTopicId === topic._id
+                            &&
+                            <a onClick={() => {
+                                topic.title = this.state.topic.title;
+                                this.props.updateTopic(this.state.topic)
+                                    .then(() =>
+                                        this.setState({
+                                            editingTopicId: ''
+                                        })
+                                    )
+                            }
+                            }>
+                                <i className="fas fa-check-circle"></i>
+                            </a>
+                            }
+                            &emsp;&emsp;
                         </li>
                     )}
                 </ul>
@@ -86,14 +141,14 @@ const dispatcherToPropertyMapper = (dispatcher) => ({
                 type: 'FIND_TOPICS_FOR_LESSON',
                 topics: topics
             })),
-    // updateLesson: async (lesson) => {
-    //     const actualLesson = await updateLesson(lesson)
-    //     dispatcher({
-    //         type: 'UPDATE_LESSON',
-    //         lesson: actualLesson,
-    //         lessonId: actualLesson._id
-    //     })
-    // },
+    updateTopic: async (topic) => {
+        const actualTopic = await updateTopic(topic)
+        dispatcher({
+            type: 'UPDATE_TOPIC',
+            topic: actualTopic,
+            topicId: actualTopic._id
+        })
+    },
     createTopic: async (lessonId, topic) => {
         const newTopic = await createTopic(lessonId, topic)
         dispatcher({
@@ -101,16 +156,16 @@ const dispatcherToPropertyMapper = (dispatcher) => ({
             topic: newTopic,
             topicId: newTopic.id
         })
-    }//,
-    // deleteLesson: (lessonId) =>
-    //     fetch(`${LESSONS_API_URL}/${lessonId}`, {
-    //         method: 'DELETE'
-    //     }).then(response => response.json())
-    //         .then(status =>
-    //             dispatcher({
-    //                 type: 'DELETE_LESSON',
-    //                 lessonId: lessonId
-    //             })),
+    },
+    deleteTopic: (topicId) =>
+        fetch(`${TOPICS_API_URL}/${topicId}`, {
+            method: 'DELETE'
+        }).then(response => response.json())
+            .then(status =>
+                dispatcher({
+                    type: 'DELETE_TOPIC',
+                    topicId: topicId
+                }))
     // findAllLessons: () =>
     //     fetch(LESSONS_API_URL)
     //         .then(response => response.json())
